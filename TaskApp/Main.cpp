@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include "Demo.h"
+#include "TemplateTest.h"
 
 int main(int argc, char* argv[])
 {
 	task::Demo demo;
-	std::cout << demo.add(1, 1) << std::endl;
+	std::cout << task::Min(demo.add(1, 1), 1)<< std::endl;
 
 	system("PAUSE");
 	return 0;
