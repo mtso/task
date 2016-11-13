@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>140</x>
+      <y>40</y>
+      <w>20</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>
+bg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>170</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Main Menu</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>60</y>
+      <w>30</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>310</x>
+      <y>170</y>
+      <w>121</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+
+switch 
+(choice: char)</panel_attributes>
+    <additional_attributes/>
+    <custom_code>//Modify the code below to define the element's behavior.
+//
+//Example:  Change the line
+//  y += printCenter(textline,y);
+//to
+//  y += 2*printCenter(textline,y);
+//and observe the element preview.
+
+int y=height/2 - textHeight() * textlines.size()*2/3;
+
+//draws the text in the usual way
+for(String textline: textlines) {
+	y = y+textHeight();
+	printCenter(textline, y);
+}
+// draws the outer border of the diamond
+Polygon p = new Polygon();
+p.addPoint(width/2,5);
+p.addPoint(width-5,height/2);
+p.addPoint(width/2,height-5);
+p.addPoint(5,height/2);
+drawPolygon(p);
+
+//draws the stickingpolygon
+//addStickingPoint(width/2,0);
+//addStickingPoint(width,height/2);
+//addStickingPoint(width/2,height);
+//addStickingPoint(0,height/2);
+
+</custom_code>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>130</x>
+      <y>360</y>
+      <w>201</w>
+      <h>201</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+
+Hello, World! 
+Enjoy UMLet!</panel_attributes>
+    <additional_attributes/>
+    <custom_code>int y=textHeight();
+
+drawRectangleRound(0,0,width,height,20,20);
+
+for(String textline : textlines) {
+	y += printCenter(textline,y);
+}</custom_code>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>100</x>
+      <y>20</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Starting Point
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
