@@ -336,8 +336,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>450</x>
-      <y>282</y>
+      <x>492</x>
+      <y>270</y>
       <w>120</w>
       <h>66</h>
     </coordinates>
@@ -347,8 +347,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>300</y>
+      <x>510</x>
+      <y>288</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -358,8 +358,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>498</x>
-      <y>300</y>
+      <x>540</x>
+      <y>288</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -369,8 +369,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>528</x>
-      <y>300</y>
+      <x>570</x>
+      <y>288</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -380,8 +380,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>498</x>
-      <y>390</y>
+      <x>456</x>
+      <y>378</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -391,8 +391,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>528</x>
-      <y>390</y>
+      <x>486</x>
+      <y>378</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -402,8 +402,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>390</y>
+      <x>426</x>
+      <y>378</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -413,8 +413,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>450</x>
-      <y>372</y>
+      <x>408</x>
+      <y>360</y>
       <w>120</w>
       <h>66</h>
     </coordinates>
@@ -424,8 +424,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>636</x>
-      <y>348</y>
+      <x>630</x>
+      <y>378</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -435,8 +435,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>666</x>
-      <y>348</y>
+      <x>660</x>
+      <y>378</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -446,8 +446,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>606</x>
-      <y>348</y>
+      <x>600</x>
+      <y>378</y>
       <w>24</w>
       <h>30</h>
     </coordinates>
@@ -457,8 +457,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>588</x>
-      <y>330</y>
+      <x>582</x>
+      <y>360</y>
       <w>120</w>
       <h>66</h>
     </coordinates>
