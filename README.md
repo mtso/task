@@ -22,5 +22,5 @@ saved as a text file that can be pushed to any git server.
 
 - Adrian Marroquin
 - Matthew Tso
-- Emma Xinhe
-- Jinzu Shen
+- Xin He
+- Jinzhu Shen
