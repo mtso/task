@@ -18,8 +18,6 @@ int main(int argc, char* argv[])
 	std::cout << "The smaller value between (1+1) and 1 is: "
 		      << task::Min(example.add(1, 1), 1) << std::endl;
 
-	task::Max(3, 4.5);
-
 	system("PAUSE");
 	return 0;
 }
