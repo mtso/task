@@ -1,5 +1,5 @@
 # task 
-![build unknown](https://img.shields.io/badge/build-unknown-lightgrey.svg) ![platform win32](https://img.shields.io/badge/platform-win32-blue.svg)
+![appveyor build](https://ci.appveyor.com/api/projects/status/rtl31pwna7xxcypb?svg=true) ![platform win32](https://img.shields.io/badge/platform-win32-blue.svg)
 
 Git-based collaborative project management.
 
