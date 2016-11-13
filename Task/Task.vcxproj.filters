@@ -18,18 +18,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Demo.h">
+    <ClInclude Include="Example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TemplateTest.h">
+    <ClInclude Include="TemplateExample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Demo.cpp">
+    <ClCompile Include="Example.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TemplateTest.cpp">
+    <ClCompile Include="TemplateExample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

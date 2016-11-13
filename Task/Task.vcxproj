@@ -76,12 +76,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Demo.h" />
-    <ClInclude Include="TemplateTest.h" />
+    <ClInclude Include="Example.h" />
+    <ClInclude Include="TemplateExample.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Demo.cpp" />
-    <ClCompile Include="TemplateTest.cpp" />
+    <ClCompile Include="Example.cpp" />
+    <ClCompile Include="TemplateExample.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
