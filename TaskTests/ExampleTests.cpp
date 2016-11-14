@@ -20,7 +20,7 @@ namespace TaskTests // Testing Project namespace
 			// Construct an instance of Example object.
 			task::Example example;
 			
-			int expected = 4;
+			int expected = 3;
 			int actual = example.add(2, 2);
 
 			// returns true if expected and actual are equivalent
