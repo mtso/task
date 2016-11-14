@@ -18,7 +18,7 @@ saved as a text file that can be pushed to any git server.
 - De Anza CIS 22C: Fall 2016
 - Professor Manish Goel
 
-### Authors
+### Team 一
 
 - Adrian Marroquin
 - Matthew Tso
