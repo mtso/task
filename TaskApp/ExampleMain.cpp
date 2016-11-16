@@ -9,8 +9,15 @@
 #include <iostream>
 
 // Just include the header files (because project properties reference Task)
+#ifdef OS_WINDOWS
 #include "Example.h"
 #include "TemplateExample.h"
+#else
+#include "../Task/Example.h"
+#include "../Task/TemplateExample.h"
+#include "../Task/Utilities/Sha1.h"
+#include <string>
+#endif
 
 int main(int argc, char* argv[])
 {
