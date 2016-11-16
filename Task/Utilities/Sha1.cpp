@@ -5,6 +5,7 @@
 //  Following: http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software
 //  Warning! Only works with up to 55-length strings
 //  because only a single chunk is hashed.
+//
 
 #include "Sha1.h"
 
