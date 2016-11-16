@@ -9,7 +9,7 @@
 #include <iostream>
 
 // Just include the header files (because project properties reference Task)
-#ifdef OS_WINDOWS
+#ifdef _WIN32
 #include "Example.h"
 #include "TemplateExample.h"
 #else
