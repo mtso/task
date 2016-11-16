@@ -6,6 +6,7 @@
 #define TASK_SHA1_H
 
 #include <string>
+#include <stdint.h>
 
 namespace task {
     
