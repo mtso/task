@@ -13,6 +13,7 @@
 #include "TemplateExample.h"
 
 #ifdef _WIN32 /* Windows-style */
+#include "Utilities\Sha1.h"
 
 #else         /* Xcode-style */
 #include "Sha1.h"

@@ -37,5 +37,13 @@ namespace TaskTests // Testing Project namespace
 			std::string actual = task::sha_1(input);
 			Assert::AreEqual(expected, actual);
 		}
+
+		TEST_METHOD(Sha1_Blank)
+		{
+			std::string input = "";
+			std::string expected = "da39a3ee5e6b4b0d3255bfef95601890afd80709";
+			std::string actual = task::sha_1(input);
+			Assert::AreEqual(expected, actual);
+		}
 	};
 }
