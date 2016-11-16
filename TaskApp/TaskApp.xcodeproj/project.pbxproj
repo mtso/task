@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */; };
+		7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */; };
+		7FF3E62B1DDCF3FC00D4C9E8 /* TemplateExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		7FF3E6191DDCF01200D4C9E8 /* TaskApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TaskApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExampleMain.cpp; sourceTree = "<group>"; };
+		7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Example.cpp; path = ../Task/Example.cpp; sourceTree = "<group>"; };
+		7FF3E6271DDCF3FC00D4C9E8 /* Example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Example.h; path = ../Task/Example.h; sourceTree = "<group>"; };
+		7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TemplateExample.cpp; path = ../Task/TemplateExample.cpp; sourceTree = "<group>"; };
+		7FF3E6291DDCF3FC00D4C9E8 /* TemplateExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateExample.h; path = ../Task/TemplateExample.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */,
+				7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */,
+				7FF3E6271DDCF3FC00D4C9E8 /* Example.h */,
+				7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */,
+				7FF3E6291DDCF3FC00D4C9E8 /* TemplateExample.h */,
 			);
 			name = TaskApp;
 			sourceTree = "<group>";
@@ -120,7 +130,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */,
 				7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */,
+				7FF3E62B1DDCF3FC00D4C9E8 /* TemplateExample.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
