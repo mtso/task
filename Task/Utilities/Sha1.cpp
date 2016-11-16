@@ -141,10 +141,6 @@ string task::sha_1(const string& input)
     chunk_ch[input.length()] = 1 << 7; // append 1 to end
     
 
-
-
-
-
     // MARK: 6.1: Append original message length
     // Multiply string length by character bit size
     uint64_t length_64 = (input.length() * 8);
