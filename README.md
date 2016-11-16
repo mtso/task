@@ -1,6 +1,6 @@
 # ☑ task 
 [![appveyor build](https://ci.appveyor.com/api/projects/status/rtl31pwna7xxcypb?svg=true)](https://ci.appveyor.com/project/mtso/task)
-![supported platforms](https://img.shields.io/badge/platforms-win32 | macOS-lightgray.svg)
+![supported platforms](https://img.shields.io/badge/platforms-win32-lightgray.svg)
 
 Git-based collaborative project management.
 

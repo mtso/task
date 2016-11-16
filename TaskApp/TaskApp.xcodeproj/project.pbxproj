@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F3C299D1DDD02D800ACE2BD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C299C1DDD02D800ACE2BD /* README.md */; };
+		7F3C29A21DDD036900ACE2BD /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C29A01DDD036900ACE2BD /* Sha1.cpp */; };
 		7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */; };
 		7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */; };
 		7FF3E62B1DDCF3FC00D4C9E8 /* TemplateExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */; };
@@ -25,8 +27,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7F3C299C1DDD02D800ACE2BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7F3C29A01DDD036900ACE2BD /* Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sha1.cpp; path = ../Task/Utilities/Sha1.cpp; sourceTree = SOURCE_ROOT; };
+		7F3C29A11DDD036900ACE2BD /* Sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sha1.h; path = ../Task/Utilities/Sha1.h; sourceTree = SOURCE_ROOT; };
 		7FF3E6191DDCF01200D4C9E8 /* TaskApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TaskApp; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExampleMain.cpp; sourceTree = "<group>"; };
+		7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExampleMain.cpp; sourceTree = SOURCE_ROOT; };
 		7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Example.cpp; path = ../Task/Example.cpp; sourceTree = "<group>"; };
 		7FF3E6271DDCF3FC00D4C9E8 /* Example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Example.h; path = ../Task/Example.h; sourceTree = "<group>"; };
 		7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TemplateExample.cpp; path = ../Task/TemplateExample.cpp; sourceTree = "<group>"; };
@@ -44,9 +49,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F3C299E1DDD02FB00ACE2BD /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C299F1DDD036900ACE2BD /* Utilities */,
+				7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */,
+				7FF3E6271DDCF3FC00D4C9E8 /* Example.h */,
+				7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */,
+				7FF3E6291DDCF3FC00D4C9E8 /* TemplateExample.h */,
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
+		7F3C299F1DDD036900ACE2BD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7F3C29A01DDD036900ACE2BD /* Sha1.cpp */,
+				7F3C29A11DDD036900ACE2BD /* Sha1.h */,
+			);
+			name = Utilities;
+			path = ../Task/Utilities;
+			sourceTree = "<group>";
+		};
 		7FF3E6101DDCF01200D4C9E8 = {
 			isa = PBXGroup;
 			children = (
+				7F3C299E1DDD02FB00ACE2BD /* Task */,
+				7F3C299C1DDD02D800ACE2BD /* README.md */,
 				7FF3E6251DDCF03100D4C9E8 /* TaskApp */,
 				7FF3E61A1DDCF01200D4C9E8 /* Products */,
 			);
@@ -64,10 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */,
-				7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */,
-				7FF3E6271DDCF3FC00D4C9E8 /* Example.h */,
-				7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */,
-				7FF3E6291DDCF3FC00D4C9E8 /* TemplateExample.h */,
 			);
 			name = TaskApp;
 			sourceTree = "<group>";
@@ -132,7 +157,9 @@
 			files = (
 				7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */,
 				7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */,
+				7F3C299D1DDD02D800ACE2BD /* README.md in Sources */,
 				7FF3E62B1DDCF3FC00D4C9E8 /* TemplateExample.cpp in Sources */,
+				7F3C29A21DDD036900ACE2BD /* Sha1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,5 +293,4 @@
 /* End XCConfigurationList section */
 	};
 	rootObject = 7FF3E6111DDCF01200D4C9E8 /* Project object */;
-
 }

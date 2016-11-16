@@ -7,16 +7,16 @@
  */
 
 #include <iostream>
+#include <string>
 
-// Just include the header files (because project properties reference Task)
-#ifdef _WIN32
 #include "Example.h"
 #include "TemplateExample.h"
-#else
-#include "../Task/Example.h"
-#include "../Task/TemplateExample.h"
-#include "../Task/Utilities/Sha1.h"
-#include <string>
+
+#ifdef _WIN32 /* Windows-style */
+
+#else         /* Xcode-style */
+#include "Sha1.h"
+
 #endif
 
 int main(int argc, char* argv[])
@@ -24,8 +24,12 @@ int main(int argc, char* argv[])
 	task::Example example;
 	std::cout << "The smaller value between (1+1) and 1 is: "
 		      << task::Min(example.add(1, 1), 1) << std::endl;
+    
+    std::cout << "The SHA-1 hash of \"Adrian Marroquin\" is: " << task::sha_1("Adrian Marroquin") << std::endl;
 
+#ifdef _WIN32
 	system("PAUSE");
+#endif
 	return 0;
 }
 
