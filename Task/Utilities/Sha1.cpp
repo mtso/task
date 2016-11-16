@@ -3,13 +3,14 @@
 // CIS 22C F2016: Matthew Tso
 //
 //  Following: http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software
-//  Warning! Only works with up to 111-length strings
+//  Warning! Only works with up to 55-length strings
 //  because only a single chunk is hashed.
 
 #include "Sha1.h"
 
 using namespace std;
 
+// Bit rotation macros
 #define ROL8(num, shift)   ( (num << shift) | (num >> ( 8 - shift)) )
 #define ROL64(num, shift)  ( (num << shift) | (num >> (64 - shift)) )
 #define ROL32(num, shift)  ( (num << shift) | (num >> (32 - shift)) )
@@ -18,7 +19,7 @@ using namespace std;
 const int CHUNKCH_SIZE = 64; // 64 unsigned char in one 512 bit chunk
 const int CHUNKUL_SIZE = 16; // 16 uint32 in one 512 bit chunk
 const int CHUNKXT_SIZE = 80; // 80 uint32 'words' in the main loop
-const uint32_t STATE[5] = {  // initial 5 word constants
+const uint32_t STATE_INIT[5] = {  // initial 5 word constants
     0x67452301,
     0xEFCDAB89,
     0x98BADCFE,
@@ -49,24 +50,101 @@ char toHex(unsigned char& ch) {
     }
 }
 
+void hashLoop(uint32_t* state, uint32_t* chunk_in)
+{
+	uint32_t chunk_xt[CHUNKXT_SIZE] = { 0 };
+
+	// MARK: 9: Put chunk 16 into transformation chunk of 80
+	for (int i = 0; i < CHUNKUL_SIZE; i++) {
+		chunk_xt[i] = chunk_in[i];
+	}
+
+	for (int i = 16; i < CHUNKXT_SIZE; i++) {
+		// 9.1: XOR
+		uint32_t word1 = chunk_xt[i - 3];
+		uint32_t word2 = chunk_xt[i - 8];
+		uint32_t word3 = chunk_xt[i - 14];
+		uint32_t word4 = chunk_xt[i - 16];
+		uint32_t xorResult = (((word1 ^ word2) ^ word3) ^ word4);
+
+		// 9.2: Left rotate
+		chunk_xt[i] = ROL32(xorResult, 1);
+	}
+
+	// MARK: 10: Initialize variables with state constants
+	uint32_t A = state[0];
+	uint32_t B = state[1];
+	uint32_t C = state[2];
+	uint32_t D = state[3];
+	uint32_t E = state[4];
+
+	// MARK: 11: The main loop
+	for (int i = 0; i < CHUNKXT_SIZE; i++) {
+		uint32_t f;
+		uint32_t k;
+
+		// 11.1
+		if (i >= 0 && i <= 19) {
+			f = (B & C) | (~B & D); // Bit NOT is different from Bool NOT
+			k = 0x5A827999;
+		}
+		else if (i >= 20 && i <= 39) {
+			f = (B ^ C) ^ D;
+			k = 0x6ED9EBA1;
+		}
+		else if (i >= 40 && i <= 59) {
+			f = (B & C) | (B & D) | (C & D);
+			k = 0x8F1BBCDC;
+		}
+		else if (i >= 60 && i <= 79) {
+			f = (B ^ C) ^ D;
+			k = 0xCA62C1D6;
+		}
+
+		// 11.2
+		uint32_t temp = (ROL32(A, 5) + f + E + k + chunk_xt[i]);
+		E = D;
+		D = C;
+		C = ROL32(B, 30);
+		B = A;
+		A = temp;
+	}
+
+	// MARK: 12: Add back into state
+	state[0] += A;
+	state[1] += B;
+	state[2] += C;
+	state[3] += D;
+	state[4] += E;
+}
+
 string task::sha_1(const string& input) 
 {
     if (input.length() > 55) { return "Hashing 55+ char input has not been implemented yet."; }
         
     unsigned char chunk_ch[CHUNKCH_SIZE] = { 0 };
     uint32_t chunk_l[CHUNKUL_SIZE] = { 0 };
-    uint32_t chunk_xt[CHUNKXT_SIZE] = { 0 };
     uint32_t state[5];
+
+	int length = (int)input.length();
+
+	// Initialize state with constants
     for (int i = 0; i < 5; i++) {
-        state[i] = STATE[i];
+		state[i] = STATE_INIT[i];
     }
     
-    // MARK: Step 4 & 5: Append input binary into chunk
+	// TODO: Create more than one chunk for long inputs.
+    // MARK: Step 4 & 5: Append input characters into chunk
     for (int i = 0; i < input.length(); ++i) {
         chunk_ch[i] = input[i];
     }
     chunk_ch[input.length()] = 1 << 7; // append 1 to end
     
+
+
+
+
+
     // MARK: 6.1: Append original message length
     // Multiply string length by character bit size
     uint64_t length_64 = (input.length() * 8);
@@ -84,69 +162,8 @@ string task::sha_1(const string& input)
             chunk_l[i] <<= (chi < 3) ? 8 : 0;
         }
     }
-    
-    // MARK: 9: Put chunk 16 into transformation chunk of 80
-    for (int i = 0; i < CHUNKUL_SIZE; i++) {
-        chunk_xt[i] = chunk_l[i];
-    }
-    
-    for (int i = 16; i < CHUNKXT_SIZE; i++) {
-        // 9.1: XOR
-        uint32_t word1 = chunk_xt[i - 3];
-        uint32_t word2 = chunk_xt[i - 8];
-        uint32_t word3 = chunk_xt[i - 14];
-        uint32_t word4 = chunk_xt[i - 16];
-        uint32_t xorResult = (((word1 ^ word2) ^ word3) ^ word4);
-        
-        // 9.2: Left rotate
-        chunk_xt[i] = ROL32(xorResult, 1);
-    }
-    
-    // MARK: 10: Initialize variables with state constants
-    uint32_t A = state[0];
-    uint32_t B = state[1];
-    uint32_t C = state[2];
-    uint32_t D = state[3];
-    uint32_t E = state[4];
-    
-    // MARK: 11: The main loop
-    for (int i = 0; i < CHUNKXT_SIZE; i++) {
-        uint32_t f;
-        uint32_t k;
-        
-        // 11.1
-        if (i >= 0 && i <= 19) {
-            f = (B & C) | (~B & D);
-            k = 0x5A827999;
-        }
-        else if (i >= 20 && i <= 39) {
-            f = (B ^ C) ^ D;
-            k = 0x6ED9EBA1;
-        }
-        else if (i >= 40 && i <= 59) {
-            f = (B & C) | (B & D) | (C & D);
-            k = 0x8F1BBCDC;
-        }
-        else if (i >= 60 && i <= 79) {
-            f = (B ^ C) ^ D;
-            k = 0xCA62C1D6;
-        }
-        
-        // 11.2
-        uint32_t temp = (ROL32(A, 5) + f + E + k + chunk_xt[i]);
-        E = D;
-        D = C;
-        C = ROL32(B, 30);
-        B = A;
-        A = temp;
-    }
-    
-    // MARK: 12: Add back into state
-    state[0] += A;
-    state[1] += B;
-    state[2] += C;
-    state[3] += D;
-    state[4] += E;
+
+	hashLoop(state, chunk_l);
     
     // Convert hash variables into hex string
     string hash = "";
