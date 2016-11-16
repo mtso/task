@@ -7,7 +7,7 @@
  * or there will be a reference loop because
  * TemplateExample.h explicitly references this file.
  */
-#pragma once
+//#pragma once
 
 namespace task
 {
