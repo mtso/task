@@ -1,4 +1,4 @@
-// Hashbrown.h
+// Sha1.h
 // Task
 // CIS 22C F2016: Matthew Tso
 
