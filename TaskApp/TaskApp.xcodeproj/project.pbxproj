@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F3C299D1DDD02D800ACE2BD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C299C1DDD02D800ACE2BD /* README.md */; };
 		7F3C29A21DDD036900ACE2BD /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C29A01DDD036900ACE2BD /* Sha1.cpp */; };
 		7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */; };
 		7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */; };
@@ -157,7 +156,6 @@
 			files = (
 				7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */,
 				7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */,
-				7F3C299D1DDD02D800ACE2BD /* README.md in Sources */,
 				7FF3E62B1DDCF3FC00D4C9E8 /* TemplateExample.cpp in Sources */,
 				7F3C29A21DDD036900ACE2BD /* Sha1.cpp in Sources */,
 			);
