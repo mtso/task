@@ -51,6 +51,8 @@ char toHex(unsigned char& ch) {
 
 string task::sha_1(const string& input) 
 {
+    if (input.length() > 55) { return "Hashing 55+ char input has not been implemented yet."; }
+        
     unsigned char chunk_ch[CHUNKCH_SIZE] = { 0 };
     uint32_t chunk_l[CHUNKUL_SIZE] = { 0 };
     uint32_t chunk_xt[CHUNKXT_SIZE] = { 0 };
