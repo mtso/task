@@ -1,5 +1,5 @@
 // Sha1.h
-// Task
+// Task/Utilities
 // CIS 22C F2016: Matthew Tso
 
 #ifndef TASK_SHA1_H

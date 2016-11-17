@@ -1,10 +1,6 @@
 // Sha1.cpp
-// Task
+// Task/Utilities
 // CIS 22C F2016: Matthew Tso
-//
-// Implemented SHA-1 in C++ using the following guide:
-// http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software
-//
 
 #include "Sha1.h"
 
@@ -17,7 +13,9 @@
 const int CHUNKCH_SIZE = 64; // 64 unsigned char in one 512 bit chunk
 const int CHUNKUL_SIZE = 16; // 16 uint32 in one 512 bit chunk
 const int CHUNKXT_SIZE = 80; // 80 uint32 'words' in the main loop
-const uint32_t STATE_INIT[5] = {  // initial 5 word constants
+
+// Initial magic constants (from FIPS180)
+const uint32_t STATE_INIT[5] = {
     0x67452301,
     0xEFCDAB89,
     0x98BADCFE,
@@ -201,7 +199,7 @@ string task::sha_1(const string& input) {
 		loopChunkInto(state, chunks[i]);
 	}
 
-	// De-allocate the character blocks
+	// De-allocate the unsigned long word blocks
 	for (int i = 0; i < chunk_count; ++i) {
 		delete[] chunks[i];
 	}

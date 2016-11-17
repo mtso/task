@@ -78,11 +78,13 @@
   <ItemGroup>
     <ClInclude Include="Example.h" />
     <ClInclude Include="TemplateExample.h" />
+    <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Sha1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Example.cpp" />
     <ClCompile Include="TemplateExample.cpp" />
+    <ClCompile Include="Utilities\Diagnostic.cpp" />
     <ClCompile Include="Utilities\Sha1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

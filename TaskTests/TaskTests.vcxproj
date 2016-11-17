@@ -87,6 +87,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DiagnosticTests.cpp" />
     <ClCompile Include="ExampleTests.cpp" />
     <ClCompile Include="HashTests.cpp" />
     <ClCompile Include="stdafx.cpp">

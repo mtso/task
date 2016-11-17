@@ -82,7 +82,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ExampleMain.cpp" />
+    <ClCompile Include="WindowsMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Task\Task.vcxproj">
