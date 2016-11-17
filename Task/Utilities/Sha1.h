@@ -8,6 +8,8 @@
 #include <string>
 #include <stdint.h>
 
+using namespace std;
+
 namespace task {
     
     // Returns a 40 hex-char string of the input's SHA1 hash.
