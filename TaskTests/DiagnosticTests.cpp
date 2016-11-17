@@ -34,7 +34,7 @@ namespace TaskTests // Testing Project namespace
 			task::Diagnostic diagnostic;
 
 			try {
-				diagnostic.runWith(output);
+				diagnostic.runAndPrintTo(output);
 				string actual = output.str();
 				string expected = "Diagnostic::run(ostream&) has not been implemented yet";
 				Assert::AreEqual(expected, actual);

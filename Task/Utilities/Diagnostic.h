@@ -37,6 +37,6 @@ namespace task {
 		 * to a specified output stream.
 		 * Designed to be used like: cout << diagnostic.run(cout) << endl;
 		 */
-		ostream& runWith(ostream& output_stream);
+		ostream& runAndPrintTo(ostream& output_stream);
 	};
 }
