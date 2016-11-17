@@ -30,6 +30,9 @@
     <ClInclude Include="Utilities\Diagnostic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Dictionary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Example.cpp">
