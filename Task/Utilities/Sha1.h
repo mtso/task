@@ -23,4 +23,4 @@ namespace task {
     string sha_1(const string& input);
 }
 
-#endif /* Hashbrown.h */
+#endif
