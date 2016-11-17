@@ -51,117 +51,167 @@ char toHex(unsigned char& ch) {
     }
 }
 
-void hashLoop(uint32_t* state, uint32_t* chunk_in)
+void loopChunkInto(uint32_t* state, uint32_t* chunk_in)
 {
-	uint32_t chunk_xt[CHUNKXT_SIZE] = { 0 };
-
-	// MARK: 9: Put chunk 16 into transformation chunk of 80
-	for (int i = 0; i < CHUNKUL_SIZE; i++) {
-		chunk_xt[i] = chunk_in[i];
-	}
-
-	for (int i = 16; i < CHUNKXT_SIZE; i++) {
-		// 9.1: XOR
-		uint32_t word1 = chunk_xt[i - 3];
-		uint32_t word2 = chunk_xt[i - 8];
-		uint32_t word3 = chunk_xt[i - 14];
-		uint32_t word4 = chunk_xt[i - 16];
-		uint32_t xorResult = (((word1 ^ word2) ^ word3) ^ word4);
-
-		// 9.2: Left rotate
-		chunk_xt[i] = ROL32(xorResult, 1);
-	}
-
-	// MARK: 10: Initialize variables with state constants
-	uint32_t A = state[0];
-	uint32_t B = state[1];
-	uint32_t C = state[2];
-	uint32_t D = state[3];
-	uint32_t E = state[4];
-
-	// MARK: 11: The main loop
-	for (int i = 0; i < CHUNKXT_SIZE; i++) {
-		uint32_t f;
-		uint32_t k;
-
-		// 11.1
-		if (i >= 0 && i <= 19) {
-			f = (B & C) | (~B & D); // Bit NOT is different from Bool NOT
-			k = 0x5A827999;
-		}
-		else if (i >= 20 && i <= 39) {
-			f = (B ^ C) ^ D;
-			k = 0x6ED9EBA1;
-		}
-		else if (i >= 40 && i <= 59) {
-			f = (B & C) | (B & D) | (C & D);
-			k = 0x8F1BBCDC;
-		}
-		else if (i >= 60 && i <= 79) {
-			f = (B ^ C) ^ D;
-			k = 0xCA62C1D6;
-		}
-
-		// 11.2
-		uint32_t temp = (ROL32(A, 5) + f + E + k + chunk_xt[i]);
-		E = D;
-		D = C;
-		C = ROL32(B, 30);
-		B = A;
-		A = temp;
-	}
-
-	// MARK: 12: Add back into state
-	state[0] += A;
-	state[1] += B;
-	state[2] += C;
-	state[3] += D;
-	state[4] += E;
+    uint32_t chunk_xt[CHUNKXT_SIZE] = { 0 };
+    
+    // MARK: 9: Put chunk 16 into transformation chunk of 80
+    for (int i = 0; i < CHUNKUL_SIZE; i++) {
+        chunk_xt[i] = chunk_in[i];
+    }
+    
+    for (int i = 16; i < CHUNKXT_SIZE; i++) {
+        // 9.1: XOR
+        uint32_t word1 = chunk_xt[i - 3];
+        uint32_t word2 = chunk_xt[i - 8];
+        uint32_t word3 = chunk_xt[i - 14];
+        uint32_t word4 = chunk_xt[i - 16];
+        uint32_t xorResult = (((word1 ^ word2) ^ word3) ^ word4);
+        
+        // 9.2: Left rotate
+        chunk_xt[i] = ROL32(xorResult, 1);
+    }
+    
+    // MARK: 10: Initialize variables with state constants
+    uint32_t A = state[0];
+    uint32_t B = state[1];
+    uint32_t C = state[2];
+    uint32_t D = state[3];
+    uint32_t E = state[4];
+    
+    // MARK: 11: The main loop
+    for (int i = 0; i < CHUNKXT_SIZE; i++) {
+        uint32_t f;
+        uint32_t k;
+        
+        // 11.1
+        if (i >= 0 && i <= 19) {
+            f = (B & C) | (~B & D); // Bit NOT is different from Bool NOT
+            k = 0x5A827999;
+        }
+        else if (i >= 20 && i <= 39) {
+            f = (B ^ C) ^ D;
+            k = 0x6ED9EBA1;
+        }
+        else if (i >= 40 && i <= 59) {
+            f = (B & C) | (B & D) | (C & D);
+            k = 0x8F1BBCDC;
+        }
+        else if (i >= 60 && i <= 79) {
+            f = (B ^ C) ^ D;
+            k = 0xCA62C1D6;
+        }
+        
+        // 11.2
+        uint32_t temp = (ROL32(A, 5) + f + E + k + chunk_xt[i]);
+        E = D;
+        D = C;
+        C = ROL32(B, 30);
+        B = A;
+        A = temp;
+    }
+    
+    // MARK: 12: Add back into state
+    state[0] += A;
+    state[1] += B;
+    state[2] += C;
+    state[3] += D;
+    state[4] += E;
 }
 
-string task::sha_1(const string& input) 
-{
-    if (input.length() > 55) { return "Hashing 55+ char input has not been implemented yet."; }
-        
-    unsigned char chunk_ch[CHUNKCH_SIZE] = { 0 };
-    uint32_t chunk_l[CHUNKUL_SIZE] = { 0 };
+string task::sha_1(const string& input) {
+    
+    // Initialize state variables from SHA-1's constants
     uint32_t state[5];
-
-	int length = (int)input.length();
-
-	// Initialize state with constants
     for (int i = 0; i < 5; i++) {
-		state[i] = STATE_INIT[i];
+        state[i] = STATE_INIT[i];
     }
     
-	// TODO: Create more than one chunk for long inputs.
-    // MARK: Step 4 & 5: Append input characters into chunk
-    for (int i = 0; i < input.length(); ++i) {
-        chunk_ch[i] = input[i];
-    }
-    chunk_ch[input.length()] = 1 << 7; // append 1 to end
+    int length = (int)input.length(); // Cast the uint into an int
+    int chunk_count = length / 64 + 1;
+    int chunk_1bit = chunk_count - 1; // The chunk that the extra 1 bit needs to be put in
     
-    // MARK: 6.1: Append original message length
+    // If (message length) % 64 is greater than 55 (448%512 bits),
+    // need to add another chunk for the 64 bits of message length
+    // binary that needs to be added to the last chunk.
+    if (length % 64 > 55) {
+        chunk_count += 1;
+    }
+    
+    // Allocate enough blocks for input length
+    unsigned char** chunks_ch = new unsigned char*[chunk_count];
+    uint32_t** chunks = new uint32_t*[chunk_count];
+
+    for (int i = 0; i < chunk_count; i++) {
+        // Blocks to catch the bits from the string input char-by-char
+        chunks_ch[i] = new unsigned char[CHUNKCH_SIZE];
+
+        // Blocks of uint32 'words' that will be used in the main loop
+        chunks[i] = new uint32_t[CHUNKUL_SIZE];
+    }
+    
+    // Zero blocks
+    for (int i = 0; i < chunk_count; ++i) {
+        for (int ch = 0; ch < CHUNKCH_SIZE; ch++) {
+            chunks_ch[i][ch] = 0;
+        }
+        for (int ul = 0; ul < CHUNKUL_SIZE; ul++) {
+            chunks[i][ul] = 0;
+        }
+    }
+    
+    // Append characters of input into char chunks
+    for (int chunkIndex = 0; chunkIndex < chunk_count; ++chunkIndex) {
+        for (int i = 0; i < CHUNKCH_SIZE && (i + chunkIndex * CHUNKCH_SIZE) < length; ++i) {
+            chunks_ch[chunkIndex][i] =input[chunkIndex * CHUNKCH_SIZE + i];
+        }
+    }
+    
+    // Append 1 bit after the input bits
+    chunks_ch[chunk_1bit][length % 64] = 1 << 7;
+    
+    // MARK: 6.1: Append original input length
     // Multiply string length by character bit size
     uint64_t length_64 = (input.length() * 8);
     // Mask off by character and shift bits left by 8
     for (int i = 1; i <= 8; i++) {
-        chunk_ch[CHUNKCH_SIZE - i] = (length_64) & 0xFF;
+        chunks_ch[chunk_count - 1][CHUNKCH_SIZE - i] = (length_64) & 0xFF;
         length_64 >>= 8;
     }
     
-    // MARK: 8: Convert chunk of 64 char into 16 uint32 'words'
-    for (int i = 0; i < CHUNKUL_SIZE; i++) {
-        // Add chunk
-        for (int chi = 0; chi < 4; chi++) {
-            chunk_l[i] = chunk_l[i] | chunk_ch[i * 4 + chi];
-            chunk_l[i] <<= (chi < 3) ? 8 : 0;
+    // For each uint32 chunk
+    for (int i = 0; i < chunk_count; ++i) {
+        // Convert 64char chunk into uint32 words
+        for (int ui = 0; ui < CHUNKUL_SIZE; ++ui) {
+            for (int ch = 0; ch < 4; ++ch) {
+                // Bit OR combine the 8 bit char into the 32 bit uint
+                chunks[i][ui] = chunks[i][ui] | chunks_ch[i][ui * 4 + ch];
+                // Bitshift 8 to the left if not on the last iteration
+                chunks[i][ui] <<= (ch < 3) ? 8 : 0;
+            }
         }
     }
-
-	hashLoop(state, chunk_l);
     
-    // Convert hash variables into hex string
+    // De-allocate the character blocks
+    for (int i = 0; i < chunk_count; ++i) {
+        delete[] chunks_ch[i];
+    }
+    delete[] chunks_ch;
+    chunks_ch = nullptr;
+    
+    // Hash each chunk and then add it to the state
+    for (int i = 0; i < chunk_count; ++i) {
+        loopChunkInto(state, chunks[i]);
+    }
+    
+    // De-allocate the character blocks
+    for (int i = 0; i < chunk_count; ++i) {
+        delete[] chunks[i];
+    }
+    delete[] chunks;
+    chunks = nullptr;
+    
+    // Convert the hash's state variables into hex string
     string hash = "";
     uint32_t currState;
     for (int stateIndex = 0; stateIndex < 5; stateIndex++) {
