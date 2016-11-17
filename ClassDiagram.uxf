@@ -37,14 +37,14 @@ move the entire project shape using its header.
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>7</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>238</x>
-      <y>98</y>
-      <w>119</w>
-      <h>63</h>
+      <x>168</x>
+      <y>78</y>
+      <w>102</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>BinarySearchTree
 --
@@ -56,10 +56,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>238</x>
-      <y>238</y>
-      <w>140</w>
-      <h>182</h>
+      <x>168</x>
+      <y>198</y>
+      <w>120</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>TaskEntry
 --
@@ -80,10 +80,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>1008</y>
-      <w>126</w>
-      <h>140</h>
+      <x>84</x>
+      <y>858</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Dictionary
 -
@@ -93,10 +93,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>238</x>
-      <y>469</y>
-      <w>126</w>
-      <h>140</h>
+      <x>168</x>
+      <y>396</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>FileManager
 --
@@ -110,10 +110,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>847</y>
-      <w>126</w>
-      <h>140</h>
+      <x>84</x>
+      <y>720</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>HashTable
 
@@ -128,10 +128,10 @@ move the entire project shape using its header.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>196</x>
-      <y>980</y>
-      <w>21</w>
-      <h>42</h>
+      <x>132</x>
+      <y>834</y>
+      <w>18</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -139,10 +139,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>539</x>
-      <y>294</y>
-      <w>182</w>
-      <h>140</h>
+      <x>426</x>
+      <y>246</y>
+      <w>156</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>TaskManager
 --
@@ -155,10 +155,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>126</x>
-      <y>238</y>
-      <w>84</w>
-      <h>84</h>
+      <x>72</x>
+      <y>198</y>
+      <w>72</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Status
@@ -171,10 +171,10 @@ Completed</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>980</x>
-      <y>147</y>
-      <w>133</w>
-      <h>140</h>
+      <x>804</x>
+      <y>120</y>
+      <w>114</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>WindowsMain
 --
@@ -188,10 +188,10 @@ Completed</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>889</x>
-      <y>49</y>
-      <w>427</w>
-      <h>28</h>
+      <x>726</x>
+      <y>36</y>
+      <w>366</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Project: Console Application&gt;&gt;
 TaskApp
@@ -205,10 +205,10 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>105</x>
-      <y>49</y>
-      <w>721</w>
-      <h>28</h>
+      <x>54</x>
+      <y>36</y>
+      <w>618</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Project: Static Library&gt;&gt;
 Task
@@ -221,10 +221,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>497</x>
-      <y>98</y>
-      <w>126</w>
-      <h>140</h>
+      <x>390</x>
+      <y>78</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Diagnostic
 --
@@ -240,10 +240,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>154</x>
-      <y>644</y>
-      <w>126</w>
-      <h>77</h>
+      <x>96</x>
+      <y>546</y>
+      <w>108</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>Sha1
 --
@@ -255,10 +255,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>301</x>
-      <y>665</y>
-      <w>126</w>
-      <h>140</h>
+      <x>222</x>
+      <y>564</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>OperationManager
 --
@@ -272,10 +272,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>455</x>
-      <y>665</y>
-      <w>126</w>
-      <h>140</h>
+      <x>354</x>
+      <y>564</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 OperationType
@@ -289,10 +289,10 @@ update
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>280</x>
-      <y>847</y>
-      <w>182</w>
-      <h>63</h>
+      <x>204</x>
+      <y>720</y>
+      <w>156</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>std::iterator&lt;std::input_iterator_tag, int&gt;
 --
@@ -302,10 +302,10 @@ struct iteractor</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>259</x>
-      <y>854</y>
-      <w>119</w>
-      <h>21</h>
+      <x>186</x>
+      <y>726</y>
+      <w>102</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
@@ -313,10 +313,10 @@ struct iteractor</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>602</x>
-      <y>665</y>
-      <w>126</w>
-      <h>140</h>
+      <x>480</x>
+      <y>564</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>Operation
 --
@@ -330,10 +330,10 @@ struct iteractor</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>98</x>
-      <y>70</y>
-      <w>742</w>
-      <h>1141</h>
+      <x>48</x>
+      <y>54</y>
+      <w>636</w>
+      <h>978</h>
     </coordinates>
     <panel_attributes>lt=-
 
@@ -343,14 +343,78 @@ group=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
-      <y>70</y>
-      <w>448</w>
-      <h>378</h>
+      <x>720</x>
+      <y>54</y>
+      <w>384</w>
+      <h>324</h>
     </coordinates>
     <panel_attributes>lt=-
 
 group=1</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;520.0;620.0;520.0;620.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>408</y>
+      <w>384</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+group=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;520.0;620.0;520.0;620.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>726</x>
+      <y>390</y>
+      <w>366</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Project: Unit Tests&gt;&gt;
+TaskTests
+--
+
+
+layer=-1
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>774</x>
+      <y>444</y>
+      <w>90</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>HashTests</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>774</x>
+      <y>504</y>
+      <w>90</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>DiagnosticTests
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>876</x>
+      <y>444</y>
+      <w>90</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>HashTableTests</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
