@@ -36,30 +36,113 @@ Jinzu Shen
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>40</y>
-      <w>100</w>
-      <h>30</h>
+      <x>190</x>
+      <y>100</y>
+      <w>170</w>
+      <h>90</h>
     </coordinates>
-    <panel_attributes>BST</panel_attributes>
+    <panel_attributes>BinarySearchTree</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
-      <y>150</y>
-      <w>210</w>
-      <h>200</h>
+      <x>190</x>
+      <y>300</y>
+      <w>200</w>
+      <h>260</h>
     </coordinates>
-    <panel_attributes>TaskModel
--
+    <panel_attributes>TaskEntryModel
+--
 -unique_id: string
 -assignee: string
 -due_date: int
 -date_created: int
 -author: string
--title: string</panel_attributes>
+-title: string
+--
++getId() string
++getAssignee() string
++getDateDue() int
++getDateCreate() int
++getStatus() Status</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>650</y>
+      <w>180</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Dictionary
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>100</y>
+      <w>180</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Diagnostic
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>370</y>
+      <w>180</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>HashTable
+-
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>560</y>
+      <w>30</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1100</x>
+      <y>50</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Main</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>300</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Status
+-
+Backlog
+InProgress
+Completed</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

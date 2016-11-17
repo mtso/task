@@ -12,7 +12,7 @@
 
 const int CHUNKCH_SIZE = 64; // 64 unsigned char in one 512 bit chunk
 const int CHUNKUL_SIZE = 16; // 16 uint32 in one 512 bit chunk
-const int CHUNKXT_SIZE = 80; // 80 uint32 'words' in the main loop
+const int CHUNKXT_SIZE = 80; // 80 uint32 'words' in the extended block of the main loop
 
 // Initial magic constants (from FIPS180)
 const uint32_t STATE_INIT[5] = {
@@ -23,6 +23,7 @@ const uint32_t STATE_INIT[5] = {
     0xC3D2E1F0
 };
 
+// Returns the hex character representation of an unsigned char.
 char toHex(unsigned char& ch) {
     switch (ch) {
         case 0x0: return '0';
@@ -41,7 +42,7 @@ char toHex(unsigned char& ch) {
         case 0xD: return 'd';
         case 0xE: return 'e';
         case 0xF: return 'f';
-            
+
         default: throw "Not a hex char";
     }
 }
@@ -67,7 +68,7 @@ void loopChunkInto(uint32_t* state, uint32_t* chunk_in)
 		chunk_xt[i] = ROL32(xorResult, 1);
 	}
 
-	// MARK: 10: Initialize variables with state constants
+	// MARK: 10: Initialize variables with the hash's state before this chunk is looped
 	uint32_t A = state[0];
 	uint32_t B = state[1];
 	uint32_t C = state[2];
@@ -122,18 +123,21 @@ string task::sha_1(const string& input) {
 		state[i] = STATE_INIT[i];
 	}
 
-	int length = (int)input.length(); // Cast the uint into an int
-	int chunk_count = length / 64 + 1;
-	int chunk_1bit = chunk_count - 1; // The chunk that the extra 1 bit needs to be put in
+	int input_length = (int)input.length(); // Cast the uint into an int
+	int chunk_count = input_length / 64 + 1;
 
-	// If (message length) % 64 is greater than 55 (448%512 bits),
-	// need to add another chunk for the 64 bits of message length
+	// The chunk that the extra 1 bit gets put into
+	// also the last chunk with the message bits in it
+	int chunk_1bit = chunk_count - 1; 
+
+	// If (message input_length) % 64 is greater than 55 (448%512 bits),
+	// need to add another chunk for the 64 bits of message input_length
 	// binary that needs to be added to the last chunk.
-	if (length % 64 > 55) {
+	if (input_length % 64 > 55) {
 		chunk_count += 1;
 	}
 
-	// Allocate enough blocks for input length
+	// Allocate enough blocks for input input_length
 	unsigned char** chunks_ch = new unsigned char*[chunk_count];
 	uint32_t** chunks = new uint32_t*[chunk_count];
 
@@ -157,27 +161,28 @@ string task::sha_1(const string& input) {
 
 	// Append characters of input into char chunks
 	for (int chunkIndex = 0; chunkIndex < chunk_count; ++chunkIndex) {
-		for (int i = 0; i < CHUNKCH_SIZE && (i + chunkIndex * CHUNKCH_SIZE) < length; ++i) {
+		for (int i = 0; i < CHUNKCH_SIZE && (i + chunkIndex * CHUNKCH_SIZE) < input_length; ++i) {
 			chunks_ch[chunkIndex][i] = input[chunkIndex * CHUNKCH_SIZE + i];
 		}
 	}
 
 	// Append 1 bit after the input bits
-	chunks_ch[chunk_1bit][length % 64] = 1 << 7;
+	chunks_ch[chunk_1bit][input_length % 64] = 1 << 7;
 
-	// MARK: 6.1: Append original input length
-	// Multiply string length by character bit size
-	uint64_t length_64 = (input.length() * 8);
+	// MARK: 6.1: Append original length of original input represented by 64 bits
+	// Multiply string input_length by character bit size
+	uint64_t input_length_64 = (input.length() * 8);
 	// Mask off by character and shift bits left by 8
 	for (int i = 1; i <= 8; i++) {
-		chunks_ch[chunk_count - 1][CHUNKCH_SIZE - i] = (length_64)& 0xFF;
-		length_64 >>= 8;
+		chunks_ch[chunk_count - 1][CHUNKCH_SIZE - i] = (input_length_64)& 0xFF;
+		input_length_64 >>= 8;
 	}
 
 	// For each uint32 chunk
 	for (int i = 0; i < chunk_count; ++i) {
 		// Convert 64char chunk into uint32 words
 		for (int ui = 0; ui < CHUNKUL_SIZE; ++ui) {
+
 			for (int ch = 0; ch < 4; ++ch) {
 				// Bit OR combine the 8 bit char into the 32 bit uint
 				chunks[i][ui] = chunks[i][ui] | chunks_ch[i][ui * 4 + ch];
