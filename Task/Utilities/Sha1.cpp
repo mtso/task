@@ -2,14 +2,11 @@
 // Task
 // CIS 22C F2016: Matthew Tso
 //
-//  Following: http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software
-//  Warning! Only works with up to 55-length strings
-//  because only a single chunk is hashed.
+// Implemented SHA-1 in C++ using the following guide:
+// http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software
 //
 
 #include "Sha1.h"
-
-using namespace std;
 
 // Bit rotation macros
 #define ROL8(num, shift)   ( (num << shift) | (num >> ( 8 - shift)) )
