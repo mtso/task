@@ -7,6 +7,11 @@ Matthew Tso
 Emma Xinhe
 Jinzu Shen
 
+Projects are constructed of a group containing a Rectangle
+for the header and a segmented line for its outline. This
+means that you can click through the outline but still
+move the entire project shape using its header.
+
 
 // Uncomment the following line to change the fontsize and font:
 // fontsize=14
@@ -36,8 +41,8 @@ Jinzu Shen
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>231</x>
-      <y>112</y>
+      <x>238</x>
+      <y>98</y>
       <w>119</w>
       <h>63</h>
     </coordinates>
@@ -51,12 +56,12 @@ Jinzu Shen
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>231</x>
-      <y>252</y>
+      <x>238</x>
+      <y>238</y>
       <w>140</w>
       <h>182</h>
     </coordinates>
-    <panel_attributes>TaskEntryModel
+    <panel_attributes>TaskEntry
 --
 -unique_id: string
 -assignee: string
@@ -75,8 +80,8 @@ Jinzu Shen
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>490</y>
+      <x>140</x>
+      <y>1008</y>
       <w>126</w>
       <h>140</h>
     </coordinates>
@@ -88,8 +93,8 @@ Jinzu Shen
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>231</x>
-      <y>483</y>
+      <x>238</x>
+      <y>469</y>
       <w>126</w>
       <h>140</h>
     </coordinates>
@@ -99,54 +104,59 @@ Jinzu Shen
 -user_directory: string
 --
 +readFiles(filepaths: string[]) void
-
-</panel_attributes>
++saveIndex() void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>301</y>
+      <x>140</x>
+      <y>847</y>
       <w>126</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>HashTable
--
+
+--
+
+-resolveCollision() void
+--
++insert(new_value: T) string (returns key)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>434</y>
+      <x>196</x>
+      <y>980</y>
       <w>21</w>
-      <h>70</h>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>938</x>
-      <y>287</y>
-      <w>133</w>
+      <x>539</x>
+      <y>294</y>
+      <w>182</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>TaskManager
 --
 --
 +searchTable()
-+</panel_attributes>
++setProjectDirectory(project_directory: string) void
++setTasklogFilepaths() Stack&lt;string&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>119</x>
-      <y>252</y>
+      <x>126</x>
+      <y>238</y>
       <w>84</w>
       <h>84</h>
     </coordinates>
@@ -161,52 +171,58 @@ Completed</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>938</x>
-      <y>126</y>
+      <x>980</x>
+      <y>147</y>
       <w>133</w>
       <h>140</h>
     </coordinates>
-    <panel_attributes>Main
+    <panel_attributes>WindowsMain
 --
+-task_manager: TaskManager
 --
-+receiveInput()</panel_attributes>
+-receiveInput()
++getProjectDirectory() string
++getTasklogFilepaths() Stack&lt;string&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>861</x>
-      <y>63</y>
-      <w>469</w>
-      <h>693</h>
+      <x>889</x>
+      <y>49</y>
+      <w>427</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Console Process&gt;&gt;
+    <panel_attributes>&lt;&lt;Project: Console Application&gt;&gt;
 TaskApp
 --
 
 
-layer=-1</panel_attributes>
+layer=-1
+group=1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>77</x>
-      <y>63</y>
-      <w>665</w>
-      <h>693</h>
+      <x>105</x>
+      <y>49</y>
+      <w>721</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Library&gt;&gt;
+    <panel_attributes>&lt;&lt;Project: Static Library&gt;&gt;
 Task
 --
-layer=-1</panel_attributes>
+layer=-1
+
+group=2</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>112</y>
+      <x>497</x>
+      <y>98</y>
       <w>126</w>
       <h>140</h>
     </coordinates>
@@ -220,5 +236,121 @@ layer=-1</panel_attributes>
 
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>154</x>
+      <y>644</y>
+      <w>126</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Sha1
+--
++sha_1(input: string) string
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>301</x>
+      <y>665</y>
+      <w>126</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>OperationManager
+--
+-history: Stack&lt;Operation&gt;
+--
++undo() void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>455</x>
+      <y>665</y>
+      <w>126</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+OperationType
+--
+create
+delete
+update
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>280</x>
+      <y>847</y>
+      <w>182</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>std::iterator&lt;std::input_iterator_tag, int&gt;
+--
+struct iteractor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>259</x>
+      <y>854</y>
+      <w>119</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>602</x>
+      <y>665</y>
+      <w>126</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Operation
+--
+-type: OperationType
+-entry: TaskEntry
+--
++getType() OperationType
++getEntry() TaskEntry</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>98</x>
+      <y>70</y>
+      <w>742</w>
+      <h>1141</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+group=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1610.0;1040.0;1610.0;1040.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>70</y>
+      <w>448</w>
+      <h>378</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;520.0;620.0;520.0;620.0;10.0</additional_attributes>
   </element>
 </diagram>
