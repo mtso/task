@@ -4,12 +4,12 @@
 
 #include <chrono>
 #include <iostream>
-
 using namespace std;
 
 // Include BST and Hash table headers here
-// #include "BinarySearchTree.h"
-// #include "HashTable.h"
+// #include "..\BinarySearchTree.h"
+// #include "..\HashTable.h"
+#include "Sha1.h"
 
 namespace task {
 
@@ -24,6 +24,8 @@ namespace task {
 		double bst_efficiency;
 		double load_factor;
 		int access_count;
+        
+        void testSha1(const int& run_count) const;
 
 	public:
 		/**

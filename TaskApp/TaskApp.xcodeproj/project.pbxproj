@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F3C29A21DDD036900ACE2BD /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7F3C29A01DDD036900ACE2BD /* Sha1.cpp */; };
-		7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */; };
-		7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */; };
-		7FF3E62B1DDCF3FC00D4C9E8 /* TemplateExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */; };
+		7FE9FB241DDEB72400F3915B /* MacOsMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB231DDEB72400F3915B /* MacOsMain.cpp */; };
+		7FE9FB331DDEB7BE00F3915B /* Example.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB271DDEB7BE00F3915B /* Example.cpp */; };
+		7FE9FB341DDEB7BE00F3915B /* TemplateExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB2C1DDEB7BE00F3915B /* TemplateExample.cpp */; };
+		7FE9FB351DDEB7BE00F3915B /* Diagnostic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB2F1DDEB7BE00F3915B /* Diagnostic.cpp */; };
+		7FE9FB361DDEB7BE00F3915B /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB311DDEB7BE00F3915B /* Sha1.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,14 +28,20 @@
 
 /* Begin PBXFileReference section */
 		7F3C299C1DDD02D800ACE2BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		7F3C29A01DDD036900ACE2BD /* Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sha1.cpp; path = ../Task/Utilities/Sha1.cpp; sourceTree = SOURCE_ROOT; };
-		7F3C29A11DDD036900ACE2BD /* Sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sha1.h; path = ../Task/Utilities/Sha1.h; sourceTree = SOURCE_ROOT; };
+		7FE9FB231DDEB72400F3915B /* MacOsMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacOsMain.cpp; sourceTree = "<group>"; };
+		7FE9FB261DDEB7BE00F3915B /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
+		7FE9FB271DDEB7BE00F3915B /* Example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Example.cpp; sourceTree = "<group>"; };
+		7FE9FB281DDEB7BE00F3915B /* Example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Example.h; sourceTree = "<group>"; };
+		7FE9FB291DDEB7BE00F3915B /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		7FE9FB2A1DDEB7BE00F3915B /* Task.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Task.vcxproj; sourceTree = "<group>"; };
+		7FE9FB2B1DDEB7BE00F3915B /* Task.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Task.vcxproj.filters; sourceTree = "<group>"; };
+		7FE9FB2C1DDEB7BE00F3915B /* TemplateExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TemplateExample.cpp; sourceTree = "<group>"; };
+		7FE9FB2D1DDEB7BE00F3915B /* TemplateExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateExample.h; sourceTree = "<group>"; };
+		7FE9FB2F1DDEB7BE00F3915B /* Diagnostic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Diagnostic.cpp; sourceTree = "<group>"; };
+		7FE9FB301DDEB7BE00F3915B /* Diagnostic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Diagnostic.h; sourceTree = "<group>"; };
+		7FE9FB311DDEB7BE00F3915B /* Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sha1.cpp; sourceTree = "<group>"; };
+		7FE9FB321DDEB7BE00F3915B /* Sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sha1.h; sourceTree = "<group>"; };
 		7FF3E6191DDCF01200D4C9E8 /* TaskApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TaskApp; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExampleMain.cpp; sourceTree = SOURCE_ROOT; };
-		7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Example.cpp; path = ../Task/Example.cpp; sourceTree = "<group>"; };
-		7FF3E6271DDCF3FC00D4C9E8 /* Example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Example.h; path = ../Task/Example.h; sourceTree = "<group>"; };
-		7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TemplateExample.cpp; path = ../Task/TemplateExample.cpp; sourceTree = "<group>"; };
-		7FF3E6291DDCF3FC00D4C9E8 /* TemplateExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateExample.h; path = ../Task/TemplateExample.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,32 +55,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7F3C299E1DDD02FB00ACE2BD /* Task */ = {
+		7FE9FB251DDEB7BE00F3915B /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				7F3C299F1DDD036900ACE2BD /* Utilities */,
-				7FF3E6261DDCF3FC00D4C9E8 /* Example.cpp */,
-				7FF3E6271DDCF3FC00D4C9E8 /* Example.h */,
-				7FF3E6281DDCF3FC00D4C9E8 /* TemplateExample.cpp */,
-				7FF3E6291DDCF3FC00D4C9E8 /* TemplateExample.h */,
+				7FE9FB261DDEB7BE00F3915B /* Dictionary.h */,
+				7FE9FB271DDEB7BE00F3915B /* Example.cpp */,
+				7FE9FB281DDEB7BE00F3915B /* Example.h */,
+				7FE9FB291DDEB7BE00F3915B /* ReadMe.txt */,
+				7FE9FB2A1DDEB7BE00F3915B /* Task.vcxproj */,
+				7FE9FB2B1DDEB7BE00F3915B /* Task.vcxproj.filters */,
+				7FE9FB2C1DDEB7BE00F3915B /* TemplateExample.cpp */,
+				7FE9FB2D1DDEB7BE00F3915B /* TemplateExample.h */,
+				7FE9FB2E1DDEB7BE00F3915B /* Utilities */,
 			);
 			name = Task;
+			path = ../Task;
 			sourceTree = "<group>";
 		};
-		7F3C299F1DDD036900ACE2BD /* Utilities */ = {
+		7FE9FB2E1DDEB7BE00F3915B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				7F3C29A01DDD036900ACE2BD /* Sha1.cpp */,
-				7F3C29A11DDD036900ACE2BD /* Sha1.h */,
+				7FE9FB2F1DDEB7BE00F3915B /* Diagnostic.cpp */,
+				7FE9FB301DDEB7BE00F3915B /* Diagnostic.h */,
+				7FE9FB311DDEB7BE00F3915B /* Sha1.cpp */,
+				7FE9FB321DDEB7BE00F3915B /* Sha1.h */,
 			);
-			name = Utilities;
-			path = ../Task/Utilities;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		7FF3E6101DDCF01200D4C9E8 = {
 			isa = PBXGroup;
 			children = (
-				7F3C299E1DDD02FB00ACE2BD /* Task */,
+				7FE9FB251DDEB7BE00F3915B /* Task */,
 				7F3C299C1DDD02D800ACE2BD /* README.md */,
 				7FF3E6251DDCF03100D4C9E8 /* TaskApp */,
 				7FF3E61A1DDCF01200D4C9E8 /* Products */,
@@ -91,7 +104,7 @@
 		7FF3E6251DDCF03100D4C9E8 /* TaskApp */ = {
 			isa = PBXGroup;
 			children = (
-				7FF3E6231DDCF02E00D4C9E8 /* ExampleMain.cpp */,
+				7FE9FB231DDEB72400F3915B /* MacOsMain.cpp */,
 			);
 			name = TaskApp;
 			sourceTree = "<group>";
@@ -154,10 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FF3E62A1DDCF3FC00D4C9E8 /* Example.cpp in Sources */,
-				7FF3E6241DDCF02E00D4C9E8 /* ExampleMain.cpp in Sources */,
-				7FF3E62B1DDCF3FC00D4C9E8 /* TemplateExample.cpp in Sources */,
-				7F3C29A21DDD036900ACE2BD /* Sha1.cpp in Sources */,
+				7FE9FB331DDEB7BE00F3915B /* Example.cpp in Sources */,
+				7FE9FB341DDEB7BE00F3915B /* TemplateExample.cpp in Sources */,
+				7FE9FB241DDEB72400F3915B /* MacOsMain.cpp in Sources */,
+				7FE9FB351DDEB7BE00F3915B /* Diagnostic.cpp in Sources */,
+				7FE9FB361DDEB7BE00F3915B /* Sha1.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
