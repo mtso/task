@@ -122,7 +122,9 @@ move the entire project shape using its header.
 -resolveCollision() void
 --
 +insert(new_value: T) string (returns key)
-</panel_attributes>
++remove(delete_value: T)
++isEmpty() bool
++count() int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -289,9 +291,9 @@ update
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>204</x>
+      <x>192</x>
       <y>720</y>
-      <w>156</w>
+      <w>180</w>
       <h>54</h>
     </coordinates>
     <panel_attributes>std::iterator&lt;std::input_iterator_tag, int&gt;
