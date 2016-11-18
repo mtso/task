@@ -10,23 +10,22 @@ namespace task {
 	{
 		start_time = end_time = delta_ms = 0;
 		isRunning = false;
-		test_run_count = 100000;
 	}
 
-	void Diagnostic::run()
+	void Diagnostic::run(const int& run_count)
 	{
 		ostringstream blackhole;
-		runAndPrintTo(blackhole);
+		runAndPrintTo(run_count, blackhole);
 	}
 
-	ostream& Diagnostic::runAndPrintTo(ostream& output_stream)
+	ostream& Diagnostic::runAndPrintTo(const int& run_count, ostream& output_stream)
 	{
         output_stream << "Starting diagnostic routine, please wait..." << endl;
 		logStartTime();
 
         // Test SHA-1 hash function
-        output_stream << "Testing SHA-1 hash " << test_run_count << " times..." << endl;
-        testSha1(test_run_count);
+		output_stream << "Testing SHA-1 hash " << run_count << " times..." << endl;
+		testSha1(run_count);
         
 		logEndTime();
 		calculateDelta();

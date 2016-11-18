@@ -21,8 +21,6 @@ namespace task {
 	class Diagnostic
 	{
 	private:
-		int test_run_count;
-
 		uint64_t start_time;
 		uint64_t end_time;
 		uint64_t delta_ms;
@@ -47,13 +45,13 @@ namespace task {
 		 * Runs test on the Task library for efficieny.
 		 *
 		 */
-		void run();
+		void run(const int& run_count);
 
 		/**
 		 * Run the tests and output each step
 		 * to a specified output stream.
 		 * Designed to be used like: cout << diagnostic.run(cout) << endl;
 		 */
-		ostream& runAndPrintTo(ostream& output_stream);
+		ostream& runAndPrintTo(const int& run_count, ostream& output_stream);
 	};
 }

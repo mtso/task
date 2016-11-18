@@ -8,17 +8,16 @@
 #include <iostream>
 #include <string>
 
-#include "Example.h"
-#include "TemplateExample.h"
+#include "TaskConfiguration.h"
 #include "Utilities\Sha1.h"
+#include "Utilities\Diagnostic.h"
 
 int main(int argc, char* argv[])
 {
-	task::Example example;
-	std::cout << "The smaller value between (1+1) and 1 is: "
-		<< task::Min(example.add(1, 1), 1) << std::endl;
+	std::cout << "task v" << taskconfig::VERSION << endl;
 
-	std::cout << "The SHA-1 hash of \"Adrian Marroquin\" is: " << task::sha_1("Adrian Marroquin") << std::endl;
+	task::Diagnostic diagnostic;
+	diagnostic.runAndPrintTo(10, std::cout);
 
 	system("PAUSE");
 	return 0;

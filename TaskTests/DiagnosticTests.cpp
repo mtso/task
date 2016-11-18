@@ -13,12 +13,14 @@ namespace TaskTests // Testing Project namespace
 	{
 	public:
 
+		const int test_run_count = 10000;
+
 		TEST_METHOD(RunDiagnostic)
 		{
 			task::Diagnostic diagnostic;
 
 			try {
-				diagnostic.run();
+				diagnostic.run(test_run_count);
 			}
 			catch (const char* error) {
 				string error_str = error;
@@ -39,7 +41,7 @@ namespace TaskTests // Testing Project namespace
                 // If this succeeds, test just falls-through try-catch block.
                 // Cannot compare ostringstream to pre-defined string because
                 // we don't really know how long this will take before-hand.
-				diagnostic.runAndPrintTo(output);
+				diagnostic.runAndPrintTo(test_run_count, output);
 			}
 			catch (const char* error) {
 				string error_str = error;
