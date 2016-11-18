@@ -35,5 +35,8 @@
     <ClCompile Include="DiagnosticTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileIoTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

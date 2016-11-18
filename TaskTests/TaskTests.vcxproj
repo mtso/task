@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClCompile Include="DiagnosticTests.cpp" />
     <ClCompile Include="ExampleTests.cpp" />
+    <ClCompile Include="FileIoTests.cpp" />
     <ClCompile Include="HashTests.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

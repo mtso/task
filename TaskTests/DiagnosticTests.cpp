@@ -21,7 +21,9 @@ namespace TaskTests // Testing Project namespace
 				diagnostic.run();
 			}
 			catch (const char* error) {
-				Assert::AreEqual("Diagnostic::run() has not been implemented yet", error);
+				string error_str = error;
+				wstring error_wstr = wstring(error_str.begin(), error_str.end());
+				Assert::Fail(error_wstr.c_str());
 			}
 			catch (...) {
 				Assert::Fail(L"Could not catch the thrown error");

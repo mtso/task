@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="Example.h" />
     <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="HashTable.h" />
     <ClInclude Include="TemplateExample.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Sha1.h" />
