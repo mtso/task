@@ -19,9 +19,14 @@ namespace taskconfig {
     const char* CREDITS = "task was designed and built by Adrian Marroquin, Matthew Tso, Xin He, and Jinzhu Shen at De Anza College for CIS 22C with Professor Manish Goel in the quarter of Fall 2016.";
     
     // Command input options
-    const char COMMAND_TEST = 'T';
-    const char COMMAND_CREDITS = 'C';
-    const char COMMAND_QUIT = 'Q';
+    const char COMMAND_TEST_CH      = 'T';
+    const char* COMMAND_TEST_STR    = "task";
+    
+    const char COMMAND_CREDITS_CH   = 'C';
+    const char* COMMAND_CREDITS_STR = "credits";
+    
+    const char COMMAND_QUIT_CH      = 'Q';
+    const char* COMMAND_QUIT_STR    = "quit";
 }
 
 #endif /* TaskConfiguration_h */

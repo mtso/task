@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
     bool isRunning = true;
     
     do {
+        // Prompt caret
         cout << "> ";
         cin >> input;
         
@@ -29,15 +30,15 @@ int main(int argc, char* argv[])
 
         switch ( toupper(input[0]) )
         {
-            case COMMAND_TEST:
+            case COMMAND_TEST_CH:
                 runDiagnostic();
                 break;
             
-            case COMMAND_CREDITS:
+            case COMMAND_CREDITS_CH:
                 cout << CREDITS << endl;
                 break;
                 
-            case COMMAND_QUIT:
+            case COMMAND_QUIT_CH:
                 isRunning = false;
                 break;
             
