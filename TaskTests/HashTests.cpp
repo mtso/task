@@ -2,8 +2,10 @@
 #include "stdafx.h"      // Pre-compiled header (optimizes unit testing header file)
 #include "CppUnitTest.h" // Unit testing API
 
-#include "Utilities/Sha1.h"
 #include <string>
+
+#include "Utilities\Sha1.h"
+#include "Utilities\Djb2.h"
 
 // Namespace of Assert::
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -44,6 +46,44 @@ namespace TaskTests // Testing Project namespace
 			std::string expected = "da39a3ee5e6b4b0d3255bfef95601890afd80709";
 			std::string actual = task::sha_1(input);
 			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(Sha1_MockTestEntry)
+		{
+			std::string input = "3688099389	3688358589	\"Decide on hash function to use.\"	assignee=mtso";
+			std::string expected = "38c467b1b5d4b78944d07928efcfb233ee8b6d62";
+			std::string actual = task::sha_1(input);
+			Assert::AreEqual(expected, actual);
+		}
+
+		// Test that the produced hash is the same each time for an unchanged input.
+		TEST_METHOD(Sha1_Equality)
+		{
+			string input = "Test input";
+
+			string hash_current;
+			string hash_previous = task::sha_1(input);
+
+			for (int run_count = 0; run_count < 100; run_count++) {
+				hash_current = task::sha_1(input);
+				Assert::AreEqual(hash_previous, hash_current);
+				hash_previous = hash_current;
+			}
+		}
+
+		// Test that the produced hash is the same each time for an unchanged input.
+		TEST_METHOD(Djb2_Equality)
+		{
+			unsigned char* input = (unsigned char*)"Test input";
+
+			unsigned long hash_current;
+			unsigned long hash_previous = task::djb_2(input);
+
+			for (int run_count = 0; run_count < 100; run_count++) {
+				hash_current = task::djb_2(input);
+				Assert::AreEqual(hash_previous, hash_current);
+				hash_previous = hash_current;
+			}
 		}
 	};
 }
