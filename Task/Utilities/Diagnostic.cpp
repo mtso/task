@@ -15,7 +15,7 @@ namespace task {
 	{
         using namespace std::chrono;
         
-        int test_run_count = 10000; // Number of times each test is run
+        int test_run_count = 100000; // Number of times each test is run
 
         // Capture start time
         system_clock::duration start_time = system_clock::now().time_since_epoch();

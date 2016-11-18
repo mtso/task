@@ -1,10 +1,8 @@
-// Main.cpp : Defines the entry point for the console application.
+// MacOsMain.cpp
 // TaskApp
 // CIS 22C F2016: Matthew Tso
-
-/**
- * An example of the static library usage in a console process
- */
+//
+// Task's command line interface for macOS platforms
 
 #include <iostream>
 #include <string>
@@ -12,15 +10,48 @@
 #include "Sha1.h"
 #include "Diagnostic.h"
 
+#include "TaskConfiguration.h"
+
+void runDiagnostic();
+
 int main(int argc, char* argv[])
 {
+    cout << "task v" << taskconfig::VERSION  << endl;
+    
+    string input;
+    bool isRunning = true;
+    
+    do {
+        cout << "> ";
+        cin >> input;
+        
+        using namespace taskconfig;
 
-//    std::cout << "The SHA-1 hash:\n" << task::sha_1("1479442948986\"Implement BST node\"status=\"backlog\"") << std::endl;
+        switch ( toupper(input[0]) )
+        {
+            case COMMAND_TEST:
+                runDiagnostic();
+                break;
+            
+            case COMMAND_CREDITS:
+                cout << CREDITS << endl;
+                break;
+                
+            case COMMAND_QUIT:
+                isRunning = false;
+                break;
+            
+            default:
+                break;
+        }
+        
+    } while (isRunning);
     
-    task::Diagnostic diagnostic;
-    diagnostic.runAndPrintTo(std::cout);
-    
-    std::cout << std::endl;
     return 0;
 }
 
+void runDiagnostic()
+{
+    task::Diagnostic diagnostic;
+    diagnostic.runAndPrintTo(std::cout);
+}

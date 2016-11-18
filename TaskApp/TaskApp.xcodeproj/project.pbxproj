@@ -41,6 +41,7 @@
 		7FE9FB301DDEB7BE00F3915B /* Diagnostic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Diagnostic.h; sourceTree = "<group>"; };
 		7FE9FB311DDEB7BE00F3915B /* Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sha1.cpp; sourceTree = "<group>"; };
 		7FE9FB321DDEB7BE00F3915B /* Sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sha1.h; sourceTree = "<group>"; };
+		7FE9FB371DDEC64600F3915B /* TaskConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskConfiguration.h; sourceTree = "<group>"; };
 		7FF3E6191DDCF01200D4C9E8 /* TaskApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TaskApp; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				7FE9FB231DDEB72400F3915B /* MacOsMain.cpp */,
+				7FE9FB371DDEC64600F3915B /* TaskConfiguration.h */,
 			);
 			name = TaskApp;
 			sourceTree = "<group>";
