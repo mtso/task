@@ -14,8 +14,39 @@
 
 void runDiagnostic();
 
+unsigned long
+hash_func(unsigned char *str)
+{
+    unsigned long hash = 5381;
+    int c;
+    
+    while (c = *(str++)) { // When the null terminator is assigned into c, it becomes 0
+        hash += (hash << 5) + c; // hash * 33 + c
+    }
+    
+    return hash;
+}
+
 int main(int argc, char* argv[])
 {
+//    // Code for testing the hash_func
+//    unsigned long hash_l;
+//    unsigned char* input_h = (unsigned char*)"what";
+//    
+//    unsigned char* inputs[5] = {
+//        (unsigned char*)"",
+//        (unsigned char*)"a",
+//        (unsigned char*)"i cannot believe",
+//        (unsigned char*)"huh what does it mean",
+//        (unsigned char*)"whatevs"
+//    };
+//    
+//    for (int i = 0; i<5; i++) {
+//        hash_l = hash_func(inputs[i]);
+//        cout << hash_l << endl;
+//    }
+    
+    // Begin console process by printing version number
     cout << "task v" << taskconfig::VERSION  << endl;
     
     string input;

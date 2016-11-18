@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		7F3C299C1DDD02D800ACE2BD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7FE9FB231DDEB72400F3915B /* MacOsMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacOsMain.cpp; sourceTree = "<group>"; };
-		7FE9FB261DDEB7BE00F3915B /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
+		7FE9FB261DDEB7BE00F3915B /* HashTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashTable.h; sourceTree = "<group>"; };
 		7FE9FB271DDEB7BE00F3915B /* Example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Example.cpp; sourceTree = "<group>"; };
 		7FE9FB281DDEB7BE00F3915B /* Example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Example.h; sourceTree = "<group>"; };
 		7FE9FB291DDEB7BE00F3915B /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		7FE9FB251DDEB7BE00F3915B /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				7FE9FB261DDEB7BE00F3915B /* Dictionary.h */,
+				7FE9FB261DDEB7BE00F3915B /* HashTable.h */,
 				7FE9FB271DDEB7BE00F3915B /* Example.cpp */,
 				7FE9FB281DDEB7BE00F3915B /* Example.h */,
 				7FE9FB291DDEB7BE00F3915B /* ReadMe.txt */,
