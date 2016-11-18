@@ -25,12 +25,12 @@ Due: Mon Nov 24, 2016
 task 6f1dc4967f880dbc4d0b087c7b1367b5b07d4f81
 Due: Mon Nov 25, 2016
 
-  Implement BST Tree
+	Implement BST Tree
 
 task 252bc06763afb3b6c2a0802f7346700ab55f46f5
 Due: Mon Nov 26, 2016
 
-  Implement BST Node
+	Implement BST Node
 ```
 #### 3. Create a new task
 
@@ -45,23 +45,24 @@ Due: Mon Nov 26, 2016
 task a265bfa1c253019b96163a82a37c9d1c1332ac1a
 Due: Mon Nov 24, 2016
 
-  Implement BST Node
+	Implement BST Node
 
 task 252bc06763afb3b6c2a0802f7346700ab55f46f5
 Due: Mon Nov 26, 2016
 
-  Implement BST Node
+	Implement BST Node
 ```
 #### 5. Delete duplicate task
 ```
 > delete 252b
-Deleting task 252bc06763afb3b6c2a0802f7346700ab55f46f5
+Deleted task 252bc06763afb3b6c2a0802f7346700ab55f46f5
 ```
 #### 6. Show command history
 ```
 > history
-delete 252bc06763afb3b6c2a0802f7346700ab55f46f5
-create a265bfa1c253019b96163a82a37c9d1c1332ac1a
+delete 252bc06 "Implement BST Node"
+update a265bfa status: backlog -> in-progress
+create a265bfa "Implement BST Node"
 ```
 #### 7. Undo delete
 ```
