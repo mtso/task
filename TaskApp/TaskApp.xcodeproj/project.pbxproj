@@ -12,6 +12,7 @@
 		7FE9FB341DDEB7BE00F3915B /* TemplateExample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB2C1DDEB7BE00F3915B /* TemplateExample.cpp */; };
 		7FE9FB351DDEB7BE00F3915B /* Diagnostic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB2F1DDEB7BE00F3915B /* Diagnostic.cpp */; };
 		7FE9FB361DDEB7BE00F3915B /* Sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB311DDEB7BE00F3915B /* Sha1.cpp */; };
+		7FE9FB3B1DDEEA2F00F3915B /* Djb2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9FB391DDEEA2F00F3915B /* Djb2.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,8 @@
 		7FE9FB311DDEB7BE00F3915B /* Sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sha1.cpp; sourceTree = "<group>"; };
 		7FE9FB321DDEB7BE00F3915B /* Sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sha1.h; sourceTree = "<group>"; };
 		7FE9FB371DDEC64600F3915B /* TaskConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskConfiguration.h; sourceTree = "<group>"; };
+		7FE9FB391DDEEA2F00F3915B /* Djb2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Djb2.cpp; sourceTree = "<group>"; };
+		7FE9FB3A1DDEEA2F00F3915B /* Djb2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Djb2.h; sourceTree = "<group>"; };
 		7FF3E6191DDCF01200D4C9E8 /* TaskApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TaskApp; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				7FE9FB2F1DDEB7BE00F3915B /* Diagnostic.cpp */,
+				7FE9FB391DDEEA2F00F3915B /* Djb2.cpp */,
+				7FE9FB3A1DDEEA2F00F3915B /* Djb2.h */,
 				7FE9FB301DDEB7BE00F3915B /* Diagnostic.h */,
 				7FE9FB311DDEB7BE00F3915B /* Sha1.cpp */,
 				7FE9FB321DDEB7BE00F3915B /* Sha1.h */,
@@ -172,6 +177,7 @@
 				7FE9FB331DDEB7BE00F3915B /* Example.cpp in Sources */,
 				7FE9FB341DDEB7BE00F3915B /* TemplateExample.cpp in Sources */,
 				7FE9FB241DDEB72400F3915B /* MacOsMain.cpp in Sources */,
+				7FE9FB3B1DDEEA2F00F3915B /* Djb2.cpp in Sources */,
 				7FE9FB351DDEB7BE00F3915B /* Diagnostic.cpp in Sources */,
 				7FE9FB361DDEB7BE00F3915B /* Sha1.cpp in Sources */,
 			);
