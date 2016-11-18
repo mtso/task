@@ -4,6 +4,7 @@
 
 #include <chrono>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 // Include BST and Hash table headers here
@@ -20,6 +21,14 @@ namespace task {
 	class Diagnostic
 	{
 	private:
+		int test_run_count;
+
+		uint64_t start_time;
+		uint64_t end_time;
+		uint64_t delta_ms;
+
+		bool isRunning;
+
 		double speed;
 		double bst_efficiency;
 		double load_factor;
@@ -27,7 +36,13 @@ namespace task {
         
         void testSha1(const int& run_count) const;
 
+		void logStartTime();
+		void logEndTime();
+		void calculateDelta();
+
 	public:
+		Diagnostic();
+
 		/**
 		 * Runs test on the Task library for efficieny.
 		 *
