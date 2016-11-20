@@ -56,10 +56,10 @@ namespace task
 		return time_created;
 	}
 
+	// TODO: Clean newline character from the cstring returned by ctime_s
 	string TaskEntry::getTimeCreatedStr() const
 	{
 		using namespace std::chrono;
-		ostringstream buffer;
 		milliseconds ms = (milliseconds)time_created;
 		time_t time_created_s = duration_cast<seconds>(ms).count();
 
