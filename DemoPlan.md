@@ -12,7 +12,7 @@ Procedure
 $ task
 ```
 
-#### 2. Lists all tasks by due date in chronological order (meaning the task that is due soonest is shown at the top)
+#### 2. Lists all tasks by due date in reverse chronological order (meaning the task that is due soonest is shown at the top)
 
 ```
 > show all
