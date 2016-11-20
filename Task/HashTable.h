@@ -11,6 +11,8 @@
 #include <string>
 using namespace std;
 
+#include "ADT\DictionaryInterface.h"
+
 namespace task {
    
 // TODO: Need to design HashTable and figure out collision resolution method
@@ -21,7 +23,7 @@ namespace task {
  * Collision resolution using separate chaining of linked-lists.
  */
 template <typename ValueType>
-class HashTable // : public std::iterator<input_iterator_tag, int>
+class HashTable : public adt::DictionaryInterface<string, ValueType> // : public std::iterator<input_iterator_tag, int>
 {
 private:
 	int TABLE_SIZE; // Should be a prime number

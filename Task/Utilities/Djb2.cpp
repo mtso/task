@@ -17,8 +17,8 @@ unsigned long task::djb_2(unsigned char *input)
     // the statement evaluates to 0
     while ((character = *(input++)) != 0) {
         
-        // hash = hash * 33 + c;
-        hash += (hash << 5) + character;
+		hash = hash * 33 + character;
+        // hash += (hash << 5) + character;
     }
     
     return hash;

@@ -18,10 +18,12 @@ namespace TaskTests // Testing Project namespace
 		{
 			using namespace std::chrono; 
 			string input_description = "Get the hash table done.";
+			string input_user = "mryagni";
+
 			steady_clock::duration current_time = steady_clock::now().time_since_epoch();
 			const milliseconds unchanged_time = duration_cast<milliseconds>(current_time);
 
-			task::TaskEntry entry_1 = task::TaskEntry(input_description, unchanged_time.count());
+			task::TaskEntry entry_1 = task::TaskEntry(input_user, input_description, unchanged_time.count());
 
 			// Force >1 ms of time to pass
 			ostringstream buffer;
@@ -31,7 +33,7 @@ namespace TaskTests // Testing Project namespace
 				buffer.clear();
 			}
 
-			task::TaskEntry entry_2 = task::TaskEntry(input_description, unchanged_time.count());
+			task::TaskEntry entry_2 = task::TaskEntry(input_user, input_description, unchanged_time.count());
 
 			Assert::AreEqual(entry_1.getId(), entry_2.getId());
 		}

@@ -24,11 +24,12 @@ int main(int argc, char* argv[])
 	diagnostic.runAndPrintTo(10, std::cout);
 	cout << endl;
 
-	task::TaskEntry new_entry = task::TaskEntry("Implement TaskEntry data model");
+	task::TaskEntry new_entry = task::TaskEntry("mryagni", "Implement TaskEntry data model");
 	cout << new_entry.getDescription() << endl;
 	cout << new_entry.getId() << endl;
 	cout << new_entry.getTimeCreatedMs() << endl;
 	cout << new_entry.getTimeCreatedStr() << endl;
+	cout << new_entry.getCreator() << endl;
 
 	if (new_entry.getStatus() == BACKLOG) {
 		cout << "Status: Backlog" << endl;

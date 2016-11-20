@@ -24,9 +24,10 @@ namespace TaskTests // Testing Project namespace
 			adt::Stack<task::TaskEntry> entries;
 			int iterations = 5;
 			string test_string = "new entry";
+			string test_user = "mryagni";
 
 			for (int i = 0; i < 5; i++) {
-				task::TaskEntry entry = task::TaskEntry(test_string);
+				task::TaskEntry entry = task::TaskEntry(test_user, test_string);
 				entries.push(entry);
 			}
 
@@ -42,9 +43,10 @@ namespace TaskTests // Testing Project namespace
 			adt::Queue<task::TaskEntry> entries;
 			int iterations = 5;
 			string test_string = "new entry";
+			string test_user = "mryagni";
 
 			for (int i = 0; i < 5; i++) {
-				task::TaskEntry entry = task::TaskEntry(test_string);
+				task::TaskEntry entry = task::TaskEntry(test_user, test_string);
 				entries.enqueue(entry);
 			}
 
