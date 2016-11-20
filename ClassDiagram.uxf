@@ -142,16 +142,14 @@ move the entire project shape using its header.
     <id>UMLClass</id>
     <coordinates>
       <x>426</x>
-      <y>246</y>
+      <y>240</y>
       <w>156</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>TaskManager
 --
 --
-+searchTable()
-+setProjectDirectory(project_directory: string) void
-+setTasklogFilepaths() Stack&lt;string&gt;</panel_attributes>
++generateTestEntry()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -291,9 +289,9 @@ update
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>192</x>
+      <x>204</x>
       <y>720</y>
-      <w>180</w>
+      <w>156</w>
       <h>54</h>
     </coordinates>
     <panel_attributes>std::iterator&lt;std::input_iterator_tag, int&gt;
@@ -417,6 +415,22 @@ group=3</panel_attributes>
       <h>48</h>
     </coordinates>
     <panel_attributes>HashTableTests</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>426</x>
+      <y>396</y>
+      <w>156</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>SearchManager
+--
+--
++searchTable()
++setProjectDirectory(project_directory: string) void
++setTasklogFilepaths() Stack&lt;string&gt;</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
