@@ -36,8 +36,14 @@ public:
 	 */
 	int count() const;
 
+	/**
+	 * Inserts an item by value
+	 */
 	bool insert(const ValueType& new_value);
 
+	/**
+	 *
+	 */
 	bool remove(const ValueType& delete_value);
 
 	void clear();
