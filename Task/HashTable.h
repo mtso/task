@@ -4,10 +4,10 @@
 //
 // Maybe try djb2 hash algorithm from: http://www.cse.yorku.ca/~oz/hash.html
 
-#ifndef TASK_DICTIONARY_H
-#define TASK_DICTIONARY_H
+#ifndef TASK_HASHTABLE_H
+#define TASK_HASHTABLE_H
 
-#include <iterator>
+// #include <iterator>
 #include <string>
 using namespace std;
 

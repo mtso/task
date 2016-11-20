@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task", "Task\Task.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskApp", "TaskApp\TaskApp.vcxproj", "{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{EE787D07-5183-4AB2-86C2-514B834D8B4D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ADT", "Libraries\ADT\ADT.vcxproj", "{41AA7EEA-584C-4E0F-A3F6-6CEB5AE4D4FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +31,10 @@ Global
 		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.Debug|Win32.Build.0 = Debug|Win32
 		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.Release|Win32.ActiveCfg = Release|Win32
 		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.Release|Win32.Build.0 = Release|Win32
+		{41AA7EEA-584C-4E0F-A3F6-6CEB5AE4D4FC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{41AA7EEA-584C-4E0F-A3F6-6CEB5AE4D4FC}.Debug|Win32.Build.0 = Debug|Win32
+		{41AA7EEA-584C-4E0F-A3F6-6CEB5AE4D4FC}.Release|Win32.ActiveCfg = Release|Win32
+		{41AA7EEA-584C-4E0F-A3F6-6CEB5AE4D4FC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
