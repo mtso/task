@@ -76,7 +76,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ADT\List.h" />
+    <ClInclude Include="ADT\Node.h" />
+    <ClInclude Include="ADT\Stack.h" />
     <ClInclude Include="Example.h" />
+    <ClInclude Include="Generics\List.h" />
+    <ClInclude Include="Generics\Node.h" />
+    <ClInclude Include="Generics\Stack.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="TemplateExample.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />

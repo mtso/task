@@ -85,9 +85,6 @@
     <ClCompile Include="WindowsMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Libraries\ADT\ADT.vcxproj">
-      <Project>{41aa7eea-584c-4e0f-a3f6-6ceb5ae4d4fc}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Task\Task.vcxproj">
       <Project>{092d0147-2d14-454a-9349-6eee960c9ed3}</Project>
     </ProjectReference>
