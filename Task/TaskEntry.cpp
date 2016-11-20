@@ -63,8 +63,10 @@ namespace task
 		milliseconds ms = (milliseconds)time_created;
 		time_t time_created_s = duration_cast<seconds>(ms).count();
 
-		char time_char[26];
-		ctime_s(time_char, 26, &time_created_s);
+		// Time string must have at least 26 char of space.
+		const size_t TIME_BUFLEN = 26;
+		char time_char[TIME_BUFLEN];
+		ctime_s(time_char, TIME_BUFLEN, &time_created_s);
 		return (string)time_char;
 	}
 
