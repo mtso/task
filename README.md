@@ -1,5 +1,6 @@
 # ☑ task 
 [![appveyor build](https://ci.appveyor.com/api/projects/status/rtl31pwna7xxcypb?svg=true)](https://ci.appveyor.com/project/mtso/task)
+[![Issue Count](https://codeclimate.com/github/mtso/task/badges/issue_count.svg)](https://codeclimate.com/github/mtso/task)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/56dc60ece47849829b1023582813d830)](https://www.codacy.com/app/mtso/task?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mtso/task&amp;utm_campaign=Badge_Grade)
 ![supported platforms](https://img.shields.io/badge/platforms-win32-lightgray.svg)
 
