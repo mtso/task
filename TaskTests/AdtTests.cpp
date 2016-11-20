@@ -7,6 +7,7 @@ using namespace std;
 
 #include "ADT\Stack.h"
 #include "ADT\Queue.h"
+#include "TaskEntry.h"
 
 // Namespace of Assert::
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -20,13 +21,37 @@ namespace TaskTests // Testing Project namespace
 		// TODO: Write test case for Stack usage on Task Entries
 		TEST_METHOD(Stack_TaskObjects)
 		{
-			Assert::Fail(L"Test case has not been written yet.");
+			adt::Stack<task::TaskEntry> entries;
+			int iterations = 5;
+			string test_string = "new entry";
+
+			for (int i = 0; i < 5; i++) {
+				task::TaskEntry entry = task::TaskEntry(test_string);
+				entries.push(entry);
+			}
+
+			for (int i = 0; i < 5; i++) {
+				Assert::AreEqual(test_string, entries.pop().getDescription());
+			}
+			
 		}
 
 		// TODO: Write test case for Queue usage on Task Entries
 		TEST_METHOD(Queue_TaskObjects)
 		{
-			Assert::Fail(L"Test case has not been written yet.");
+			adt::Queue<task::TaskEntry> entries;
+			int iterations = 5;
+			string test_string = "new entry";
+
+			for (int i = 0; i < 5; i++) {
+				task::TaskEntry entry = task::TaskEntry(test_string);
+				entries.enqueue(entry);
+			}
+
+			for (int i = 0; i < 5; i++) {
+
+				Assert::AreEqual(test_string, entries.dequeue().getDescription());
+			}
 		}
 
 		TEST_METHOD(Stack_Int)

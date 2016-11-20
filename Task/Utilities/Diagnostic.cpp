@@ -54,14 +54,14 @@ namespace task {
 	{
 		isRunning = true;
 		using namespace chrono;
-		system_clock::duration current_time = system_clock::now().time_since_epoch();
+		high_resolution_clock::duration current_time = high_resolution_clock::now().time_since_epoch();
 		start_time = duration_cast<milliseconds>(current_time).count();
 	}
 
 	void Diagnostic::logEndTime()
 	{
 		using namespace chrono;
-		system_clock::duration current_time = system_clock::now().time_since_epoch();
+		high_resolution_clock::duration current_time = high_resolution_clock::now().time_since_epoch();
 		end_time = duration_cast<milliseconds>(current_time).count();
 		isRunning = false;
 	}

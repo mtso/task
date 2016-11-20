@@ -85,6 +85,8 @@
     <ClInclude Include="Generics\Node.h" />
     <ClInclude Include="Generics\Stack.h" />
     <ClInclude Include="HashTable.h" />
+    <ClInclude Include="TaskEntry.h" />
+    <ClInclude Include="TaskEntryStatus.h" />
     <ClInclude Include="TemplateExample.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Djb2.h" />
@@ -92,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Example.cpp" />
+    <ClCompile Include="TaskEntry.cpp" />
     <ClCompile Include="TemplateExample.cpp" />
     <ClCompile Include="Utilities\Diagnostic.cpp" />
     <ClCompile Include="Utilities\Djb2.cpp" />

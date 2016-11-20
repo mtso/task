@@ -20,11 +20,6 @@ namespace task
 	template <typename T>
 	T Max(const T& x, const T& y);
 
-	template <typename T>
-	class TempDemo {
-	public:
-		T getStuff(const T& stuff) const;
-	};
 }
 
 // Must include implementation in the header file for template functions or classes
