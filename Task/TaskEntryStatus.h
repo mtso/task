@@ -1,0 +1,12 @@
+
+#ifndef TASK_TASKENTRYSTATUS_H
+#define TASK_TASKENTRYSTATUS_H
+
+enum TaskEntryStatus
+{
+	BACKLOG,
+	IN_PROGRESS,
+	COMPLETE
+};
+
+#endif
