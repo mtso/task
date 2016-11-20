@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="ADT\List.h" />
     <ClInclude Include="ADT\Node.h" />
+    <ClInclude Include="ADT\Queue.h" />
     <ClInclude Include="ADT\Stack.h" />
     <ClInclude Include="Example.h" />
     <ClInclude Include="Generics\List.h" />

@@ -101,5 +101,4 @@ namespace adt {
 	}
 }
 
-//#include "Stack.cpp"
 #endif
