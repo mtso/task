@@ -21,9 +21,15 @@
     <ClCompile Include="WindowsMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Pager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

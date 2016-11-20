@@ -82,6 +82,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Pager.cpp" />
     <ClCompile Include="WindowsMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppConstants.h" />
+    <ClInclude Include="Pager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
