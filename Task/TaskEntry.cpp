@@ -12,11 +12,21 @@ namespace task
 		const TaskEntryStatus& input_status,
 		const uint64_t& input_time_due)
 	{
-		description = input_description;
-		time_created = input_time_created;
-		time_due = input_time_due;
-		status = input_status;
+		bool is_set = (input_time_due != 0);
 		
+		// Throw if input time due is before creation time
+		// If a constructor exists that takes in a default time,
+		// place this check in there instead.
+		if (input_time_due < input_time_created && is_set)
+		{
+			throw "Invalid: input_time_due is before time created";
+		}
+
+		time_created = input_time_created;
+		time_due = (is_set) ? input_time_due : 0;
+		description = input_description;
+		status = input_status;
+
 		ostringstream buffer;
 		buffer << input_description << time_created;
 		unique_id = sha_1(buffer.str());
