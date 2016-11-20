@@ -12,7 +12,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace TaskTests // Testing Project namespace
 {
-	TEST_CLASS(HashTests) // Groups the method tests together
+	TEST_CLASS(HashTests) // Groups the tests together
 	{
 	public:
 

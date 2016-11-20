@@ -12,7 +12,9 @@
 using namespace std;
 
 namespace task {
-    
+   
+// TODO: Need to design HashTable and figure out collision resolution method
+
 /**
  * HashTable
  *
@@ -47,5 +49,5 @@ public:
 
 }
 
-//#include "Dictionary.cpp"
+//#include "HashTable.cpp"
 #endif

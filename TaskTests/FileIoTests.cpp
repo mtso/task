@@ -15,7 +15,10 @@ namespace FileIoTests // Testing Project namespace
     {
     public:
 
-        TEST_METHOD(ExampleMethodTest)
+		// TODO: Need to write tests for file IO classes
+
+		// TODO: `ExampleMethodTest` should be renamed to something more descriptive
+        TEST_METHOD(ExampleMethodTest) 
         {
             // returns true if expected and actual are equivalent
             Assert::AreEqual(0, 0);
