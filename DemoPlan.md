@@ -1,18 +1,17 @@
-
-Demo Plan
+# Demo Plan
 
 1. Start demo on a demo repo with existing .task data
 2. Then demo how to initialize on a new repository?
 
 
-Procedure
+## Procedure
 
 #### 1. Open task app.
 ```
 $ task
 ```
 
-#### 2. Lists all tasks by due date in chronological order (meaning the task that is due soonest is shown at the top)
+#### 2. Lists all tasks by due date in reverse chronological order (meaning the task that is due soonest is shown at the top)
 
 ```
 > show all
