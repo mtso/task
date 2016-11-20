@@ -51,7 +51,7 @@ public:
 
 	void clear();
 
-	//ValueType getValue(const KeyType& target_key) const;
+	ValueType getValue(const KeyType& target_key) const;
 
 	bool contains(const ValueType& target_value) const;
 };

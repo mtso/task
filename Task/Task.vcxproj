@@ -76,6 +76,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ADT\DictionaryInterface.h" />
     <ClInclude Include="ADT\List.h" />
     <ClInclude Include="ADT\Node.h" />
     <ClInclude Include="ADT\Queue.h" />
@@ -96,7 +97,6 @@
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ADT\Stack.cpp" />
     <ClCompile Include="Example.cpp" />
     <ClCompile Include="TaskEntry.cpp" />
     <ClCompile Include="TemplateExample.cpp" />
