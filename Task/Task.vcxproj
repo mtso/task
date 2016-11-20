@@ -96,6 +96,7 @@
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ADT\Stack.cpp" />
     <ClCompile Include="Example.cpp" />
     <ClCompile Include="TaskEntry.cpp" />
     <ClCompile Include="TemplateExample.cpp" />

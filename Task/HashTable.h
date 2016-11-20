@@ -23,6 +23,9 @@ namespace task {
 template <typename ValueType>
 class HashTable // : public std::iterator<input_iterator_tag, int>
 {
+private:
+	int TABLE_SIZE; // Should be a prime number
+
 
 public:
 	/**

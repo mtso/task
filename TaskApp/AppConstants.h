@@ -30,9 +30,9 @@ namespace taskconfig {
 
 
 	// Task entry
-	const string STATUS_STR_BACKLOG = "Backlog";
-	const string STATUS_STR_INPROGRESS = "In-progress";
-	const string STATUS_STR_COMPLETE = "Complete";
+	const char* STATUS_STR_BACKLOG = "Backlog";
+	const char* STATUS_STR_INPROGRESS = "In-progress";
+	const char* STATUS_STR_COMPLETE = "Complete";
 }
 
 #endif /* TaskConfiguration_h */
