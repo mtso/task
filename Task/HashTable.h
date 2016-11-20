@@ -42,7 +42,7 @@ public:
 	bool insert(const ValueType& new_value);
 
 	/**
-	 *
+	 * 
 	 */
 	bool remove(const ValueType& delete_value);
 

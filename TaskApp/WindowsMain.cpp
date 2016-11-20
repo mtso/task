@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 
-#include "TaskConfiguration.h"
+#include "AppConstants.h"
 #include "Utilities\Sha1.h"
 #include "Utilities\Diagnostic.h"
 

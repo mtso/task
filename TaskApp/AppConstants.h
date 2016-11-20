@@ -4,8 +4,8 @@
 //
 // Defines constants used in the console app
 
-#ifndef TASKAPP_TASKCONFIGURATION_H
-#define TASKAPP_TASKCONFIGURATION_H
+#ifndef TASKAPP_APPCONSTANTS_H
+#define TASKAPP_APPCONSTANTS_H
 
 // Standard shell is roughly 80 col wide (79 char)
 //
@@ -27,6 +27,12 @@ namespace taskconfig {
     
     const char COMMAND_QUIT_CH      = 'Q';
     const char* COMMAND_QUIT_STR    = "quit";
+
+
+	// Task entry
+	const string STATUS_STR_BACKLOG = "Backlog";
+	const string STATUS_STR_INPROGRESS = "In-progress";
+	const string STATUS_STR_COMPLETE = "Complete";
 }
 
 #endif /* TaskConfiguration_h */

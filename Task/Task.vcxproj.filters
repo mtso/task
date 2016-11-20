@@ -63,6 +63,15 @@
     <ClInclude Include="TaskEntryStatus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HashEntry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\TaskManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Example.cpp">

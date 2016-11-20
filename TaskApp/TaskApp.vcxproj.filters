@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TaskConfiguration.h">
+    <ClInclude Include="AppConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
