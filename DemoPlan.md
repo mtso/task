@@ -1,11 +1,10 @@
-
-Demo Plan
+# Demo Plan
 
 1. Start demo on a demo repo with existing .task data
 2. Then demo how to initialize on a new repository?
 
 
-Procedure
+## Procedure
 
 #### 1. Open task app.
 ```
