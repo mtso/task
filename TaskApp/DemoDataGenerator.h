@@ -6,6 +6,11 @@
 
 namespace taskapp {
 
+	/**
+	 * TODO: 
+	 * If no .task folder exists, this will be called to 
+	 * create a new demo .task folder with fake tasklogs.
+	 */
 	void generateDemoDirectory(
 		const string& demo_user, 
 		const uint64_t& demo_start_time, 

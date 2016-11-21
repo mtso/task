@@ -12,7 +12,8 @@ using namespace std;
 namespace taskapp {
 
 	/**
-	 * Stub of a function that 
+	 * Stub of a function that that is supposed to return
+	 * the filepaths of a given directory.
 	 */
 	string filenamesIn(const TCHAR* search_directory);
 }

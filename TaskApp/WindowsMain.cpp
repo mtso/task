@@ -18,6 +18,7 @@
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
 
+
 int main(int argc, char* argv[])
 {
 	// Output version number specified in AppConstants.h

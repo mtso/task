@@ -36,9 +36,11 @@ namespace taskapp {
 		DWORD dwordError = 0;
 
 		// Copy input parameter and append `\\*`
+		string append = "\\*";
 		StringCchCopy(search_pattern, MAX_PATH, search_directory);
-		StringCchCat(search_pattern, MAX_PATH, TEXT("\\*"));
-		
+		// TODO: propagate reinterpret_cast to all cstrings in order to return string array
+		StringCchCat(search_pattern, MAX_PATH, reinterpret_cast<STRSAFE_LPCWSTR>( append.c_str() ));
+
 		// Find the first file handle that matches the search pattern
 		find_handle = FindFirstFile(search_pattern, &find_data);
 
