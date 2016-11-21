@@ -99,3 +99,12 @@ Maximum time: 546 ms.
 Minimum time: <1 ms.
 Average time: 2 ms.
 ```
+#### 10. Force a collision
+
+```
+> demo add=100
+Generatring 100 new entries...
+Collision at index 72... Resolved to linked list.
+Collision at index 21... Resolved to linked list.
+Collision at index 29... Resolved to linked list.
+```
