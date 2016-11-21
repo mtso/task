@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "HashEntry.h"
+#include "TaskEntry.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -21,6 +22,15 @@ namespace TaskTests // Testing Project namespace
 			
 			int actual = entry.getKey();
 			Assert::AreEqual(key, actual);
+		}
+
+		TEST_METHOD(EntryKeysAreEqual)
+		{
+			using namespace task;
+			TaskEntry task_entry = TaskEntry("mryagni", "Add console colors utility functions.");
+			HashEntry<string, TaskEntry> hash_entry = HashEntry<string, TaskEntry>(task_entry.getId(), task_entry);
+
+			Assert::AreEqual(task_entry.getId(), hash_entry.getKey());
 		}
 	};
 }

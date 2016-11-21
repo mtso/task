@@ -17,6 +17,9 @@ namespace task {
 //#define DEFAULT_DATA_DIR = "..\\.task"; // TODO: Default assumes we are in Debug folder
 
 	const string DEFAULT_TASKLOG_PREFIX = "tasklog-";
+
+	// The character that separates data in tasklog entries
+	const char TASKLOG_DELIMITER = '\t';
 }
 
 #endif

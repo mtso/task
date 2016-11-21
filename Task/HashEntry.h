@@ -5,6 +5,8 @@
 #ifndef TASK_HASHENTRY_H
 #define TASK_HASHENTRY_H
 
+#define T_KV template <typename KeyType, typename ValueType>
+
 namespace task
 {
 	template <typename KeyType, typename ValueType>
@@ -24,11 +26,14 @@ namespace task
 		ValueType getValue() const;
 		void setValue(const ValueType& new_value);
 
+		void setNext(const HashEntry<KeyType, ValueType>* next_entry);
+		HashEntry<KeyType, ValueType> getNext() const;
+
 		bool operator==(const HashEntry<KeyType, ValueType>& right) const;
 		bool operator>(const HashEntry<KeyType, ValueType>& right) const;
 	};
 
-	template <typename KeyType, typename ValueType>
+	T_KV
 	HashEntry<KeyType, ValueType>::HashEntry(const KeyType& search_key, const ValueType& new_value)
 		: key(search_key)
 		, value(new_value)
@@ -36,10 +41,22 @@ namespace task
 	{
 	}
 
-	template <typename KeyType, typename ValueType>
+	T_KV
 	KeyType HashEntry<KeyType, ValueType>::getKey() const
 	{
 		return key;
+	}
+
+	T_KV
+	HashEntry<KeyType, ValueType> HashEntry<KeyType, ValueType>::getNext() const
+	{
+		return next;
+	}
+
+	T_KV
+	ValueType HashEntry<KeyType, ValueType>::getValue() const
+	{
+		return value;
 	}
 }
 

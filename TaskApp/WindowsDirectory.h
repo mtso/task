@@ -11,6 +11,9 @@ using namespace std;
 
 namespace taskapp {
 
+	/**
+	 * Stub of a function that 
+	 */
 	string filenamesIn(const TCHAR* search_directory);
 }
 
