@@ -24,12 +24,21 @@
     <ClCompile Include="Pager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WindowsDirectory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoDataGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsDirectory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

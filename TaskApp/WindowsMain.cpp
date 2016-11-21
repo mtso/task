@@ -9,10 +9,14 @@
 #include <string>
 
 #include "AppConstants.h"
+#include "WindowsDirectory.h"
+
 #include "Utilities\Sha1.h"
 #include "Utilities\Diagnostic.h"
 
 #include "TaskEntry.h"
+
+//#include <tchar.h>
 
 using namespace std;
 
@@ -34,6 +38,22 @@ int main(int argc, char* argv[])
 	if (new_entry.getStatus() == BACKLOG) {
 		cout << "Status: Backlog" << endl;
 	}
+
+	cout << endl;
+
+	//TCHAR* dir_name = TEXT("\\");
+	TCHAR* dir_name = TEXT("..\\.task");
+	
+	try {
+		taskapp::filenamesIn(dir_name);
+	}
+	catch (const char* error) {
+		cout << error << endl;
+	}
+	catch (...) {
+		cout << "Could not catch error";
+	}
+	
 
 	system("PAUSE");
 	return 0;
