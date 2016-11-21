@@ -82,7 +82,6 @@
     <ClInclude Include="ADT\Queue.h" />
     <ClInclude Include="ADT\Stack.h" />
     <ClInclude Include="Configuration.h" />
-    <ClInclude Include="Example.h" />
     <ClInclude Include="Generics\List.h" />
     <ClInclude Include="Generics\Node.h" />
     <ClInclude Include="Generics\Stack.h" />
@@ -90,16 +89,13 @@
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="TaskEntry.h" />
     <ClInclude Include="TaskEntryStatus.h" />
-    <ClInclude Include="TemplateExample.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Djb2.h" />
     <ClInclude Include="Utilities\Sha1.h" />
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Example.cpp" />
     <ClCompile Include="TaskEntry.cpp" />
-    <ClCompile Include="TemplateExample.cpp" />
     <ClCompile Include="Utilities\Diagnostic.cpp" />
     <ClCompile Include="Utilities\Djb2.cpp" />
     <ClCompile Include="Utilities\Sha1.cpp" />
