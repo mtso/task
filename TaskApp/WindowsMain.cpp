@@ -86,9 +86,10 @@ int main(int argc, char* argv[])
 
 	// DEMO CODE
 	// WindowsDirectory filename search usage
-	//TCHAR* data_dir = TEXT("..\\.task");
-	TCHAR* data_dir = TEXT("..\\");
-	cout << data_dir;
+	TCHAR* data_dir = TEXT("..\\.task");
+	//string data_dir = "..\\";
+
+	//cout << data_dir;
 
 	try {
 		taskapp::filenamesIn(data_dir);
