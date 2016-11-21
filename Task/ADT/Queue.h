@@ -43,37 +43,39 @@ namespace adt
 	 * Queue class implementation
 	 */
 
+	T_DATA
+	Queue<DataType>::~Queue()
+	{
+	}
 
 	T_DATA
-		Queue<DataType>::~Queue()
+	bool Queue<DataType>::isEmpty()
 	{
-		}
+		return List<DataType>::isEmpty();
+	}
 
 	T_DATA
-		bool Queue<DataType>::isEmpty()
+	int Queue<DataType>::getLength()
 	{
-			return List<DataType>::isEmpty();
-		}
+		return List<DataType>::getLength();
+	}
 
 	T_DATA
-		int Queue<DataType>::getLength()
+	bool Queue<DataType>::enqueue(const DataType& item)
 	{
-			return List<DataType>::getLength();
-		}
+		return addLast(item);
+	}
 
 	T_DATA
-		bool Queue<DataType>::enqueue(const DataType& item)
+	DataType Queue<DataType>::dequeue()
 	{
-			return addLast(item);
+		if (isEmpty()) {
+			throw "Attempted dequeue() on an empty Queue";
 		}
-
-	T_DATA
-		DataType Queue<DataType>::dequeue()
-	{
-			DataType returnItem = head->getData();
-			List<DataType>::removeFirst();
-			return returnItem;
-		}
+		DataType returnItem = head->getData();
+		List<DataType>::removeFirst();
+		return returnItem;
+	}
 }
 
 #endif

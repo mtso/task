@@ -14,6 +14,7 @@ namespace task {
 
 	// Default file names
 	const char* DEFAULT_DATA_DIR = "\\.task";
+//#define DEFAULT_DATA_DIR = "..\\.task"; // TODO: Default assumes we are in Debug folder
 
 	const string DEFAULT_TASKLOG_PREFIX = "tasklog-";
 }

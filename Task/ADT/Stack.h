@@ -89,6 +89,9 @@ namespace adt {
 	template <typename DataType>
 	DataType Stack<DataType>::pop()
 	{
+		if (isEmpty()) {
+			throw "Attempted pop() on an empty Stack";
+		}
 		DataType value = head->getData();
 		List<DataType>::removeFirst();
 		return value;

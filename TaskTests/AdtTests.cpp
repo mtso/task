@@ -78,7 +78,7 @@ namespace TaskTests // Testing Project namespace
 			}
 			catch (const char* error) {
 				string actual = (string)error;
-				string expected = "pop() called on an empty stack.";
+				string expected = "Attempted pop() on an empty Stack";
 				Assert::AreEqual(expected, actual);
 			}
 			catch (...) {
@@ -130,7 +130,7 @@ namespace TaskTests // Testing Project namespace
 			}
 			catch (const char* error) {
 				string actual = (string)error;
-				string expected = "pop() called on an empty stack.";
+				string expected = "Attempted dequeue() on an empty Queue";
 				Assert::AreEqual(expected, actual);
 			}
 			catch (...) {
