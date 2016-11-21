@@ -14,7 +14,7 @@ using namespace std;
 #include "ADT\DictionaryInterface.h"
 
 namespace task {
-   
+
 // TODO: Need to design HashTable and figure out collision resolution method
 
 /**

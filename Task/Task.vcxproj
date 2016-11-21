@@ -97,6 +97,7 @@
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HashEntry.cpp" />
     <ClCompile Include="TaskEntry.cpp" />
     <ClCompile Include="Utilities\DateTime.cpp" />
     <ClCompile Include="Utilities\Diagnostic.cpp" />

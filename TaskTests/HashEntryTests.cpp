@@ -16,7 +16,11 @@ namespace TaskTests // Testing Project namespace
 
 		TEST_METHOD(PointerToNext)
 		{
+			int key = 10;
+			task::HashEntry<int, string> entry = task::HashEntry<int, string>(key, "what in the worlds");
 			
+			int actual = entry.getKey();
+			Assert::AreEqual(key, actual);
 		}
 	};
 }

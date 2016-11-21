@@ -90,6 +90,7 @@
     <ClCompile Include="AdtTests.cpp" />
     <ClCompile Include="DiagnosticTests.cpp" />
     <ClCompile Include="FileIoTests.cpp" />
+    <ClCompile Include="HashEntryTests.cpp" />
     <ClCompile Include="HashTableTests.cpp" />
     <ClCompile Include="HashTests.cpp" />
     <ClCompile Include="stdafx.cpp">

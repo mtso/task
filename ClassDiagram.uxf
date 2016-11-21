@@ -37,14 +37,14 @@ move the entire project shape using its header.
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>6</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>78</y>
-      <w>102</w>
-      <h>54</h>
+      <x>445</x>
+      <y>125</y>
+      <w>85</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>BinarySearchTree
 --
@@ -56,10 +56,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>168</x>
-      <y>198</y>
-      <w>120</w>
-      <h>156</h>
+      <x>250</x>
+      <y>210</y>
+      <w>100</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>TaskEntry
 --
@@ -80,23 +80,10 @@ move the entire project shape using its header.
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
-      <y>858</y>
-      <w>108</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>Dictionary
--
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>168</x>
-      <y>396</y>
-      <w>108</w>
-      <h>120</h>
+      <x>625</x>
+      <y>120</y>
+      <w>90</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>FileManager
 --
@@ -104,16 +91,17 @@ move the entire project shape using its header.
 -user_directory: string
 --
 +readFiles(filepaths: string[]) void
-+saveIndex() void</panel_attributes>
++saveIndex() void
++setTasklogFilepaths() Stack&lt;string&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>84</x>
-      <y>720</y>
-      <w>108</w>
-      <h>120</h>
+      <x>435</x>
+      <y>440</y>
+      <w>90</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>HashTable
 
@@ -128,37 +116,30 @@ move the entire project shape using its header.
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>132</x>
-      <y>834</y>
-      <w>18</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>426</x>
-      <y>240</y>
-      <w>156</w>
-      <h>120</h>
+      <x>595</x>
+      <y>265</y>
+      <w>130</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>TaskManager
 --
 --
-+generateTestEntry()</panel_attributes>
++generateTestEntry()
++buildBst()
++buildHashTable()
+
++deleteEntry(key: KeyType) void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
-      <y>198</y>
-      <w>72</w>
-      <h>72</h>
+      <x>370</x>
+      <y>215</y>
+      <w>60</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Status
@@ -171,10 +152,10 @@ Completed</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>804</x>
-      <y>120</y>
-      <w>114</w>
-      <h>120</h>
+      <x>865</x>
+      <y>130</y>
+      <w>95</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>WindowsMain
 --
@@ -188,10 +169,10 @@ Completed</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>726</x>
-      <y>36</y>
-      <w>366</w>
-      <h>24</h>
+      <x>800</x>
+      <y>60</y>
+      <w>305</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Project: Console Application&gt;&gt;
 TaskApp
@@ -205,26 +186,26 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>54</x>
-      <y>36</y>
-      <w>618</w>
-      <h>24</h>
+      <x>240</x>
+      <y>60</y>
+      <w>515</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Project: Static Library&gt;&gt;
 Task
 --
 layer=-1
 
-group=2</panel_attributes>
+group=4</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>390</x>
-      <y>78</y>
-      <w>108</w>
-      <h>120</h>
+      <x>445</x>
+      <y>245</y>
+      <w>90</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Diagnostic
 --
@@ -240,10 +221,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
-      <y>546</y>
-      <w>108</w>
-      <h>66</h>
+      <x>310</x>
+      <y>350</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>Sha1
 --
@@ -255,10 +236,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>222</x>
-      <y>564</y>
-      <w>108</w>
-      <h>120</h>
+      <x>540</x>
+      <y>525</y>
+      <w>90</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>OperationManager
 --
@@ -272,10 +253,10 @@ group=2</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>354</x>
-      <y>564</y>
-      <w>108</w>
-      <h>120</h>
+      <x>655</x>
+      <y>655</y>
+      <w>90</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;enumeration&gt;&gt;
 OperationType
@@ -289,10 +270,10 @@ update
   <element>
     <id>UMLInterface</id>
     <coordinates>
-      <x>204</x>
-      <y>720</y>
-      <w>156</w>
-      <h>54</h>
+      <x>265</x>
+      <y>515</y>
+      <w>130</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>std::iterator&lt;std::input_iterator_tag, int&gt;
 --
@@ -302,21 +283,21 @@ struct iteractor</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>186</x>
-      <y>726</y>
-      <w>102</w>
-      <h>18</h>
+      <x>330</x>
+      <y>520</y>
+      <w>115</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>564</y>
-      <w>108</w>
-      <h>120</h>
+      <x>655</x>
+      <y>525</y>
+      <w>90</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Operation
 --
@@ -330,23 +311,23 @@ struct iteractor</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>48</x>
-      <y>54</y>
-      <w>636</w>
-      <h>978</h>
+      <x>235</x>
+      <y>75</y>
+      <w>530</w>
+      <h>730</h>
     </coordinates>
     <panel_attributes>lt=-
 
-group=2</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1610.0;1040.0;1610.0;1040.0;10.0</additional_attributes>
+group=4</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1440.0;1040.0;1440.0;1040.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>54</y>
-      <w>384</w>
-      <h>324</h>
+      <x>795</x>
+      <y>75</y>
+      <w>320</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=-
 
@@ -356,10 +337,10 @@ group=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>408</y>
-      <w>384</w>
-      <h>324</h>
+      <x>795</x>
+      <y>370</y>
+      <w>320</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>lt=-
 
@@ -369,10 +350,10 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>726</x>
-      <y>390</y>
-      <w>366</w>
-      <h>24</h>
+      <x>800</x>
+      <y>355</y>
+      <w>305</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Project: Unit Tests&gt;&gt;
 TaskTests
@@ -386,10 +367,10 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>444</y>
-      <w>90</w>
-      <h>48</h>
+      <x>840</x>
+      <y>400</y>
+      <w>75</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>HashTests</panel_attributes>
     <additional_attributes/>
@@ -397,10 +378,10 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>504</y>
-      <w>90</w>
-      <h>48</h>
+      <x>840</x>
+      <y>450</y>
+      <w>75</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>DiagnosticTests
 </panel_attributes>
@@ -409,10 +390,10 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>876</x>
-      <y>444</y>
-      <w>90</w>
-      <h>48</h>
+      <x>925</x>
+      <y>400</y>
+      <w>75</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>HashTableTests</panel_attributes>
     <additional_attributes/>
@@ -420,17 +401,275 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>426</x>
-      <y>396</y>
-      <w>156</w>
-      <h>120</h>
+      <x>635</x>
+      <y>390</y>
+      <w>90</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>SearchManager
 --
 --
 +searchTable()
 +setProjectDirectory(project_directory: string) void
-+setTasklogFilepaths() Stack&lt;string&gt;</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>65</y>
+      <w>60</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>360</y>
+      <w>60</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>420</x>
+      <y>645</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>DictionaryInterface&lt;KeyType, ValueType&gt;
+--
+/+isEmpty()/
+/+count()/
+/+insert()/
+/+remove()/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>625</x>
+      <y>550</y>
+      <w>40</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>695</x>
+      <y>620</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>345</x>
+      <y>235</y>
+      <w>35</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>475</x>
+      <y>340</y>
+      <w>15</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>165</y>
+      <w>15</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>395</y>
+      <w>90</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>HashEntry
+
+--
+-key: KeyType
+-value: ValueType
+
+
+-setKey()
+--
++getValue()
++getKey()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>345</x>
+      <y>445</y>
+      <w>100</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>335</y>
+      <w>15</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>125</y>
+      <w>85</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>TreeNode
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>395</x>
+      <y>140</y>
+      <w>60</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>215</y>
+      <w>15</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>535</y>
+      <w>15</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>165</y>
+      <w>110</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>200.0;200.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>505</x>
+      <y>355</y>
+      <w>100</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>360</y>
+      <w>15</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;330.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>360</y>
+      <w>15</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>335</x>
+      <y>375</y>
+      <w>15</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>325</x>
+      <y>165</y>
+      <w>15</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
 </diagram>
