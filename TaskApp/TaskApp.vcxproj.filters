@@ -41,5 +41,8 @@
     <ClInclude Include="WindowsDirectory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AppIncludes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

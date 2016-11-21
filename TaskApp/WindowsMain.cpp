@@ -5,26 +5,16 @@
 // WindowsMain is the entry point into Tasks's 
 // interactive shell on Windows platforms.
 
-#include <iostream>
-#include <string>
+// Includes all usable Task headers.
+#include "TaskLib.h"
 
-#include "AppConstants.h"
-#include "WindowsDirectory.h"
-#include "Configuration.h"
-#include "Pager.h"
-
-#include "Utilities\Sha1.h"
-#include "Utilities\Diagnostic.h"
-
-#include "TaskEntry.h"
-
-
-using namespace std;
+// Includes all TaskApp utility headers
+#include "AppIncludes.h"
 
 int main(int argc, char* argv[])
 {
 	// Output version number specified in AppConstants.h
-	std::cout << "task v" << taskconfig::VERSION << endl;
+	cout << "task v" << taskconfig::VERSION << endl;
 
 
 	// DEMO CODE
@@ -78,7 +68,7 @@ int main(int argc, char* argv[])
 	};
 	app_util::page(sample_content, content_length, lines_per_page);
 
+
 	system("PAUSE");
 	return 0;
 }
-

@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppConstants.h" />
+    <ClInclude Include="AppIncludes.h" />
     <ClInclude Include="DemoDataGenerator.h" />
     <ClInclude Include="Pager.h" />
     <ClInclude Include="WindowsDirectory.h" />
