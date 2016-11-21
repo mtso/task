@@ -1,5 +1,5 @@
 // Diagnostic.cpp
-// Task
+// Task/Utilities
 // CIS 22C F2016: Matthew Tso
 
 #include "Diagnostic.h"

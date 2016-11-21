@@ -1,10 +1,6 @@
-//
-//  Djb2.cpp
-//  TaskApp
-//
-//  Created by Matthew Tso on 11/17/16.
-//  Copyright © 2016 De Anza. All rights reserved.
-//
+// Djb2.cpp
+// Task/Utilities
+// CIS 22C F2016: Matthew Tso
 
 #include "Djb2.h"
 

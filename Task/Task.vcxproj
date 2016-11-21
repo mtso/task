@@ -90,6 +90,7 @@
     <ClInclude Include="TaskEntry.h" />
     <ClInclude Include="TaskEntryStatus.h" />
     <ClInclude Include="TaskLib.h" />
+    <ClInclude Include="Utilities\DateTime.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Djb2.h" />
     <ClInclude Include="Utilities\Sha1.h" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TaskEntry.cpp" />
+    <ClCompile Include="Utilities\DateTime.cpp" />
     <ClCompile Include="Utilities\Diagnostic.cpp" />
     <ClCompile Include="Utilities\Djb2.cpp" />
     <ClCompile Include="Utilities\Sha1.cpp" />

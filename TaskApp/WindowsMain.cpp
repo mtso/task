@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
 	}
 	cout << endl;
 	
-
+	 
 	// DEMO CODE
 	// Pager.h usage
 	// Outputs an array of string content at a managed pace.

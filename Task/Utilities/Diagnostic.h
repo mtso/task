@@ -1,5 +1,5 @@
 // Diagnostic.h
-// Task
+// Task/Utilities
 // CIS 22C F2016: Matthew Tso
 
 #include <chrono>
