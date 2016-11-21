@@ -4,6 +4,10 @@
 //
 // WindowsMain is the entry point into Tasks's 
 // interactive shell on Windows platforms.
+//
+//
+// TODO: need to figure out TCHAR <=> string conversion
+// maybe: http://stackoverflow.com/questions/22910344/c-read-a-file-line-by-line-but-line-type-is-cstring-or-tchar
 
 // Includes all usable Task headers.
 #include "TaskLib.h"
@@ -44,6 +48,7 @@ int main(int argc, char* argv[])
 	// WindowsDirectory filename search usage
 	//TCHAR* data_dir = TEXT("..\\.task");
 	TCHAR* data_dir = TEXT("..\\");
+	cout << data_dir;
 
 	try {
 		taskapp::filenamesIn(data_dir);
