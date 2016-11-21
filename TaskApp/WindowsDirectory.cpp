@@ -1,3 +1,9 @@
+// WindowsDirectory.h
+// TaskApp
+// CIS 22C F2016: Matthew Tso
+//
+// From msdn docs: https://msdn.microsoft.com/en-us/library/windows/desktop/aa365200(v=vs.85).aspx
+// Searches a given directory path and logs the filepaths of its contents.
 
 #include "WindowsDirectory.h"
 
@@ -44,7 +50,7 @@ namespace taskapp {
 			// Handle directories differently than files
 			if (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) 
 			{
-				_tprintf(TEXT(" %s  <DIR>\n"), find_data.cFileName);
+				_tprintf(TEXT("  %s   <DIR>\n"), find_data.cFileName);
 			}
 			else 
 			{

@@ -1,3 +1,7 @@
+// Pager.cpp
+// TaskApp
+// CIS 22C F2016: Matthew Tso
+
 #include "Pager.h"
 
 #define KEY_ENTER 13
@@ -23,12 +27,26 @@ namespace app_util {
 			}
 			page += scroll;
 
-			cout << "== " << page << " of " << line_count << " ==";
+			cout << "== " << page << " of " << line_count << " ==  <space/enter>";
 			input = _getch();
-			// This needs to be longer than the previous line (13+ char) that says: == 4 of 15 ==
-			cout << "\r                                         \r";
 
-			scroll = (input == KEY_ENTER) ? 1 : scroll_length;
+			// This does a carriage return back to the line's beginning
+			// needs to be longer than the previous line (13+ char) that says: == 4 of 15 ==
+			cout << "\r                                            \r";
+
+			switch (input) {
+			case KEY_ENTER:
+				scroll = 1;
+				break;
+
+			case KEY_SPACE:
+				scroll = scroll_length;
+				break;
+
+			default:
+				scroll = 0;
+				break;
+			}
 
 		} while (toupper(input) != 'Q');
 	}

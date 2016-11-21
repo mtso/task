@@ -1,4 +1,6 @@
-
+// Pager.h
+// TaskApp
+// CIS 22C F2016: Matthew Tso
 
 #ifndef TASKAPP_PAGER_H
 #define TASKAPP_PAGER_H
@@ -10,7 +12,7 @@ using namespace std;
 
 namespace app_util {
 
-	void page(const string*, const int& line_count);
+	void page(const string* content, const int& line_count, const int& scroll_length);
 }
 
 #endif
