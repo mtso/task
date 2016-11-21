@@ -1,4 +1,4 @@
-// HashTable.h
+// HashEntry.h
 // Task
 // CIS 22C F2016: Matthew Tso
 
@@ -13,10 +13,13 @@ namespace task
 	private:
 		KeyType key;
 		ValueType value;
+		HashEntry<KeyType, ValueType>* next;
+
+		void setKey(const KeyType& search_key);
 
 	public:
 		HashEntry();
-		HashEntry(const KeyType& new_key, const ValueType& new_value);
+		HashEntry(const KeyType& search_key, const ValueType& new_value);
 		ValueType getValue() const;
 		void setValue(const ValueType& new_value);
 

@@ -1,5 +1,6 @@
-
-
+// DictionaryInterface.h
+// Task/ADT
+// CIS 22C F2016: Matthew Tso
 
 #ifndef ADT_DICTIONARYINTERFACE_H
 #define ADT_DICTIONARYINTERFACE_H
