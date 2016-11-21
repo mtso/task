@@ -10,5 +10,6 @@
 #include "AppConstants.h"
 #include "WindowsDirectory.h"
 #include "Pager.h"
+#include "ConsoleColor.h"
 
 #endif
