@@ -75,6 +75,11 @@ namespace task
 		string getTimeDueStr() const;
 
 		/**
+		 * Sets the due time.
+		 */
+		void setTimeDueMs(const uint64_t& input_time_due);
+
+		/**
 		 * Returns the unique id.
 		 */
 		string getId() const;

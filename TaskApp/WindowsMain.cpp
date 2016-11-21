@@ -9,6 +9,9 @@
 // TODO: need to figure out TCHAR <=> string conversion
 // maybe: http://stackoverflow.com/questions/22910344/c-read-a-file-line-by-line-but-line-type-is-cstring-or-tchar
 
+// Temporary test includes
+#include <fstream>
+
 // Includes all usable Task headers.
 #include "TaskLib.h"
 
@@ -40,8 +43,44 @@ int main(int argc, char* argv[])
 	if (new_entry.getStatus() == BACKLOG) {
 		cout << "Status: Backlog" << endl;
 	}
-
 	cout << endl;
+
+
+	// TESTING CODE
+	// Output entry to a demo tasklog file
+	uint64_t due_1week = new_entry.getTimeCreatedMs() + 604800000;
+	new_entry.setTimeDueMs(due_1week);
+
+	string entry_status;
+	switch (new_entry.getStatus()) {
+	case IN_PROGRESS:
+		entry_status = taskconfig::STATUS_STR_INPROGRESS;
+		break;
+
+	case COMPLETE:
+		entry_status = taskconfig::STATUS_STR_COMPLETE;
+		break;
+
+	default:
+		entry_status = taskconfig::STATUS_STR_BACKLOG;
+		break;
+	}
+
+	// Create an entry for mryagni
+	ostringstream entry_buffer;
+	entry_buffer << new_entry.getId() << "\t"
+		<< new_entry.getTimeCreatedMs() << "\t"
+		<< new_entry.getTimeDueMs() << "\t"
+		<< "\"" << new_entry.getDescription() << "\"\t" 
+		<< "status=" << entry_status << "\n";
+
+	ofstream mryagni_log;
+	string data_rootdir = "..\\.task\\tasklog-";
+
+	// Print the entry to mryagni's tasklog
+	mryagni_log.open(data_rootdir + new_entry.getCreator(), ios::app);
+	mryagni_log << entry_buffer.str();
+	mryagni_log.close();
 
 
 	// DEMO CODE

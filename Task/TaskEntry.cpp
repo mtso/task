@@ -103,6 +103,14 @@ namespace task
 		return msToString(getTimeDueMs());
 	}
 
+	void TaskEntry::setTimeDueMs(const uint64_t& input_time_due)
+	{
+		if (input_time_due < time_created) {
+			throw "Input time due is before creation time";
+		}
+		time_due = input_time_due;
+	}
+
 	string TaskEntry::getId() const
 	{
 		return unique_id;
