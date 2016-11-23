@@ -853,18 +853,17 @@ bg=black</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
+      <x>140</x>
       <y>555</y>
       <w>210</w>
-      <h>275</h>
+      <h>255</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Stereotype&gt;&gt;
-Package::FatClass
-{Some Properties}
+    <panel_attributes>c_tree
+
 --
-m_root:node_t* 
-	int m_size;
-	mutable node_t* m_cur_enumed_node;
+-node_t*:m_root
+-m_size:int
+-m_cur_enumed_node:mutable node_t*
 --
 +c_tree():
 +~c_tree():
@@ -893,10 +892,25 @@ m_root:node_t*
 -find_node(const _key_t&amp; key) const:node_t* 
 -find_left_max_node(node_t* node):node_t*
 -remove_node_from_tree(node_t* node):void 
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>355</x>
+      <y>740</y>
+      <w>105</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>c_tree::note_t
+
 --
-Responsibilities
--- Resp1
-*-- Resp2*</panel_attributes>
+-m_left:node_t* 
+-m_right:node_t*
+-m_parent:node_t*
+-m_key:_key_t* 
+-m_va:_val_t* </panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
