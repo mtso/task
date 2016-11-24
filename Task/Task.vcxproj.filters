@@ -72,6 +72,12 @@
     <ClInclude Include="Utilities\DateTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="c_tree_impl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="c_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Utilities\Sha1.cpp">

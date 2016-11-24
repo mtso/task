@@ -12,6 +12,7 @@
 using namespace std;
 
 #include "ADT\DictionaryInterface.h"
+#include "HashEntry.h"
 
 namespace task {
 
@@ -22,14 +23,19 @@ namespace task {
  *
  * Collision resolution using separate chaining of linked-lists.
  */
-template <typename ValueType>
-class HashTable : public adt::DictionaryInterface<string, ValueType> // : public std::iterator<input_iterator_tag, int>
+template <typename KeyType, typename ValueType>
+class HashTable : public adt::DictionaryInterface<KeyType, ValueType> // : public std::iterator<input_iterator_tag, int>
 {
 private:
-	int TABLE_SIZE; // Should be a prime number
+	static const int TABLE_SIZE = 101; // Should be a prime number
 
 
 public:
+	/**
+	Default Constructor
+	*/
+	HashTable<KeyType, ValueType>();
+
 	/**
 	 * Returns true if the Dictionary is empty
 	 *
@@ -51,12 +57,31 @@ public:
 	 */
 	bool remove(const ValueType& delete_value);
 
+	/**
+	*
+	*/
 	void clear();
 
+	/**
+	*
+	*/
 	ValueType getValue(const KeyType& target_key) const;
 
+	/**
+	*
+	*/
 	bool contains(const ValueType& target_value) const;
 };
+
+
+/**
+IMPLEMENTATION 
+*/
+T_KV
+HashTable<KeyType, ValueType>::HashTable<KeyType, ValueType>()
+{
+
+}
 
 }
 
