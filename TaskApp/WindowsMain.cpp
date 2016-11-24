@@ -35,11 +35,11 @@ int main(int argc, char* argv[])
 	// DEMO CODE
 	// Task entry usage
 	task::TaskEntry new_entry = task::TaskEntry("mryagni", "Implement TaskEntry data model");
-	cout << new_entry.getDescription() << endl;
-	cout << new_entry.getId() << endl;
-	cout << new_entry.getTimeCreatedMs() << endl;
-	cout << new_entry.getTimeCreatedStr() << endl;
-	cout << new_entry.getCreator() << endl;
+	cout << red << new_entry.getDescription() << endl;
+	cout << blue << new_entry.getId() << endl;
+	cout << red << new_entry.getTimeCreatedMs() << endl;
+	cout << blue << new_entry.getTimeCreatedStr() << endl;
+	cout << red << new_entry.getCreator() << endl;
 
 	if (new_entry.getStatus() == BACKLOG) {
 		cout << "Status: Backlog" << endl;
@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 
 	// Print the entry to mryagni's tasklog
 	mryagni_log.open(data_rootdir + new_entry.getCreator(), ios::app);
-	mryagni_log << entry_buffer.str();
+	mryagni_log << yellow << entry_buffer.str();
 	mryagni_log.close();
 
 
@@ -107,14 +107,15 @@ int main(int argc, char* argv[])
 	// Pager.h usage
 	// Outputs an array of string content at a managed pace.
 	const int content_length = 10;
-	const int lines_per_page = 3;
+	const int lines_per_page = 7;
+	cout << green;
 	const string sample_content[content_length] = {
 		"line 1: ", "line 2: ", "line 3: ", "line 4: ", "line 5: ",
 		"line 6: ", "line 7: ", "line 8: ", "line 9: ", "line 10: "
 	};
 	app_util::page(sample_content, content_length, lines_per_page);
 
-
+	cout << white;
 	system("PAUSE");
 	return 0;
 }

@@ -42,9 +42,6 @@
     <ClInclude Include="Generics\List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Generics\Stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ADT\Stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
