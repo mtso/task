@@ -32,9 +32,9 @@ namespace task
 
 		virtual bool isEmpty() const;
 
-		virtual bool contains(const KeyType& target_key) const;
+		virtual bool contains(const KeyType& target_key);
 
-		virtual ValueType getValue(const KeyType& target_key) const;
+		virtual ValueType getValue(const KeyType& target_key);
 
 		virtual void addFirst(const KeyType& new_key, const ValueType& new_value);
 
@@ -43,6 +43,8 @@ namespace task
 		virtual bool removeFirst();
 
 		void clear();
+
+		void traverse(void visit(const ValueType& entry)) const;
 	};
 
 	/**
@@ -83,7 +85,7 @@ namespace task
 	}
 
 	T_KV
-	bool HashList<KV>::contains(const KeyType& target_key) const
+	bool HashList<KV>::contains(const KeyType& target_key)
 	{
 		HashEntry<KV>* search = head;
 
@@ -100,7 +102,7 @@ namespace task
 	}
 
 	T_KV
-	ValueType HashList<KV>::getValue(const KeyType& target_key) const
+	ValueType HashList<KV>::getValue(const KeyType& target_key)
 	{
 		HashEntry<KV>* search = head;
 
@@ -171,6 +173,15 @@ namespace task
 		return false;
 	}
 
+	T_KV
+	void HashList<KV>::traverse(void visit(const ValueType& entry)) const
+	{
+		HashEntry<KV>* current = head;
+		while (current != nullptr) {
+			visit(current->getValue());
+			current = current->getNext();
+		}
+	}
 }
 
 #endif

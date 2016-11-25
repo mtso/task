@@ -18,6 +18,10 @@ namespace TaskTests // Testing Project namespace
 	public:
 		// TODO: Write test cases for Hash Table class
 		
+		void getDescription(const task::TaskEntry& entry) {
+			entry.getDescription();
+		}
+
 		TEST_METHOD(DefaultConstructor) {
 			task::HashTable<string, task::TaskEntry> table;
 			Assert::IsTrue(table.isEmpty());
@@ -26,6 +30,7 @@ namespace TaskTests // Testing Project namespace
 			string test_key = test_value.getId();
 
 			table.insert(test_key, test_value);
+			Assert::AreEqual(1, table.count());
 		}
 
 		TEST_METHOD(AddManyEntries) {
@@ -39,6 +44,26 @@ namespace TaskTests // Testing Project namespace
 				task::TaskEntry entry = task::TaskEntry("mryagni", payload);
 				table.insert(entry.getId(), entry);
 			}
+		}
+
+		TEST_METHOD(ComprehensiveUse) {
+			task::HashTable<string, task::TaskEntry> table;
+			Assert::IsTrue(table.isEmpty());
+
+			task::TaskEntry test_value = task::TaskEntry("mryagni", "Let's get this done.");
+			string test_key = test_value.getId();
+
+			table.insert(test_key, test_value);
+			Assert::AreEqual(1, table.count());
+
+			bool couldInsertDuplicate = table.insert(test_key, test_value);
+			Assert::IsFalse(couldInsertDuplicate);
+
+			table.remove(test_key);
+			Assert::IsTrue(table.isEmpty());
+			Assert::AreEqual(0, table.count());
+
+			
 		}
 
 		TEST_METHOD(HashList) {
@@ -62,6 +87,8 @@ namespace TaskTests // Testing Project namespace
 			list.addFirst(test_key, test_value);
 			Assert::IsFalse(list.isEmpty());
 			Assert::AreEqual(3, list.length());
+
+			//list.traverse(getDescription);
 
 			list.clear();
 			Assert::IsTrue(list.isEmpty());

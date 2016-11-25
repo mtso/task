@@ -164,15 +164,29 @@ namespace task {
 	bool task::HashTable<KV>::insert(const KeyType& new_key, const ValueType& new_value)
 	{
 		int index = hashOf(new_key);
-		table[index].addFirst(new_key, new_value);
-		return true; // always true in a linked-list implementation
+
+		if (table[index].contains(new_key)) {
+			return false;
+		}
+		else {
+			table[index].addFirst(new_key, new_value);
+			entry_count++;
+			return true;
+		}
 	}
 
 
 	T_KV
 	bool task::HashTable<KV>::remove(const KeyType& delete_key)
 	{
-		throw "not implemented";
+		bool didRemove = table[hashOf(delete_key)].remove(delete_key);
+		if (didRemove) {
+			entry_count--;
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 
@@ -187,7 +201,7 @@ namespace task {
 	T_KV
 	ValueType task::HashTable<KV>::getValue(const KeyType& target_key) const
 	{
-		throw "not implemented";
+		return table[hashOf(target_key)].getValue(target_key);
 	}
 
 	T_KV
@@ -201,12 +215,10 @@ namespace task {
 	void task::HashTable<KV>::traverse(void visit(const ValueType& entry)) const
 	{
 		throw "not implemented";
-		//for (int i = 0; i < table_size; i++) {
-		//	if (!table[i].isEmpty()) {
-		//		
-		//		while (table[i])
-		//	}
-		//}
+		for (int i = 0; i < table_size; i++) {
+			// TODO: resolve traversal of list through table;
+			table[i].traverse(visit);
+		}
 	}
 }
 #endif
