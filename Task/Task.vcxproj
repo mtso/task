@@ -87,6 +87,7 @@
     <ClInclude Include="Generics\List.h" />
     <ClInclude Include="Generics\Node.h" />
     <ClInclude Include="HashEntry.h" />
+    <ClInclude Include="HashList.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="TaskEntry.h" />
     <ClInclude Include="TaskEntryStatus.h" />

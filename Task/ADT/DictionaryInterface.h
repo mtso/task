@@ -19,7 +19,7 @@ namespace adt {
 		virtual void clear() = 0;
 		virtual ValueType getValue(const KeyType& search_key) const = 0;
 		virtual bool contains(const KeyType& search_key) const = 0;
-		virtual void traverse(void visit(ValueType&)) const = 0;
+		virtual void traverse(void visit(const ValueType& entry)) const = 0;
 	};
 }
 

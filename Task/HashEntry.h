@@ -6,6 +6,7 @@
 #define TASK_HASHENTRY_H
 
 #define T_KV template <typename KeyType, typename ValueType>
+#define KV KeyType, ValueType
 
 namespace task
 {
