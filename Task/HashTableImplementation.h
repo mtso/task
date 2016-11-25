@@ -18,11 +18,26 @@ namespace task
 	T_KV
 	unsigned int HashTable<KeyType, ValueType>::hashOf(const KeyType& target_key) const
 	{
-		throw "HashTable has only been implemented for key/value pair of <string, TaskEntry>";
+		throw "HashTable has only been specialized for key/value pairs: <string, TaskEntry>, <string, TaskEntry*>";
 	}
 
 	template <>
 	unsigned int HashTable<string, TaskEntry>::hashOf(const string& target_key) const
+	{
+		unsigned int hash = 5381;
+		char current;
+
+		for (unsigned int i = 0; i < target_key.length(); i++) {
+			current = target_key[i];
+			hash = hash * 33 + current;
+		}
+
+		hash %= table_size;
+		return hash;
+	}
+
+	template <>
+	unsigned int HashTable<string, TaskEntry*>::hashOf(const string& target_key) const
 	{
 		unsigned int hash = 5381;
 		char current;
