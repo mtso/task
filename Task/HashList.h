@@ -153,22 +153,23 @@ namespace task
 		
 		while (to_remove != nullptr) 
 		{
-			if (to_remove->getKey() == delete_key) {
-				// delete entry
-
-				if (previous == nullptr) {
-					removeFirst();
-					return true;
-				}
-
-				previous->setNext(to_remove->getNext());
-				delete to_remove;
-				list_length--;
+			if (to_remove->getKey() != delete_key) {
+				previous = to_remove;
+				to_remove = to_remove->getNext();
+				continue;
+			}
+			
+			// delete first entry
+			if (previous == nullptr) {
+				removeFirst();
 				return true;
 			}
 			
-			previous = to_remove;
-			to_remove = to_remove->getNext();
+			// delete an entry
+			previous->setNext(to_remove->getNext());
+			delete to_remove;
+			list_length--;
+			return true;
 		}
 		return false;
 	}
