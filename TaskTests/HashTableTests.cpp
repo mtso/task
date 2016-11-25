@@ -24,7 +24,28 @@ namespace TaskTests // Testing Project namespace
 		}
 
 		TEST_METHOD(HashList) {
+			string test_value = "hello world";
+			int test_key = 3;
+
 			task::HashList<int, string> list;
+			Assert::IsTrue(list.isEmpty());
+
+			list.addFirst(3, test_value);
+			Assert::AreEqual(1, list.length());
+
+			string value3 = list.getValue(3);
+			Assert::AreEqual(test_value, value3);
+
+			list.remove(test_key);
+			Assert::IsTrue(list.isEmpty());
+
+			list.addFirst(test_key, test_value);
+			list.addFirst(test_key, test_value);
+			list.addFirst(test_key, test_value);
+			Assert::IsFalse(list.isEmpty());
+			Assert::AreEqual(3, list.length());
+
+			list.clear();
 			Assert::IsTrue(list.isEmpty());
 		}
 	};
