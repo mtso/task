@@ -2,8 +2,8 @@
 // Task
 // CIS 22C F2016: Matthew Tso
 
-#ifndef TASK_HASHLIST_CPP
-#define TASK_HASHLIST_CPP
+#ifndef TASK_HASHLISTIMPLEMENTATION_H
+#define TASK_HASHLISTIMPLEMENTATION_H
 
 #include "HashList.h"
 

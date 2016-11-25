@@ -55,5 +55,5 @@ namespace task
 
 }
 
-#include "HashList.cpp"
+#include "HashListImplementation.h"
 #endif

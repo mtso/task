@@ -87,7 +87,7 @@
     <ClInclude Include="Generics\List.h" />
     <ClInclude Include="Generics\Node.h" />
     <ClInclude Include="HashEntry.h" />
-    <ClInclude Include="HashEntry.cpp" />
+    <ClInclude Include="HashEntryImplementation.h" />
     <ClInclude Include="HashList.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="TaskEntry.h" />
@@ -100,8 +100,8 @@
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HashList.cpp" />
-    <ClCompile Include="HashTable.cpp" />
+    <ClCompile Include="HashListImplementation.h" />
+    <ClCompile Include="HashTableImplementation.h" />
     <ClCompile Include="TaskEntry.cpp" />
     <ClCompile Include="Utilities\DateTime.cpp" />
     <ClCompile Include="Utilities\Diagnostic.cpp" />

@@ -38,5 +38,5 @@ namespace task
 	};
 }
 
-#include "HashEntry.cpp"
+#include "HashEntryImplementation.h"
 #endif

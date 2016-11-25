@@ -2,8 +2,8 @@
 // Task
 // CIS 22C F2016: Matthew Tso
 
-#ifndef TASK_HASHENTRY_CPP
-#define TASK_HASHENTRY_CPP
+#ifndef TASK_HASHENTRYIMPLEMENTATION_H
+#define TASK_HASHENTRYIMPLEMENTATION_H
 
 #include "HashEntry.h"
 

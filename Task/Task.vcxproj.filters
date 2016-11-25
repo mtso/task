@@ -81,7 +81,7 @@
     <ClInclude Include="HashList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HashEntry.cpp">
+    <ClInclude Include="HashEntryImplementation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,10 +101,10 @@
     <ClCompile Include="Utilities\DateTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HashList.cpp">
+    <ClCompile Include="HashTableImplementation.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HashTable.cpp">
+    <ClCompile Include="HashListImplementation.h">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

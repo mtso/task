@@ -93,5 +93,5 @@ namespace task {
 	};
 }
 
-#include "HashTable.cpp"
+#include "HashTableImplementation.h"
 #endif
