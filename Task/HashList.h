@@ -55,5 +55,7 @@ namespace task
 
 }
 
+#ifndef TASK_HASHLISTIMPLEMENTATION_H
 #include "HashListImplementation.h"
+#endif
 #endif

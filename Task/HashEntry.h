@@ -38,5 +38,7 @@ namespace task
 	};
 }
 
+#ifndef TASK_HASHENTRYIMPLEMENTATION_H
 #include "HashEntryImplementation.h"
+#endif
 #endif

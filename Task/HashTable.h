@@ -93,5 +93,7 @@ namespace task {
 	};
 }
 
+#ifndef TASK_HASHTABLEIMPLEMENTATION_H
 #include "HashTableImplementation.h"
+#endif
 #endif

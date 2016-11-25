@@ -2,10 +2,14 @@
 // Task
 // CIS 22C F2016: Matthew Tso
 
+//#include "HashTable.h"
+
 #ifndef TASK_HASHTABLEIMPLEMENTATION_HP
 #define TASK_HASHTABLEIMPLEMENTATION_H
 
+#ifndef TASK_HASHTABLE_H
 #include "HashTable.h"
+#endif
 
 namespace task 
 {
