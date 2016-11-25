@@ -12,8 +12,8 @@
 using namespace std;
 
 #include "ADT\DictionaryInterface.h"
-#include "HashEntry.h"
-#include "ADT\List.h"
+#include "HashList.h"
+#include "TaskEntry.h"
 
 //#define KV KeyType, ValueType
 
@@ -33,11 +33,14 @@ namespace task {
 		static const int DEFAULT_SIZE = 101; // Should be a prime number
 
 		// adt::List<ValueType> table[TABLE_SIZE];
-		HashEntry<KeyType, ValueType>** table;
+		//HashEntry<KeyType, ValueType>** table;
+		HashList<KV>* table;
 
 		int entry_count;
 
 		int table_size;
+
+		unsigned int hashOf(const KeyType& target_key) const;
 
 	public:
 		/**
@@ -95,16 +98,42 @@ namespace task {
 	/**
 	IMPLEMENTATION
 	*/
+
+	// Private:
+
+	T_KV
+	unsigned int HashTable<KeyType, ValueType>::hashOf(const KeyType& target_key) const
+	{
+		throw "HashTable must only be used on <string, TaskEntry>";
+	}
+
+	template <>
+	unsigned int HashTable<string, TaskEntry>::hashOf(const string& target_key) const
+	{
+		unsigned int hash = 5381;
+		char current;
+
+		for (unsigned int i = 0; i < target_key.length(); i++) {
+			current = target_key[i];
+			hash = hash * 33 + current;
+		}
+
+		hash %= table_size;
+		return hash;
+	}
+
+	// Public:
+
 	T_KV
 	task::HashTable<KeyType, ValueType>::HashTable()
 	{
 		entry_count = 0;
 		table_size = DEFAULT_SIZE;
 
-		table = new HashEntry<KV>*[table_size];
+		table = new HashList<KV>[table_size];
 
 		for (int i = 0; i < table_size; i++) {
-			table[i] = nullptr;
+			table[i] = HashList<KV>();
 		}
 	}
 
@@ -113,9 +142,8 @@ namespace task {
 	{
 		for (int i = 0; i < table_size; i++) {
 
-			if (table[i] != nullptr) {
-				delete table[i];
-			}
+			table[i].clear();
+
 		}
 		delete[] table;
 	}
@@ -129,13 +157,15 @@ namespace task {
 	T_KV
 	int task::HashTable<KV>::count() const
 	{
-		return entry_count();
+		return entry_count;
 	}
 
 	T_KV
 	bool task::HashTable<KV>::insert(const KeyType& new_key, const ValueType& new_value)
 	{
-		throw "not implemented";
+		int index = hashOf(new_key);
+		table[index].addFirst(new_key, new_value);
+		return true; // always true in a linked-list implementation
 	}
 
 
@@ -149,11 +179,8 @@ namespace task {
 	T_KV
 	void task::HashTable<KV>::clear()
 	{
-		throw "not implemented";
 		for (int i = 0; i < table_size; i++) {
-			if (table[i] == nullptr) { continue; }
-			
-
+			table[i].clear();
 		}
 	}
 
@@ -166,13 +193,20 @@ namespace task {
 	T_KV
 	bool task::HashTable<KV>::contains(const KeyType& target_key) const
 	{
-		throw "not implemented";
+		int index = hashOf(target_key);
+		return table[index].contains(target_key);
 	}
 
 	T_KV
 	void task::HashTable<KV>::traverse(void visit(const ValueType& entry)) const
 	{
 		throw "not implemented";
+		//for (int i = 0; i < table_size; i++) {
+		//	if (!table[i].isEmpty()) {
+		//		
+		//		while (table[i])
+		//	}
+		//}
 	}
 }
 #endif

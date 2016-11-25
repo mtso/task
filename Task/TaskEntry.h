@@ -2,6 +2,9 @@
 // Task
 // CIS 22C F2016:
 
+#ifndef TASK_TASKENTRY_H
+#define TASK_TASKENTRY_H
+
 #include <stdint.h>
 #include <sstream>
 //#include <string>
@@ -100,3 +103,5 @@ namespace task
 		bool operator==(const TaskEntry& right) const;
 	};
 }
+
+#endif

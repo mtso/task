@@ -21,6 +21,24 @@ namespace TaskTests // Testing Project namespace
 		TEST_METHOD(DefaultConstructor) {
 			task::HashTable<string, task::TaskEntry> table;
 			Assert::IsTrue(table.isEmpty());
+
+			task::TaskEntry test_value = task::TaskEntry("mryagni", "Let's get this done.");
+			string test_key = test_value.getId();
+
+			table.insert(test_key, test_value);
+		}
+
+		TEST_METHOD(AddManyEntries) {
+			task::HashTable<string, task::TaskEntry> table;
+			
+			string unit = "M";
+			string payload = "";
+
+			for (int i = 0; i < 200; i++) {
+				payload += unit;
+				task::TaskEntry entry = task::TaskEntry("mryagni", payload);
+				table.insert(entry.getId(), entry);
+			}
 		}
 
 		TEST_METHOD(HashList) {

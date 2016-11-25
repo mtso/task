@@ -89,6 +89,9 @@ namespace task
 
 		while (search != nullptr) {
 			if (search->getKey() == target_key) {
+
+				// TODO: swap node with first
+
 				return true;
 			}
 			search = search->getNext();
@@ -103,6 +106,9 @@ namespace task
 
 		while (search != nullptr) {
 			if (search->getKey() == target_key) {
+
+				// TODO: swap node with first
+
 				return search->getValue();
 			}
 			search = search->getNext();
