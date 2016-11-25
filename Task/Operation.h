@@ -13,10 +13,13 @@ namespace task {
 	private:
 		OperationType type;
 		string id;
+		string previous_value;
+
 	public:
-		Operation(const OperationType& new_type, const string& new_id);
+		Operation(const OperationType& new_type, const string& new_id, const string& new_previous_value);
 		OperationType getType() const;
 		string getId() const;
+		string getPreviousValue() const;
 	};
 }
 #endif

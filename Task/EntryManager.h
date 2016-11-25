@@ -8,6 +8,7 @@
 #include "HashTable.h"
 #include "c_tree.h"
 #include "TaskEntry.h"
+#include "OperationManager.h"
 
 namespace task {
 
@@ -18,6 +19,8 @@ namespace task {
 		HashTable<string, TaskEntry*> table;
 
 		c_tree<uint64_t, TaskEntry*> tree;
+
+		OperationManager operationManager;
 
 	public:
 		void printAllTo(ostream& output);
