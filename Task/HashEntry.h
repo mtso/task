@@ -22,6 +22,7 @@ namespace task
 
 	public:
 		//HashEntry();
+		//HashEntry(const HashEntry<KV>& original);
 		HashEntry(const KeyType& search_key, const ValueType& new_value);
 		HashEntry(const KeyType& search_key, const ValueType& new_value, HashEntry<KeyType, ValueType>* new_next);
 
@@ -30,11 +31,26 @@ namespace task
 		HashEntry<KeyType, ValueType>* getNext() const;
 
 		void setValue(const ValueType& new_value);
-		void setNext(const HashEntry<KeyType, ValueType>* next_entry);
+		void setNext(HashEntry<KeyType, ValueType>* next_entry);
 
 		bool operator==(const HashEntry<KeyType, ValueType>& right) const;
 		bool operator>(const HashEntry<KeyType, ValueType>& right) const;
 	};
+
+	/**
+	IMPLEMENTATION
+	*/
+
+	// Constructors
+
+	// Copy constructor
+	//T_KV
+	//HashEntry<KV>::HashEntry(const HashEntry<KV>& original)
+	//	: key(original.key)
+	//	, value(original.value)
+	//	, next(original.next)
+	//{
+	//}
 
 	T_KV
 	HashEntry<KeyType, ValueType>::HashEntry(const KeyType& search_key, const ValueType& new_value)
@@ -88,7 +104,7 @@ namespace task
 	}
 
 	T_KV
-	void HashEntry<KeyType, ValueType>::setNext(const HashEntry<KeyType, ValueType>* next_entry)
+	void HashEntry<KeyType, ValueType>::setNext(HashEntry<KeyType, ValueType>* next_entry)
 	{
 		next = next_entry;
 	}
