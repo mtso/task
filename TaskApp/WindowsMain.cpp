@@ -14,10 +14,32 @@
 
 // Includes all usable Task headers.
 #include "TaskLib.h"
+#include "Operation.h"
+#include "ADT\Stack.h"
+#include "TaskEntry.h"
+#include "Utilities\DateTime.h"
+#include "HashTable.h"
 
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
 
+void visit(const task::Operation& item) {
+	
+	switch (item.getType()) {
+	case task::UPDATE_STATUS:
+		cout << "update ";
+		break;
+	default:
+		cout << "someOp ";
+		break;
+	}
+	cout << item.getPreviousState().getId() << endl;
+}
+
+void visitTable(const task::TaskEntry& entry) {
+
+	cout << entry.getDescription() << endl;
+}
 
 int main(int argc, char* argv[])
 {
@@ -25,14 +47,36 @@ int main(int argc, char* argv[])
 	cout << "task v" << taskconfig::VERSION << endl;
 
 
-	// DEMO CODE
-	// Diagnostic usage
-	task::Diagnostic diagnostic;
-	diagnostic.runAndPrintTo(10, std::cout);
-	cout << endl;
+	adt::Stack<task::Operation> history;
+	
+	
+	task::TaskEntry entry_1 = task::TaskEntry("mryagni", "waddup waddup");
+	entry_1.setTimeDueMs(entry_1.getTimeCreatedMs() + task::weekToMs(1));
+
+	history.push(task::Operation(task::UPDATE_STATUS, entry_1));
+	entry_1.setStatus(IN_PROGRESS);
+
+	history.traverse(visit);
 
 
-	// DEMO CODE
+
+	task::HashTable<string, task::TaskEntry> entries;
+	entries.insert(entry_1.getId(), entry_1);
+
+	entries.traverse(visitTable);
+
+
+
+
+
+	//// DEMO CODE
+	//// Diagnostic usage
+	//task::Diagnostic diagnostic;
+	//diagnostic.runAndPrintTo(10, std::cout);
+	//cout << endl;
+
+
+	//// DEMO CODE
 	// Task entry usage
 	task::TaskEntry new_entry = task::TaskEntry("mryagni", "Implement TaskEntry data model");
 	cout << red << new_entry.getDescription() << endl;
@@ -69,11 +113,11 @@ int main(int argc, char* argv[])
 
 	// Create an entry for mryagni
 	ostringstream entry_buffer;
-	entry_buffer << new_entry.getId() << "\t"
-		<< new_entry.getTimeCreatedMs() << "\t"
-		<< new_entry.getTimeDueMs() << "\t"
-		<< "\"" << new_entry.getDescription() << "\"\t" 
-		<< "status=" << entry_status << "\n";
+	entry_buffer << new_entry.getId() << ","
+		<< new_entry.getTimeCreatedMs() << ","
+		<< new_entry.getTimeDueMs() << ","
+		<< "\"" << new_entry.getDescription() << "\"," 
+		<< entry_status << "\n";
 
 	ofstream mryagni_log;
 	string data_rootdir = "..\\.task\\tasklog-";
@@ -84,36 +128,36 @@ int main(int argc, char* argv[])
 	mryagni_log.close();
 
 
-	// DEMO CODE
-	// WindowsDirectory filename search usage
-	TCHAR* data_dir = TEXT("..\\.task");
-	//string data_dir = "..\\";
+	//// DEMO CODE
+	//// WindowsDirectory filename search usage
+	//TCHAR* data_dir = TEXT("..\\.task");
+	////string data_dir = "..\\";
 
-	//cout << data_dir;
+	////cout << data_dir;
 
-	try {
-		taskapp::filenamesIn(data_dir);
-	}
-	catch (const char* error) {
-		cout << error << endl;
-	}
-	catch (...) {
-		cout << "Could not catch error";
-	}
-	cout << endl;
-	
-	 
-	// DEMO CODE
-	// Pager.h usage
-	// Outputs an array of string content at a managed pace.
-	const int content_length = 10;
-	const int lines_per_page = 7;
-	cout << green;
-	const string sample_content[content_length] = {
-		"line 1: ", "line 2: ", "line 3: ", "line 4: ", "line 5: ",
-		"line 6: ", "line 7: ", "line 8: ", "line 9: ", "line 10: "
-	};
-	app_util::page(sample_content, content_length, lines_per_page);
+	//try {
+	//	taskapp::filenamesIn(data_dir);
+	//}
+	//catch (const char* error) {
+	//	cout << error << endl;
+	//}
+	//catch (...) {
+	//	cout << "Could not catch error";
+	//}
+	//cout << endl;
+	//
+	// 
+	//// DEMO CODE
+	//// Pager.h usage
+	//// Outputs an array of string content at a managed pace.
+	//const int content_length = 10;
+	//const int lines_per_page = 7;
+	//cout << green;
+	//const string sample_content[content_length] = {
+	//	"line 1: ", "line 2: ", "line 3: ", "line 4: ", "line 5: ",
+	//	"line 6: ", "line 7: ", "line 8: ", "line 9: ", "line 10: "
+	//};
+	//app_util::page(sample_content, content_length, lines_per_page);
 
 	cout << white;
 	system("PAUSE");
