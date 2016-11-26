@@ -69,9 +69,24 @@ namespace task
 		init(input_creator, input_description, input_time_created);
 	}
 
+	TaskEntry::TaskEntry(const TaskEntry& original)
+		: unique_id(original.getId())
+		, time_created(original.getTimeCreatedMs())
+		, time_due(original.getTimeDueMs())
+		, description(original.getDescription())
+		, status(original.getStatus())
+		, user_creator(original.getCreator())
+	{
+	}
+
 	string TaskEntry::getDescription() const
 	{
 		return description;
+	}
+
+	void TaskEntry::setDescription(const string& new_description)
+	{
+		description = new_description;
 	}
 
 	uint64_t TaskEntry::getTimeCreatedMs() const
@@ -119,6 +134,11 @@ namespace task
 	TaskEntryStatus TaskEntry::getStatus() const
 	{
 		return status;
+	}
+
+	void TaskEntry::setStatus(const TaskEntryStatus& new_status)
+	{
+		status = new_status;
 	}
 
 	bool TaskEntry::operator== (const TaskEntry& right) const

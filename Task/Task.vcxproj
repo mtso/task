@@ -90,9 +90,13 @@
     <ClInclude Include="HashEntryImplementation.h" />
     <ClInclude Include="HashList.h" />
     <ClInclude Include="HashTable.h" />
+    <ClInclude Include="Operation.h" />
+    <ClInclude Include="OperationManager.h" />
+    <ClInclude Include="OperationType.h" />
     <ClInclude Include="TaskEntry.h" />
     <ClInclude Include="TaskEntryStatus.h" />
     <ClInclude Include="TaskLib.h" />
+    <ClInclude Include="EntryManager.h" />
     <ClInclude Include="Utilities\DateTime.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Djb2.h" />
@@ -102,6 +106,7 @@
   <ItemGroup>
     <ClCompile Include="HashListImplementation.h" />
     <ClCompile Include="HashTableImplementation.h" />
+    <ClCompile Include="Operation.cpp" />
     <ClCompile Include="TaskEntry.cpp" />
     <ClCompile Include="Utilities\DateTime.cpp" />
     <ClCompile Include="Utilities\Diagnostic.cpp" />

@@ -53,9 +53,19 @@ namespace task
 		TaskEntry(const string& input_creator, const string& input_description, const uint64_t& input_time_created);
 
 		/**
+		 * Copy constructor
+		 */
+		TaskEntry(const TaskEntry& original);
+
+		/**
 		 * Returns the description as a string
 		 */
 		string getDescription() const;
+
+		/**
+		 * TODO: IMPLEMENT THIS
+		 */
+		void setDescription(const string& new_description);
 
 		/**
 		 * Returns the creation time in milliseconds
@@ -91,6 +101,11 @@ namespace task
 		 * Returns the status enum.
 		 */
 		TaskEntryStatus getStatus() const;
+
+		/**
+		 * TODO: IMPLEMENT THIS
+		 */
+		void setStatus(const TaskEntryStatus& new_status);
 
 		/**
 		 * Returns the username of the creator

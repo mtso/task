@@ -143,7 +143,7 @@ namespace task
 	T_KV
 	void HashTable<KV>::traverse(void visit(const ValueType& entry)) const
 	{
-		throw "not implemented";
+		//throw "not implemented";
 		for (int i = 0; i < table_size; i++) {
 			// TODO: resolve traversal of list through table;
 			table[i].traverse(visit);

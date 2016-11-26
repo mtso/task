@@ -135,6 +135,10 @@ namespace task
 	T_KV
 	void HashList<KV>::traverse(void visit(const ValueType& entry)) const
 	{
+		if (isEmpty()) {
+			return;
+		}
+
 		HashEntry<KV>* current = head;
 		while (current != nullptr) {
 			visit(current->getValue());

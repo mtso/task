@@ -48,6 +48,8 @@ namespace adt {
 			* Peek returns the value of the first item from the stack.
 			*/
 		DataType peek();
+
+		void traverse(void visit(const DataType& item));
 	};
 
 	/**
@@ -101,6 +103,18 @@ namespace adt {
 	DataType Stack<DataType>::peek()
 	{
 		return head->getData();
+	}
+
+	template <typename DataType>
+	void Stack<DataType>::traverse(void visit(const DataType& item))
+	{
+		Node<DataType>* current = head;
+
+		while (current != nullptr) {
+			visit(current->getData());
+
+			current = current->getNext();
+		}
 	}
 }
 
