@@ -70,12 +70,12 @@ namespace task
 	}
 
 	TaskEntry::TaskEntry(const TaskEntry& original)
-		: unique_id(original.getId())
-		, time_created(original.getTimeCreatedMs())
-		, time_due(original.getTimeDueMs())
-		, description(original.getDescription())
-		, status(original.getStatus())
-		, user_creator(original.getCreator())
+		: unique_id(original.unique_id)
+		, time_created(original.time_created)
+		, time_due(original.time_due)
+		, description(original.description)
+		, status(original.status)
+		, user_creator(original.user_creator)
 	{
 	}
 
