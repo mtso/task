@@ -6,6 +6,7 @@
 #include <tchar.h>
 #include <iostream>
 #include <strsafe.h>
+#include <vector>
 using namespace std;
 #pragma comment(lib, "User32.lib")
 
@@ -21,6 +22,9 @@ namespace taskapp {
 	 * the filepaths of a given directory.
 	 */
 	string filenamesIn(const TCHAR* search_directory);
+
+	// Internet stuff
+	bool ListFiles(wstring path, wstring mask, vector<wstring>& files);
 }
 
 #endif

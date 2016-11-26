@@ -2,7 +2,7 @@
 // TaskApp
 // CIS 22C F2016: Adrian Marroquin
 //
-// WindowsMain is the entry point into Tasks's 
+// WindowsMain is the entry point into Tasks's
 // interactive shell on Windows platforms.
 //
 //
@@ -11,6 +11,7 @@
 
 // Temporary test includes
 #include <fstream>
+using namespace std;
 
 // Includes all usable Task headers.
 #include "TaskLib.h"
@@ -24,7 +25,7 @@
 #include "AppIncludes.h"
 
 void visit(const task::Operation& item) {
-	
+
 	switch (item.getType()) {
 	case task::UPDATE_STATUS:
 		cout << "update ";
@@ -41,6 +42,7 @@ void visitTable(const task::TaskEntry& entry) {
 	cout << entry.getDescription() << endl;
 }
 
+
 int main(int argc, char* argv[])
 {
 	// Output version number specified in AppConstants.h
@@ -48,8 +50,8 @@ int main(int argc, char* argv[])
 
 
 	adt::Stack<task::Operation> history;
-	
-	
+
+
 	task::TaskEntry entry_1 = task::TaskEntry("mryagni", "waddup waddup");
 	entry_1.setTimeDueMs(entry_1.getTimeCreatedMs() + task::weekToMs(1));
 
@@ -116,7 +118,7 @@ int main(int argc, char* argv[])
 	entry_buffer << new_entry.getId() << ","
 		<< new_entry.getTimeCreatedMs() << ","
 		<< new_entry.getTimeDueMs() << ","
-		<< "\"" << new_entry.getDescription() << "\"," 
+		<< "\"" << new_entry.getDescription() << "\","
 		<< entry_status << "\n";
 
 	ofstream mryagni_log;
@@ -128,6 +130,7 @@ int main(int argc, char* argv[])
 	mryagni_log.close();
 
 
+<<<<<<< HEAD
 	//// DEMO CODE
 	//// WindowsDirectory filename search usage
 	//TCHAR* data_dir = TEXT("..\\.task");
@@ -146,7 +149,7 @@ int main(int argc, char* argv[])
 	//}
 	//cout << endl;
 	//
-	// 
+	//
 	//// DEMO CODE
 	//// Pager.h usage
 	//// Outputs an array of string content at a managed pace.
@@ -158,6 +161,47 @@ int main(int argc, char* argv[])
 	//	"line 6: ", "line 7: ", "line 8: ", "line 9: ", "line 10: "
 	//};
 	//app_util::page(sample_content, content_length, lines_per_page);
+=======
+	// DEMO CODE
+	// WindowsDirectory filename search usage
+	//TCHAR* data_dir = TEXT("..\\.task");
+	//string data_dir = "..\\";
+
+	//cout << data_dir;
+
+	try {
+		//taskapp::filenamesIn(data_dir);
+		vector<wstring> files;
+
+		if (taskapp::ListFiles(L"..\\.task", L"*", files)) {
+			for (vector<wstring>::iterator it = files.begin();
+				it != files.end();
+				++it) {
+				wcout << it->c_str() << endl;
+			}
+		}
+	}
+	catch (const char* error) {
+		cout << error << endl;
+	}
+	catch (...) {
+		cout << "Could not catch error";
+	}
+	cout << endl;
+
+
+	// DEMO CODE
+	// Pager.h usage
+	// Outputs an array of string content at a managed pace.
+	const int content_length = 10;
+	const int lines_per_page = 7;
+	cout << green;
+	const string sample_content[content_length] = {
+		"line 1: ", "line 2: ", "line 3: ", "line 4: ", "line 5: ",
+		"line 6: ", "line 7: ", "line 8: ", "line 9: ", "line 10: "
+	};
+	app_util::page(sample_content, content_length, lines_per_page);
+>>>>>>> Add function to WindowsDirectory.h that iterates through files in a given directory, with a given mask.
 
 	cout << white;
 	system("PAUSE");
