@@ -18,6 +18,7 @@
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
 
+using namespace std;
 
 int main(int argc, char* argv[])
 {
@@ -86,13 +87,22 @@ int main(int argc, char* argv[])
 
 	// DEMO CODE
 	// WindowsDirectory filename search usage
-	TCHAR* data_dir = TEXT("..\\.task");
+	//TCHAR* data_dir = TEXT("..\\.task");
 	//string data_dir = "..\\";
 
 	//cout << data_dir;
 
 	try {
-		taskapp::filenamesIn(data_dir);
+		//taskapp::filenamesIn(data_dir);
+		vector<wstring> files;
+
+		if (taskapp::ListFiles(L"..\\.task", L"*", files)) {
+			for (vector<wstring>::iterator it = files.begin();
+				it != files.end();
+				++it) {
+				wcout << it->c_str() << endl;
+			}
+		}
 	}
 	catch (const char* error) {
 		cout << error << endl;
