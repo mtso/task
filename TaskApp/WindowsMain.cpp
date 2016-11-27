@@ -42,7 +42,6 @@ void visitTable(const task::TaskEntry& entry) {
 	cout << entry.getDescription() << endl;
 }
 
-
 int main(int argc, char* argv[])
 {
 	// Output version number specified in AppConstants.h
