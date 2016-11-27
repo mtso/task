@@ -69,6 +69,11 @@ namespace task
 		init(input_creator, input_description, input_time_created);
 	}
 
+    TaskEntry::TaskEntry(const string& input_creator, const string& input_description, const uint64_t& input_time_created, const uint64_t& input_time_due, TaskEntryStatus& input_status)
+    {
+        init(input_creator, input_description, input_time_created, input_status, input_time_due);
+    }
+
 	TaskEntry::TaskEntry(const TaskEntry& original)
 		: unique_id(original.unique_id)
 		, time_created(original.time_created)

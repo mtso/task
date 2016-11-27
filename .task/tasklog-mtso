@@ -1,2 +1,0 @@
-dc48bd13747aec17318491ed4b67f857c10d7231	3688099389	3688358589	"Decide on hash function to use."	assignee=	status="in-progress"	tags="hash table","core"	notes=[mtso:"Interesting choice of words...", CodeTortoise:"You should use Keccak-p sponge function."]
-00caa8c72f3ce8137411ad70434555e23d86abb8	3688100795	3688705595	"Design Main's menu."	assignee=CodeTortoise	status="backlog"	tags="main"	notes=[]
