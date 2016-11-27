@@ -38,7 +38,7 @@ namespace task {
 
 		int table_size;
 
-		unsigned int hashOf(const KeyType& target_key) const;
+		inline unsigned int hashOf(const KeyType& target_key) const;
 
 	public:
 		/**
