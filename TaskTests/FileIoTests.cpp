@@ -4,7 +4,7 @@
 
 // Include the header file of your class to be able to access its public functions
 // #include "[ObjectName].h" where [ObjectMain] is the name of the header file of your class.
-
+#include "FileStore.h"
 
 // Namespace of Assert::
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -18,10 +18,11 @@ namespace FileIoTests // Testing Project namespace
 		// TODO: Need to write tests for file IO classes
 
 		// TODO: `ExampleMethodTest` should be renamed to something more descriptive
-        TEST_METHOD(ExampleMethodTest) 
+		TEST_METHOD(TestGetUser)
         {
             // returns true if expected and actual are equivalent
-            Assert::AreEqual(0, 0);
+			task::FileStore fileIo;
+			//Assert::AreEqual(true, fileIo.load("../.task/tasklog-mryagni"));
         }
 
         // Once test methods are set up,

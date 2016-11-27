@@ -52,6 +52,8 @@ namespace task
 		 */
 		TaskEntry(const string& input_creator, const string& input_description, const uint64_t& input_time_created);
 
+		TaskEntry(const string& input_creator, const string& input_description, const uint64_t& input_time_created, const uint64_t& input_time_due, TaskEntryStatus& input_status);
+
 		/**
 		 * Copy constructor
 		 */

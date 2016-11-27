@@ -19,6 +19,8 @@
 #include "TaskEntry.h"
 #include "Utilities\DateTime.h"
 #include "HashTable.h"
+#include "EntryManager.h"
+#include "FileStore.h"
 
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
@@ -47,27 +49,29 @@ int main(int argc, char* argv[])
 	cout << "task v" << taskconfig::VERSION << endl;
 
 
-	adt::Stack<task::Operation> history;
-	
-	
-	task::TaskEntry entry_1 = task::TaskEntry("mryagni", "waddup waddup");
-	entry_1.setTimeDueMs(entry_1.getTimeCreatedMs() + task::weekToMs(1));
+	//adt::Stack<task::Operation> history;
+	//
+	//task::TaskEntry entry_1 = task::TaskEntry("mryagni", "waddup waddup");
+	//entry_1.setTimeDueMs(entry_1.getTimeCreatedMs() + task::weekToMs(1));
 
-	history.push(task::Operation(task::UPDATE_STATUS, entry_1));
-	entry_1.setStatus(IN_PROGRESS);
+	//history.push(task::Operation(task::UPDATE_STATUS, entry_1));
+	//entry_1.setStatus(IN_PROGRESS);
 
-	history.traverse(visit);
+	//history.traverse(visit);
 
+	//task::HashTable<string, task::TaskEntry> entries;
+	//entries.insert(entry_1.getId(), entry_1);
 
-
-	task::HashTable<string, task::TaskEntry> entries;
-	entries.insert(entry_1.getId(), entry_1);
-
-	entries.traverse(visitTable);
+	//entries.traverse(visitTable);
 
 
+	task::EntryManager manager = task::EntryManager();
+	task::FileStore fileIo;
+	fileIo.load("../.task/tasklog-mryagni");
 
+	task::EntryManager* demo = new task::EntryManager();
 
+	delete demo;
 
 	//// DEMO CODE
 	//// Diagnostic usage

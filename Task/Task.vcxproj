@@ -84,6 +84,7 @@
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="c_tree.h" />
     <ClInclude Include="c_tree_impl.h" />
+    <ClInclude Include="FileStore.h" />
     <ClInclude Include="Generics\List.h" />
     <ClInclude Include="Generics\Node.h" />
     <ClInclude Include="HashEntry.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileStore.cpp" />
     <ClCompile Include="HashListImplementation.h" />
     <ClCompile Include="HashTableImplementation.h" />
     <ClCompile Include="Operation.cpp" />

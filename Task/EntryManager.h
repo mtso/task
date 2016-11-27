@@ -5,7 +5,10 @@
 #ifndef TASK_ENTRYMANAGER_H
 #define TASK_ENTRYMANAGER_H
 
+#ifndef TASK_HASHTABLE_H
 #include "HashTable.h"
+#endif
+
 #include "c_tree.h"
 #include "TaskEntry.h"
 #include "OperationManager.h"
