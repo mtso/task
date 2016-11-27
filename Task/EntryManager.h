@@ -8,7 +8,9 @@
 #include "HashTable.h"
 #include "c_tree.h"
 #include "TaskEntry.h"
-#include "OperationManager.h"
+//#include "OperationManager.h"
+#include "Operation.h"
+#include "ADT\Stack.h"
 
 namespace task {
 
@@ -20,9 +22,15 @@ namespace task {
 
 		c_tree<uint64_t, TaskEntry*> tree;
 
-		OperationManager operationManager;
+		//OperationManager operationManager;
+
+		adt::Stack<Operation> history;
+
+		void printHistory(const Operation& item);
 
 	public:
+		void printHistoryTo(ostream& output);
+
 		void printAllTo(ostream& output);
 
 		void createEntry(const string& description);
