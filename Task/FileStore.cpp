@@ -3,21 +3,24 @@
 // CIS 22C F2016: Jinzhu Shen
 
 #include "FileStore.h"
+#include "TaskEntryStatus.h"
+
 #include <string.h>
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 namespace task {
 
     string FileStore::getUser(const string& filePath) {
         vector<string> fields;
-        split(filePath, "/-", fields);
+        split(filePath, "\\/-", fields);
         return fields[fields.size() - 1];
     }
 
-    void FileStore::split(const string &str, const string& delim, vector<string>& fileds) {
+    void FileStore::split(string str, const string& delim, vector<string>& fileds) {
         char *input = const_cast<char *>(str.c_str());
         char *next_token = nullptr;
         char *token = strtok_s(input, delim.c_str(), &next_token);
@@ -40,12 +43,10 @@ namespace task {
         return header;
     }
 
-    FileStore::FileStore(EntryManager *visitor)
-        : visitor(visitor) {
-    }
+    bool FileStore::load(const string& filePath, vector<TaskEntry>& tasks) {
+        string user = getUser(filePath);
 
-    bool FileStore::load(const string& filePath) {
-        ifstream input(filePath.c_str(), ifstream::in);
+        ifstream input(filePath.c_str(), ios::in);
 
         if (!input) {
             return false;
@@ -63,15 +64,31 @@ namespace task {
             vector<string> fields;
             split(line, ",", fields);
 
-            // visitor->loadEntry();
+            if (fields.size() >= 5) {
+                uint64_t time_created;
+                uint64_t time_due;
+                stringstream converter;
+                converter << fields[1];
+                converter >> time_created;
+                converter.clear();
+                converter << fields[2];
+                converter >> time_due;
 
-            ++i;
+                TaskEntryStatus status = getStatus(fields[4]);
+
+                TaskEntry task(user, fields[3], time_created, time_due, status);
+                tasks.push_back(task);
+
+                ++i;
+            }
         }
+        input.close();
+
         return true;
     }
 
-    bool FileStore::store(const string& filePath) {
-        ofstream output(filePath.c_str(), ofstream::out | ofstream::trunc);
+    bool FileStore::store(const string& filePath, const vector<TaskEntry>& tasks) {
+        ofstream output(filePath.c_str(), ios::out | ios::trunc);
 
         if (!output) {
             return false;
@@ -80,14 +97,20 @@ namespace task {
         // header line
         output << getHeader() << endl;
 
-        // TODO: visitor->getAllEntry();
-        string id("b74c33f995843a5f53c256e196098fcce0338783");
-        long time_created = 0l;
-        long time_due = 0l;
-        string description("Implement TaskEntry data model");
-        // TaskEntryStatus status(BACKLOG);
+        int size = tasks.size();
+        for (int i = 0; i < size; i++) {
+            TaskEntry task = tasks[i];
 
-        output << id << "," << time_created << "," << time_due << "\"" << description << "\"" << endl;
+            string id = task.getId();
+            uint64_t time_created = task.getTimeCreatedMs();
+            uint64_t time_due = task.getTimeDueMs();
+            string status_str = getStatusString(task.getStatus());
+            string description = task.getDescription();
+
+            output << id << "," << time_created << "," << time_due << ",\"" << description << "\"," << status_str << endl;
+        }
+
+        output.close();
 
         return true;
     }
