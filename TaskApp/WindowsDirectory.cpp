@@ -6,56 +6,57 @@
 // Searches a given directory path and logs the filepaths of its contents.
 
 #include "WindowsDirectory.h"
+#include "ADT\Stack.h"
 
 namespace taskapp {
 
-	string filenamesIn(const TCHAR* search_directory)
+	/*string filenamesIn(const TCHAR* search_directory)
 	{
-		// Get the length of the input parameter
+		 Get the length of the input parameter
 		size_t length_of_arg;
 		StringCchLength(search_directory, MAX_PATH, &length_of_arg);
 
-		// Throw if parameter length + 3 (for the search pattern)
-		// is greater than MAX_PATH (260)
+		 Throw if parameter length + 3 (for the search pattern)
+		 is greater than MAX_PATH (260)
 		if (length_of_arg > MAX_PATH - 3) {
 			throw "Directory path is too long.";
 		}
 
-		// Variables to contain data about each returned file handle
+		 Variables to contain data about each returned file handle
 		WIN32_FIND_DATA find_data;
 		LARGE_INTEGER file_size;
 
-		// Used to store the input directory path + `\\*`
-		// in order to search the entire folder.
+		 Used to store the input directory path + `\\*`
+		 in order to search the entire folder.
 		TCHAR search_pattern[MAX_PATH];
 		
-		// Contains the value returned from FindFirstFile()/FindeNextFile()
+		 Contains the value returned from FindFirstFile()/FindeNextFile()
 		HANDLE find_handle = INVALID_HANDLE_VALUE;
 
-		// Used to catch ERROR_NO_MORE_FILES
+		 Used to catch ERROR_NO_MORE_FILES
 		DWORD dwordError = 0;
 
-		// Copy input parameter and append `\\*`
-		//string append = "\\*";
+		 Copy input parameter and append `\\*`
+		string append = "\\*";
 		StringCchCopy(search_pattern, MAX_PATH, search_directory);
 		StringCchCat(search_pattern, MAX_PATH, TEXT("\\*"));
-		//StringCchCat(search_pattern, MAX_PATH, reinterpret_cast<STRSAFE_LPCWSTR>( append.c_str() ));
+		StringCchCat(search_pattern, MAX_PATH, reinterpret_cast<STRSAFE_LPCWSTR>( append.c_str() ));
 
 
-		// Find the first file handle that matches the search pattern
+		 Find the first file handle that matches the search pattern
 		find_handle = FindFirstFile(search_pattern, &find_data);
 
-		//HANDLE other_handle;
-		//string search = "..\\.task";
-		//const char s[] = "..\\.task";
-		//other_handle = FindFirstFile(reinterpret_cast<LPCWSTR>( search.c_str() ), &find_data);
+		HANDLE other_handle;
+		string search = "..\\.task";
+		const char s[] = "..\\.task";
+		other_handle = FindFirstFile(reinterpret_cast<LPCWSTR>( search.c_str() ), &find_data);
 
 		if (find_handle == INVALID_HANDLE_VALUE) {
 			throw "FindFirstFile returned an invalid handle value";
 		}
 
 		do {
-			// Handle directories differently than files
+			 Handle directories differently than files
 			if (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) 
 			{
 				_tprintf(TEXT("  %s   <DIR>\n"), find_data.cFileName);
@@ -72,11 +73,54 @@ namespace taskapp {
 		dwordError = GetLastError();
 		if (dwordError != ERROR_NO_MORE_FILES)
 		{
-			// Something went wrong with FindNextFile
+			 Something went wrong with FindNextFile
 			throw "FindNextFile error";
 		}
 
 		FindClose(find_handle);
 		return "done";
+	}*/
+
+	bool ListFiles(wstring path, wstring mask, vector<wstring>& files) {
+		HANDLE hFind = INVALID_HANDLE_VALUE;
+		WIN32_FIND_DATA ffd;
+		wstring spec;
+		adt::Stack<wstring> directories;
+
+		directories.push(path);
+		files.clear();
+
+		while (!directories.isEmpty()) {
+			path = directories.peek();
+			spec = path + L"\\" + mask;
+			directories.pop();
+
+			hFind = FindFirstFile(spec.c_str(), &ffd);
+			if (hFind == INVALID_HANDLE_VALUE)  {
+				return false;
+			}
+
+			do {
+				if (wcscmp(ffd.cFileName, L".") != 0 &&
+					wcscmp(ffd.cFileName, L"..") != 0) {
+					if (ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+						directories.push(path + L"\\" + ffd.cFileName);
+					}
+					else {
+						files.push_back(path + L"\\" + ffd.cFileName);
+					}
+				}
+			} while (FindNextFile(hFind, &ffd) != 0);
+
+			if (GetLastError() != ERROR_NO_MORE_FILES) {
+				FindClose(hFind);
+				return false;
+			}
+
+			FindClose(hFind);
+			hFind = INVALID_HANDLE_VALUE;
+		}
+
+		return true;
 	}
 }

@@ -23,6 +23,8 @@
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
 
+using namespace std;
+
 void visit(const task::Operation& item) {
 	
 	switch (item.getType()) {
@@ -135,16 +137,24 @@ int main(int argc, char* argv[])
 
 	////cout << data_dir;
 
-	//try {
-	//	taskapp::filenamesIn(data_dir);
-	//}
-	//catch (const char* error) {
-	//	cout << error << endl;
-	//}
-	//catch (...) {
-	//	cout << "Could not catch error";
-	//}
-	//cout << endl;
+	try {
+		vector<wstring> files;
+
+		if (taskapp::ListFiles(L"..\\.task", L"tasklog-*", files)) {
+			for (vector<wstring>::iterator it = files.begin();
+				it != files.end();
+				++it) {
+				wcout << it->c_str() << endl;
+			}
+		}
+	}
+	catch (const char* error) {
+		cout << error << endl;
+	}
+	catch (...) {
+		cout << "Could not catch error";
+	}
+	cout << endl;
 	//
 	// 
 	//// DEMO CODE
