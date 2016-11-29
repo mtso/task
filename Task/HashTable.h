@@ -3,6 +3,9 @@
 // CIS 22C F2016: Matthew Tso
 //
 // Maybe try djb2 hash algorithm from: http://www.cse.yorku.ca/~oz/hash.html
+//
+// TODO: try next-prime implementation here: http://stackoverflow.com/a/30052481/2684355
+//       to get the next prime number of a certain order of magnitude
 
 #ifndef TASK_HASHTABLE_H
 #define TASK_HASHTABLE_H
