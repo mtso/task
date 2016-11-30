@@ -87,6 +87,9 @@
     <ClCompile Include="WindowsMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TaskTests\TaskTests.vcxproj">
+      <Project>{02e78509-df6a-4d63-86a0-265100f5742e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Task\Task.vcxproj">
       <Project>{092d0147-2d14-454a-9349-6eee960c9ed3}</Project>
     </ProjectReference>
