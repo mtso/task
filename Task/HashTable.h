@@ -108,6 +108,7 @@ namespace task {
 
 		unsigned int countOfLongestList() const;
 
+		void forceExpansion();
 	};
 }
 

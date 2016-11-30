@@ -23,7 +23,7 @@ namespace task
 	}
 
 	T_KV
-	int HashList<KV>::length() const
+	unsigned int HashList<KV>::length() const
 	{
 		return list_length;
 	}

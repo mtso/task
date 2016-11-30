@@ -13,7 +13,7 @@ namespace adt {
 		virtual ~DictionaryInterface() {}
 
 		virtual bool isEmpty() const = 0;
-		virtual int count() const = 0;
+		virtual unsigned int count() const = 0;
 		virtual bool insert(const KeyType& new_key, const ValueType& new_value) = 0;
 		virtual bool remove(const KeyType& search_key) = 0;
 		virtual void clear() = 0;

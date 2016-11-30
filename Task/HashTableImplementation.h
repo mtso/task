@@ -16,7 +16,7 @@ namespace task
 	// Private:
 
 	T_KV
-	unsigned int HashTable<KeyType, ValueType>::hashOf(const KeyType& target_key) const
+	unsigned int HashTable<KeyType, ValueType>::hashOf(const KeyType& target_key, const unsigned int &for_size) const
 	{
 		throw "HashTable has only been specialized for key/value pairs: <string, TaskEntry>, <string, TaskEntry*>";
 	}
@@ -153,8 +153,7 @@ namespace task
 	: index_of_longest(0)
 	, used_tables(0)
 	, entry_count(0)
-	, access_most(0)
-	, access_least(UINT_MAX)
+	, collisions(0)
 	{
 		table_size = DEFAULT_SIZE;
 
@@ -278,6 +277,12 @@ namespace task
 	unsigned int HashTable<KV>::countOfLongestList() const
 	{
 		return table[index_of_longest].length();
+	}
+
+	T_KV
+	void HashTable<KV>::forceExpansion()
+	{
+		expandTable();
 	}
 }
 
