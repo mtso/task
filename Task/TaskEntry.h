@@ -67,7 +67,7 @@ namespace task
 		string getDescription() const;
 
 		/**
-		 * TODO: IMPLEMENT THIS
+		 * Modifies the description value.
 		 */
 		void setDescription(const string& new_description);
 
