@@ -30,7 +30,7 @@ namespace TaskTests // Testing Project namespace
 			string test_key = test_value.getId();
 
 			table.insert(test_key, test_value);
-			Assert::AreEqual(1, table.count());
+			Assert::AreEqual((uint)1, table.count());
 		}
 
 		TEST_METHOD(AddManyEntries) {
@@ -54,14 +54,14 @@ namespace TaskTests // Testing Project namespace
 			string test_key = test_value.getId();
 
 			table.insert(test_key, test_value);
-			Assert::AreEqual(1, table.count());
+			Assert::AreEqual((uint)1, table.count());
 
 			bool couldInsertDuplicate = table.insert(test_key, test_value);
 			Assert::IsFalse(couldInsertDuplicate);
 
 			table.remove(test_key);
 			Assert::IsTrue(table.isEmpty());
-			Assert::AreEqual(0, table.count());
+			Assert::AreEqual((uint)0, table.count());
 
 			
 		}
@@ -74,7 +74,7 @@ namespace TaskTests // Testing Project namespace
 			Assert::IsTrue(list.isEmpty());
 
 			list.addFirst(3, test_value);
-			Assert::AreEqual(1, list.length());
+			Assert::AreEqual((uint)1, list.length());
 
 			string value3 = list.getValue(3);
 			Assert::AreEqual(test_value, value3);
@@ -86,7 +86,7 @@ namespace TaskTests // Testing Project namespace
 			list.addFirst(test_key, test_value);
 			list.addFirst(test_key, test_value);
 			Assert::IsFalse(list.isEmpty());
-			Assert::AreEqual(3, list.length());
+			Assert::AreEqual((uint)3, list.length());
 
 			//list.traverse(getDescription);
 

@@ -38,7 +38,7 @@ void visit(const task::Operation& item) {
 	cout << item.getPreviousState().getId() << endl;
 }
 
-void visitTable(const task::TaskEntry& entry) {
+void visitTable(task::TaskEntry& entry) {
 
 	cout << entry.getDescription() << endl;
 }
