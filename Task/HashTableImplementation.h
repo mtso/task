@@ -212,6 +212,10 @@ namespace task
 				}
 			}
 			
+			if (getLoadFactor() > 0.9 || table[index_of_longest].length() > 5) {
+				expandTable();
+			}
+
 			return true;
 		}
 	}
@@ -257,15 +261,14 @@ namespace task
 		return table[index].contains(target_key);
 	}
 
-	//T_KV
-	//void HashTable<KV>::traverse(void visit(ValueType& entry)) const
-	//{
-	//	//throw "not implemented";
-	//	for (int i = 0; i < table_size; i++) {
-	//		// TODO: resolve traversal of list through table;
-	//		table[i].traverse(visit);
-	//	}
-	//}
+	T_KV
+	void HashTable<KV>::traverse(void visit(ValueType& entry)) const
+	{
+		for (uint i = 0; i < table_size; i++) 
+		{
+			table[i].traverse(visit);
+		}
+	}
 
 	T_KV
 	double HashTable<KV>::getLoadFactor() const

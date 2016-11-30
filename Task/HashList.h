@@ -50,7 +50,7 @@ namespace task
 
 		void clear();
 
-		//void traverse(void visit(ValueType& entry)) const;
+		void traverse(void visit(ValueType& entry)) const;
 
 		KeyType peekKey();
 		ValueType peekValue();

@@ -103,7 +103,7 @@ namespace task {
 		/**
 		*
 		*/
-		//virtual void traverse(void visit(ValueType& entry)) const;
+		virtual void traverse(void visit( ValueType& entry)) const;
 
 
 		double getLoadFactor() const;
