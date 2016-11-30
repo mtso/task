@@ -77,8 +77,9 @@ void loopChunkInto(uint32_t* state, uint32_t* chunk_in)
 
 	// MARK: 11: The main loop
 	for (int i = 0; i < CHUNKXT_SIZE; i++) {
-		uint32_t f;
-		uint32_t k;
+		// Initialize to dummy values.
+		uint32_t f = 0;
+		uint32_t k = 0;
 
 		// 11.1
 		if (i >= 0 && i <= 19) {
