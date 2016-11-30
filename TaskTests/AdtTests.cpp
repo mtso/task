@@ -18,7 +18,7 @@ namespace TaskTests // Testing Project namespace
 	{
 	public:
 
-		// TODO: Write test case for Stack usage on Task Entries
+		// Stack test using TaskEntry objects
 		TEST_METHOD(Stack_TaskObjects)
 		{
 			adt::Stack<task::TaskEntry> entries;
@@ -26,18 +26,18 @@ namespace TaskTests // Testing Project namespace
 			string test_string = "new entry";
 			string test_user = "mryagni";
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < iterations; i++) {
 				task::TaskEntry entry = task::TaskEntry(test_user, test_string);
 				entries.push(entry);
 			}
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < iterations; i++) {
 				Assert::AreEqual(test_string, entries.pop().getDescription());
 			}
 			
 		}
 
-		// TODO: Write test case for Queue usage on Task Entries
+		// Queue test using TaskEntry objects
 		TEST_METHOD(Queue_TaskObjects)
 		{
 			adt::Queue<task::TaskEntry> entries;
@@ -45,12 +45,12 @@ namespace TaskTests // Testing Project namespace
 			string test_string = "new entry";
 			string test_user = "mryagni";
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < iterations; i++) {
 				task::TaskEntry entry = task::TaskEntry(test_user, test_string);
 				entries.enqueue(entry);
 			}
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < iterations; i++) {
 
 				Assert::AreEqual(test_string, entries.dequeue().getDescription());
 			}
