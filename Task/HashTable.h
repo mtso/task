@@ -37,11 +37,20 @@ namespace task {
 
 		HashList<KV>* table;
 
-		int entry_count;
+		unsigned int entry_count;
 
-		int table_size;
+		unsigned int used_tables;
+		unsigned int table_size;
+		unsigned int index_of_longest;
+		unsigned int collisions;
 
-		inline unsigned int hashOf(const KeyType& target_key) const;
+
+		inline unsigned int hashOf(const KeyType& target_key, const unsigned int &for_size) const;
+
+		void expandTable();
+
+		bool isPrime(const unsigned int &number);
+		unsigned int nextPrime(unsigned int minimum);
 
 	public:
 		/**
@@ -62,7 +71,7 @@ namespace task {
 		/**
 		 * Returns a count of the entries
 		 */
-		int count() const;
+		unsigned int count() const;
 
 		/**
 		 * Inserts an item by value
@@ -93,6 +102,12 @@ namespace task {
 		*
 		*/
 		virtual void traverse(void visit(const ValueType& entry)) const;
+
+
+		double getLoadFactor() const;
+
+		unsigned int countOfLongestList() const;
+
 	};
 }
 

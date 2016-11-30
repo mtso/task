@@ -19,7 +19,7 @@ namespace task
 	private:
 		HashEntry<KV>* head;
 
-		int list_length;
+		unsigned int list_length;
 
 	public:
 		class NotFoundException
@@ -34,7 +34,7 @@ namespace task
 
 		virtual ~HashList();
 
-		virtual int length() const;
+		virtual unsigned int length() const;
 
 		virtual bool isEmpty() const;
 
@@ -51,6 +51,9 @@ namespace task
 		void clear();
 
 		void traverse(void visit(const ValueType& entry)) const;
+
+		KeyType peekKey();
+		ValueType peekValue();
 	};
 
 }

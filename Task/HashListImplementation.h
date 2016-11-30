@@ -145,6 +145,18 @@ namespace task
 			current = current->getNext();
 		}
 	}
+
+	T_KV
+	KeyType HashList<KV>::peekKey()
+	{
+		return head->getKey();
+	}
+
+	T_KV
+	ValueType HashList<KV>::peekValue()
+	{
+		return head->getValue();
+	}
 }
 
 #endif
