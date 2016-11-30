@@ -93,7 +93,7 @@ namespace task
 		}
 
 		HashList<KV>* new_table = new HashList<KV>[new_table_size];
-		for (int i = 0; i < new_table_size; i++) {
+		for (unsigned int i = 0; i < new_table_size; i++) {
 			new_table[i] = HashList<KV>();
 		}
 		//unsigned int new_entry_count = entry_count; 
@@ -105,10 +105,10 @@ namespace task
 		KeyType transfer_key;
 		ValueType transfer_value;
 		unsigned int new_index;
-		unsigned int check_count; // number of entries shouldn't change in this process
+		unsigned int check_count = 0; // number of entries shouldn't change in this process
 
 		// TRANSFER OLD ENTRIES INTO NEW TABLE
-		for (int i = 0; i < table_size; i++) {
+		for (uint i = 0; i < table_size; i++) {
 
 			// Loop through the list at each index
 			while (!table[i].isEmpty()) {
@@ -130,7 +130,7 @@ namespace task
 				else if (new_table[new_index].length() > 1) {
 					new_collisions++;
 
-					if (new_table[new_index].length() > new_table[new_index_of_longest].length) {
+					if (new_table[new_index].length() > new_table[new_index_of_longest].length()) {
 						new_index_of_longest = new_index;
 					}
 				}
@@ -159,7 +159,7 @@ namespace task
 
 		table = new HashList<KV>[table_size];
 
-		for (int i = 0; i < table_size; i++) {
+		for (uint i = 0; i < table_size; i++) {
 			table[i] = HashList<KV>();
 		}
 	}
@@ -167,7 +167,7 @@ namespace task
 	T_KV
 	HashTable<KV>::~HashTable()
 	{
-		for (int i = 0; i < table_size; i++) {
+		for (uint i = 0; i < table_size; i++) {
 
 			table[i].clear();
 
@@ -239,7 +239,7 @@ namespace task
 	T_KV
 	void HashTable<KV>::clear()
 	{
-		for (int i = 0; i < table_size; i++) {
+		for (uint i = 0; i < table_size; i++) {
 			table[i].clear();
 		}
 	}
@@ -257,15 +257,15 @@ namespace task
 		return table[index].contains(target_key);
 	}
 
-	T_KV
-	void HashTable<KV>::traverse(void visit(const ValueType& entry)) const
-	{
-		//throw "not implemented";
-		for (int i = 0; i < table_size; i++) {
-			// TODO: resolve traversal of list through table;
-			table[i].traverse(visit);
-		}
-	}
+	//T_KV
+	//void HashTable<KV>::traverse(void visit(ValueType& entry)) const
+	//{
+	//	//throw "not implemented";
+	//	for (int i = 0; i < table_size; i++) {
+	//		// TODO: resolve traversal of list through table;
+	//		table[i].traverse(visit);
+	//	}
+	//}
 
 	T_KV
 	double HashTable<KV>::getLoadFactor() const
@@ -274,7 +274,7 @@ namespace task
 	}
 
 	T_KV
-	unsigned int HashTable<KV>::countOfLongestList() const
+	unsigned int HashTable<KV>::countLongestList() const
 	{
 		return table[index_of_longest].length();
 	}
@@ -283,6 +283,18 @@ namespace task
 	void HashTable<KV>::forceExpansion()
 	{
 		expandTable();
+	}
+
+	T_KV
+	unsigned int HashTable<KV>::countUsedTables() const
+	{
+		return used_tables;
+	}
+
+	T_KV
+	unsigned int HashTable<KV>::getTableSize() const
+	{
+		return table_size;
 	}
 }
 

@@ -41,6 +41,8 @@ namespace task
 		static string msToString(const uint64_t& milliseconds);
 
 	public:
+		TaskEntry();
+
 		/**
 		 * Construct a new TaskEntry with just a string.
 		 */

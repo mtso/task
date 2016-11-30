@@ -132,19 +132,19 @@ namespace task
 		return false;
 	}
 
-	T_KV
-	void HashList<KV>::traverse(void visit(const ValueType& entry)) const
-	{
-		if (isEmpty()) {
-			return;
-		}
+	//T_KV
+	//void HashList<KV>::traverse(void visit(ValueType& entry)) const
+	//{
+	//	if (isEmpty()) {
+	//		return;
+	//	}
 
-		HashEntry<KV>* current = head;
-		while (current != nullptr) {
-			visit(current->getValue());
-			current = current->getNext();
-		}
-	}
+	//	HashEntry<KV>* current = head;
+	//	while (current != nullptr) {
+	//		visit(current->getValue());
+	//		current = current->getNext();
+	//	}
+	//}
 
 	T_KV
 	KeyType HashList<KV>::peekKey()

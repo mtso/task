@@ -20,6 +20,8 @@ using namespace std;
 
 //#define KV KeyType, ValueType
 
+typedef unsigned int uint;
+
 namespace task {
 
 	// TODO: Need to design HashTable and figure out collision resolution method
@@ -101,12 +103,16 @@ namespace task {
 		/**
 		*
 		*/
-		virtual void traverse(void visit(const ValueType& entry)) const;
+		//virtual void traverse(void visit(ValueType& entry)) const;
 
 
 		double getLoadFactor() const;
 
-		unsigned int countOfLongestList() const;
+		unsigned int countLongestList() const;
+
+		unsigned int countUsedTables() const;
+
+		unsigned int getTableSize() const;
 
 		void forceExpansion();
 	};

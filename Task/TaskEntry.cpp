@@ -55,6 +55,20 @@ namespace task
 
 	// Public member functions
 
+	/**
+	 * Default constructor, should never inserted directly into a table 
+	 */
+	TaskEntry::TaskEntry()
+		: unique_id("")
+		, time_created(0)
+		, time_due(0)
+		, description("")
+		, status(BACKLOG)
+		, user_creator("")
+	{
+	}
+
+
 	TaskEntry::TaskEntry(const string& input_creator, const string& input_description)
 	{
 		using namespace chrono;
