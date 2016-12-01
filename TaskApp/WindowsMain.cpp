@@ -49,27 +49,22 @@ void visitTable(task::TaskEntry& entry) {
 
 int main(int argc, char* argv[])
 {
+	task::EntryManager manager;
+
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 
-	vector<wstring> files;
-	//if (taskapp::ListFiles(L"..\\.task", L"", files)) {
-	//	for (int i = 0; i < files.size(); i++) {
-	//		//_tprintf((wchar_t) (files[i]));
-	//		wcout << files[i] << endl;
-	//	}
-	//}
-	//else {
-	//	cout << "failed reading files" << endl;
-	//}
+	vector<string> all_filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
+	vector<string> tasklog_filenames;
 
-	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
-	
-	for (int i = 0; i < filenames.size(); i++) {
-		if (filenames[i].find("tasklog-") != string::npos) {
-			cout << filenames[i] << endl;
+	for (int i = 0; i < all_filenames.size(); i++) {
+		if (all_filenames[i].find("tasklog-") != string::npos) {
+			tasklog_filenames.push_back(all_filenames[i]);
 		}
 	}
+
+	manager.loadTasklogs(tasklog_filenames);
+
 
 #ifndef DEBUG
 
