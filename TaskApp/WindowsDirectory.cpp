@@ -40,42 +40,24 @@ namespace taskapp {
 		DWORD dwordError = 0;
 
 		// Copy input parameter and append `\\*`
-		//string append = "\\*";
 		StringCchCopy(search_pattern, MAX_PATH, search_directory);
 		StringCchCat(search_pattern, MAX_PATH, TEXT("\\*"));
-		//StringCchCat(search_pattern, MAX_PATH, reinterpret_cast<STRSAFE_LPCWSTR>( append.c_str() ));
-
 
 		// Find the first file handle that matches the search pattern
 		find_handle = FindFirstFile(search_pattern, &find_data);
-
-		//HANDLE other_handle;
-		//string search = "..\\.task";
-		//const char s[] = "..\\.task";
-		//other_handle = FindFirstFile(reinterpret_cast<LPCWSTR>( search.c_str() ), &find_data);
 
 		if (find_handle == INVALID_HANDLE_VALUE) {
 			throw "FindFirstFile returned an invalid handle value";
 		}
 
 		do {
-			// Handle directories differently than files
-			if (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+			// Ignore directories
+			if (! (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))
 			{
-				//_tprintf(TEXT("  %s   <DIR>\n"), find_data.cFileName);
-			}
-			else
-			{
-				//file_size.LowPart = find_data.nFileSizeLow;
-				//file_size.HighPart = find_data.nFileSizeHigh;
-				//_tprintf(TEXT("%s  %ld bytes\n"), find_data.cFileName, file_size.QuadPart);
-
 				wstring raw_string = find_data.cFileName;
-				string string_test(raw_string.begin(), raw_string.end());
-
+				string filename(raw_string.begin(), raw_string.end());
 				
-				filenames.push_back(string_test);
-				//cout << string_test << endl;
+				filenames.push_back(filename);
 			}
 		} while (FindNextFile(find_handle, &find_data) != 0);
 
