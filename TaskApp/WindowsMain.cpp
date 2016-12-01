@@ -20,6 +20,8 @@
 #include "Utilities\DateTime.h"
 #include "HashTable.h"
 #include "EntryManager.h"
+#include "WindowsDirectory.h"
+
 
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
@@ -49,6 +51,20 @@ int main(int argc, char* argv[])
 {
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
+
+	vector<wstring> files;
+	if (taskapp::ListFiles(L"..\\.task", L"", files)) {
+		for (int i = 0; i < files.size(); i++) {
+			//_tprintf((wchar_t) (files[i]));
+			wcout << files[i] << endl;
+		}
+	}
+	else {
+		cout << "failed reading files" << endl;
+	}
+
+	taskapp::filenamesIn(_TEXT("..\\.task"));
+	
 
 #ifndef DEBUG
 

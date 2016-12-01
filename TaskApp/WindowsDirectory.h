@@ -1,3 +1,6 @@
+// Pager.h
+// TaskApp
+// CIS 22C F2016: Adrian Marroquin
 
 #ifndef TASKAPP_WINDOWSDIRECTORY_H
 #define TASKAPP_WINDOWSDIRECTORY_H
@@ -21,7 +24,7 @@ namespace taskapp {
 	 * Stub of a function that that is supposed to return
 	 * the filepaths of a given directory.
 	 */
-	//string filenamesIn(const TCHAR* search_directory);
+	string filenamesIn(const TCHAR* search_directory);
 
 	bool ListFiles(wstring path, wstring mask, vector<wstring>& files);
 }
