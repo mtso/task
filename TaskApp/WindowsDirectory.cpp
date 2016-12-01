@@ -11,8 +11,10 @@
 namespace taskapp {
 
 
-	string filenamesIn(const TCHAR* search_directory)
+	vector<string> filenamesIn(const TCHAR* search_directory)
 	{
+		vector<string> filenames;
+
 		// Get the length of the input parameter
 		size_t length_of_arg;
 		StringCchLength(search_directory, MAX_PATH, &length_of_arg);
@@ -60,13 +62,20 @@ namespace taskapp {
 			// Handle directories differently than files
 			if (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
 			{
-				_tprintf(TEXT("  %s   <DIR>\n"), find_data.cFileName);
+				//_tprintf(TEXT("  %s   <DIR>\n"), find_data.cFileName);
 			}
 			else
 			{
-				file_size.LowPart = find_data.nFileSizeLow;
-				file_size.HighPart = find_data.nFileSizeHigh;
-				_tprintf(TEXT("%s  %ld bytes\n"), find_data.cFileName, file_size.QuadPart);
+				//file_size.LowPart = find_data.nFileSizeLow;
+				//file_size.HighPart = find_data.nFileSizeHigh;
+				//_tprintf(TEXT("%s  %ld bytes\n"), find_data.cFileName, file_size.QuadPart);
+
+				wstring raw_string = find_data.cFileName;
+				string string_test(raw_string.begin(), raw_string.end());
+
+				
+				filenames.push_back(string_test);
+				//cout << string_test << endl;
 			}
 		} while (FindNextFile(find_handle, &find_data) != 0);
 
@@ -78,7 +87,7 @@ namespace taskapp {
 		}
 
 		FindClose(find_handle);
-		return "done";
+		return filenames;
 	}
 
 	bool ListFiles(wstring path, wstring mask, vector<wstring>& files) {

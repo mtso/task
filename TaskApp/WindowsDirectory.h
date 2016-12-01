@@ -10,6 +10,8 @@
 #include <iostream>
 #include <strsafe.h>
 #include <vector>
+#include <string>
+#include "ADT\Stack.h"
 using namespace std;
 #pragma comment(lib, "User32.lib")
 
@@ -24,9 +26,7 @@ namespace taskapp {
 	 * Stub of a function that that is supposed to return
 	 * the filepaths of a given directory.
 	 */
-	string filenamesIn(const TCHAR* search_directory);
-
-	bool ListFiles(wstring path, wstring mask, vector<wstring>& files);
+	vector<string> filenamesIn(const TCHAR* search_directory);
 }
 
 #endif

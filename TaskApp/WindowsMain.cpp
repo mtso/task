@@ -53,18 +53,23 @@ int main(int argc, char* argv[])
 	cout << "task v" << taskapp::VERSION << endl;
 
 	vector<wstring> files;
-	if (taskapp::ListFiles(L"..\\.task", L"", files)) {
-		for (int i = 0; i < files.size(); i++) {
-			//_tprintf((wchar_t) (files[i]));
-			wcout << files[i] << endl;
+	//if (taskapp::ListFiles(L"..\\.task", L"", files)) {
+	//	for (int i = 0; i < files.size(); i++) {
+	//		//_tprintf((wchar_t) (files[i]));
+	//		wcout << files[i] << endl;
+	//	}
+	//}
+	//else {
+	//	cout << "failed reading files" << endl;
+	//}
+
+	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
+	
+	for (int i = 0; i < filenames.size(); i++) {
+		if (filenames[i].find("tasklog-") != string::npos) {
+			cout << filenames[i] << endl;
 		}
 	}
-	else {
-		cout << "failed reading files" << endl;
-	}
-
-	taskapp::filenamesIn(_TEXT("..\\.task"));
-	
 
 #ifndef DEBUG
 
