@@ -89,47 +89,4 @@ namespace taskapp {
 		FindClose(find_handle);
 		return filenames;
 	}
-
-	bool ListFiles(wstring path, wstring mask, vector<wstring>& files) {
-		HANDLE hFind = INVALID_HANDLE_VALUE;
-		WIN32_FIND_DATA ffd;
-		wstring spec;
-		adt::Stack<wstring> directories;
-
-		directories.push(path);
-		files.clear();
-
-		while (!directories.isEmpty()) {
-			path = directories.peek();
-			spec = path + L"\\" + mask;
-			directories.pop();
-
-			hFind = FindFirstFile(spec.c_str(), &ffd);
-			if (hFind == INVALID_HANDLE_VALUE)  {
-				return false;
-			}
-
-			do {
-				if (wcscmp(ffd.cFileName, L".") != 0 &&
-					wcscmp(ffd.cFileName, L"..") != 0) {
-					if (ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-						directories.push(path + L"\\" + ffd.cFileName);
-					}
-					else {
-						files.push_back(path + L"\\" + ffd.cFileName);
-					}
-				}
-			} while (FindNextFile(hFind, &ffd) != 0);
-
-			if (GetLastError() != ERROR_NO_MORE_FILES) {
-				FindClose(hFind);
-				return false;
-			}
-
-			FindClose(hFind);
-			hFind = INVALID_HANDLE_VALUE;
-		}
-
-		return true;
-	}
 }
