@@ -105,6 +105,7 @@
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EntryManager.cpp" />
     <ClCompile Include="FileStore.cpp" />
     <ClCompile Include="HashListImplementation.h" />
     <ClCompile Include="HashTableImplementation.h" />

@@ -16,16 +16,18 @@ namespace task {
 
 	private:
 
-		HashTable<string, TaskEntry*> table;
+		HashTable<string, TaskEntry> table;
 
-		c_tree<uint64_t, TaskEntry*> tree;
+		c_tree<uint64_t, TaskEntry> tree;
 
 		OperationManager operationManager;
 
 	public:
 		void printAllTo(ostream& output);
 
-		void createEntry(const string& description);
+		void createEntry(const string& description, int & dueIn);
+
+		TaskEntry searchEntry(const string& description);
 
 		void deleteEntry(const string& id);
 
