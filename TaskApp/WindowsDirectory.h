@@ -1,6 +1,6 @@
 // Pager.h
 // TaskApp
-// CIS 22C F2016: Adrian Marroquin
+// CIS 22C F2016: Matthew Tso
 
 #ifndef TASKAPP_WINDOWSDIRECTORY_H
 #define TASKAPP_WINDOWSDIRECTORY_H
