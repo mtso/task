@@ -161,6 +161,7 @@ namespace task
 
 		for (uint i = 0; i < table_size; i++) {
 			table[i] = HashList<KV>();
+			if (!table[i].isEmpty()) { throw "what!?"; }
 		}
 	}
 

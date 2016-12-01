@@ -47,6 +47,11 @@ void visitTable(task::TaskEntry& entry) {
 	cout << entry.getDescription() << endl;
 }
 
+void visitTablePtr(task::TaskEntry*& entry) {
+
+	cout << entry->getDescription() << endl;
+}
+
 int main(int argc, char* argv[])
 {
 	task::EntryManager manager;
@@ -54,17 +59,28 @@ int main(int argc, char* argv[])
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 
-	vector<string> all_filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
-	vector<string> tasklog_filenames;
+	//vector<string> all_filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
+	//vector<string> tasklog_filenames;
 
-	for (int i = 0; i < all_filenames.size(); i++) {
-		if (all_filenames[i].find("tasklog-") != string::npos) {
-			tasklog_filenames.push_back(all_filenames[i]);
+	//for (int i = 0; i < all_filenames.size(); i++) {
+	//	if (all_filenames[i].find("tasklog-") != string::npos) {
+	//		tasklog_filenames.push_back(all_filenames[i]);
+	//	}
+	//}
+
+	//manager.loadTasklogs(tasklog_filenames);
+
+	task::HashTable<string, task::TaskEntry*> table;
+	task::FileStore fileio;
+	vector<task::TaskEntry> entries;
+	if (fileio.load("..\\.task\\tasklog-mryagni", entries)) {
+		for (int i = 0; i < entries.size(); i++) {
+			cout << entries[i].getDescription() << endl;
+			table.insert(entries[i].getId(), &entries[i]);
 		}
 	}
-
-	manager.loadTasklogs(tasklog_filenames);
-
+	cout << endl << endl;
+	table.traverse(visitTablePtr);
 
 #ifndef DEBUG
 
