@@ -82,6 +82,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommandParser.cpp" />
     <ClCompile Include="Pager.cpp" />
     <ClCompile Include="WindowsDirectory.cpp" />
     <ClCompile Include="WindowsMain.cpp" />
@@ -95,8 +96,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AppConstants.h" />
+    <ClInclude Include="AppCommand.h" />
+    <ClInclude Include="AppConfiguration.h" />
     <ClInclude Include="AppIncludes.h" />
+    <ClInclude Include="CommandParser.h" />
     <ClInclude Include="ConsoleColor.h" />
     <ClInclude Include="DemoDataGenerator.h" />
     <ClInclude Include="Pager.h" />

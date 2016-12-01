@@ -12,6 +12,8 @@ using namespace std;
 
 namespace task {
 
+	const char* VERSION = "0.1.0";
+
 	// Default file names
 	const char* DEFAULT_DATA_DIR = "\\.task";
 //#define DEFAULT_DATA_DIR = "..\\.task"; // TODO: Default assumes we are in Debug folder

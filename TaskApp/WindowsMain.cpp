@@ -1,6 +1,6 @@
 // WindowsMain.cpp
 // TaskApp
-// CIS 22C F2016: Adrian Marroquin
+// CIS 22C F2016: Adrian Marroquin, Matthew Tso
 //
 // WindowsMain is the entry point into Tasks's 
 // interactive shell on Windows platforms.
@@ -19,9 +19,11 @@
 #include "TaskEntry.h"
 #include "Utilities\DateTime.h"
 #include "HashTable.h"
+#include "EntryManager.h"
 
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
+#include "CommandParser.h"
 
 using namespace std;
 
@@ -46,9 +48,61 @@ void visitTable(task::TaskEntry& entry) {
 int main(int argc, char* argv[])
 {
 	// Output version number specified in AppConstants.h
-	cout << "task v" << taskconfig::VERSION << endl;
+	cout << "task v" << taskapp::VERSION << endl;
 
+#ifndef DEBUG
 
+	string input;
+	taskapp::AppCommand command;
+	string arguments;
+	bool shouldContinue = true;
+	taskapp::CommandParser parser;
+
+	while (shouldContinue) {
+		cout << "> ";
+		getline(cin, input);
+
+		command = parser.parseCommandFrom(input);
+		arguments = parser.parseArgumentsFrom(input);
+
+		cout << "Command: ";
+		switch (command) {
+		case taskapp::CMD_LIST:
+			cout << "list";
+			break;
+		case taskapp::CMD_CREATE:
+			cout << "create";
+			break;
+		case taskapp::CMD_UPDATE:
+			cout << "update";
+			break;
+		case taskapp::CMD_DELETE:
+			cout << "delete";
+			break;
+		case taskapp::CMD_HISTORY:
+			cout << "history";
+			break;
+		case taskapp::CMD_UNDO:
+			cout << "undo";
+			break;
+		case taskapp::CMD_TEST:
+			cout << "test";
+			break;
+		case taskapp::CMD_QUIT:
+			cout << "quit";
+			shouldContinue = false;
+			break;
+		case taskapp::CMD_HELP:
+			cout << "help";
+			break;
+		default:
+			cout << "unrecognized command";
+			break;
+		}
+		cout << ". Arguments: " << arguments << "." << endl;
+	}
+
+#else
 	adt::Stack<task::Operation> history;
 	
 	
@@ -171,5 +225,7 @@ int main(int argc, char* argv[])
 
 	cout << white;
 	system("PAUSE");
+
+#endif
 	return 0;
 }

@@ -12,9 +12,9 @@
 // Ruler                  |===============================================================================|
 // Ruler 7-1-7            |=======-=======-=======-=======-=======-=======-=======-=======-=======-=======|
 
-namespace taskconfig {
+namespace taskapp {
 
-    const char* VERSION = "0.0.1";
+    const char* VERSION = "0.1.0";
     
     const char* CREDITS = "task was designed and built by Adrian Marroquin, Matthew Tso, Xin He, and Jinzhu Shen at De Anza College for CIS 22C with Professor Manish Goel in the quarter of Fall 2016.";
     

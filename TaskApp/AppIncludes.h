@@ -7,7 +7,7 @@
 #ifndef TASKAPP_APPINCLUDES_H
 #define TASKAPP_APPINCLUDES_H
 
-#include "AppConstants.h"
+#include "AppConfiguration.h"
 #include "WindowsDirectory.h"
 #include "Pager.h"
 #include "ConsoleColor.h"
