@@ -10,7 +10,21 @@ EntryManager::EntryManager()
 	: table(HashTable<string, TaskEntry>())
 	, tree_time_created(c_tree<uint64_t, TaskEntry>())
 	, history (adt::Stack<Operation>())
+	, current_user("")
 {
+}
+
+EntryManager::EntryManager(const string& user)
+	: table(HashTable<string, TaskEntry>())
+	, tree_time_created(c_tree<uint64_t, TaskEntry>())
+	, history(adt::Stack<Operation>())
+	, current_user(user)
+{
+}
+
+void EntryManager::setCurrentUser(const string& user)
+{
+	current_user = user;
 }
 
 void EntryManager::loadTasklogs(vector<string> filenames)
@@ -45,6 +59,7 @@ void EntryManager::printAllTo(ostream& output)
 	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
 	{
 		output << "task " << value->getId() << endl;
+		output << "user " << value->getCreator() << endl;
 		output << "Due: " << value->getTimeDueStr() << endl << endl;
 		output << "\t" << value->getDescription() << endl << endl;
 	}
@@ -74,15 +89,15 @@ void EntryManager::createEntry(const string& description)
 
 	//TaskEntry value("", description, createTime);
 	TaskEntryStatus new_status = BACKLOG;
-	TaskEntry* new_entry = new TaskEntry("mtso", description, createTime, createTime, new_status);
+	TaskEntry* new_entry = new TaskEntry(current_user, description, createTime, createTime + 64000, new_status);
 
 	//tree_time_created.insert(createTime, &value);
-	history.push(Operation(CREATE, *new_entry));
+	history.push(Operation(OP_CREATE, *new_entry));
 	tree_time_created.insert(createTime, new_entry);
 	table.insert(new_entry->getId(), *new_entry);
 }
 
-vector<TaskEntry> EntryManager::searchEntry(const string& search_term)
+vector<TaskEntry> EntryManager::searchEntryDescription(const string& search_term)
 {
 	vector<TaskEntry> found;
 	TaskEntry* value;
@@ -94,4 +109,21 @@ vector<TaskEntry> EntryManager::searchEntry(const string& search_term)
 		}
 	}
 	return found;
+}
+
+TaskEntry EntryManager::getEntryById(const string& id)
+{
+	return table.getValue(id);
+}
+
+void EntryManager::deleteEntry(const string& id)
+{
+	TaskEntry* to_delete;
+	to_delete = & table.getValue(id);
+
+	history.push(Operation(OP_DELETE, *to_delete));
+	tree_time_created.remove(to_delete->getTimeCreatedMs());
+	table.remove(to_delete->getId());
+
+	delete to_delete;
 }

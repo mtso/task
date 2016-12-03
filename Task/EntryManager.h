@@ -20,6 +20,7 @@ namespace task {
 	class EntryManager {
 
 	private:
+		string current_user;
 
 		HashTable<string, TaskEntry> table;
 
@@ -39,7 +40,9 @@ namespace task {
 
 	public:
 		EntryManager();
+		EntryManager(const string& user);
 
+		void setCurrentUser(const string& user);
 
 		void printAllTo(ostream& output);
 		
@@ -47,9 +50,11 @@ namespace task {
 
 		void createEntry(const string& description);
 
-		vector<TaskEntry> searchEntry(const string& search_term);
+		vector<TaskEntry> searchEntryDescription(const string& search_term);
 
-		//void deleteEntry(const string& id);
+		TaskEntry getEntryById(const string& id);
+
+		void deleteEntry(const string& id);
 
 		//void updateEntryStatus(const string& id, const TaskEntryStatus& new_status);
 

@@ -75,6 +75,7 @@ int main(int argc, char* argv[])
 	//cout << table.getValue(demo_entry->getId())->getDescription() << endl;
 
 	task::EntryManager manager;
+	manager.setCurrentUser("mtso");
 	
 
 	//uint m = 0;
@@ -96,16 +97,24 @@ int main(int argc, char* argv[])
 	manager.loadTasklogs(tasklog_filenames);
 
 
-	manager.printAllTo(cout);
+	//manager.printAllTo(cout);
 	manager.createEntry("what in the worlds");
 	manager.createEntry("this should be second");
 	cout << endl << endl << "===================" << endl << endl;
-	manager.printAllTo(cout);
+
+
+	cout << endl << endl;
+	task::TaskEntry found_entry = manager.getEntryById("b74c33f995843a5f53c256e196098fcce0338783");
+	cout << found_entry.getDescription() << endl;
+	
+	manager.deleteEntry(found_entry.getId());
 
 	manager.printHistoryTo(cout);
 
+	manager.printAllTo(cout);
+
 	cout << endl << endl << endl;
-	vector<task::TaskEntry> found = manager.searchEntry("worlds");
+	vector<task::TaskEntry> found = manager.searchEntryDescription("second");
 	cout << "found: " << found.size() << endl;
 	for (uint i = 0; i < found.size(); i++) {
 		cout << found[i].getDescription() << endl;

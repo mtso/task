@@ -10,10 +10,10 @@ string stringForOperationType(const OperationType& type)
 {
 	switch (type)
 	{
-	case CREATE:
+	case OP_CREATE:
 		return STRING_CREATE;
 
-	case DELETE:
+	case OP_DELETE:
 		return STRING_DELETE;
 
 	case UPDATE_STATUS:

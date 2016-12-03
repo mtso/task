@@ -4,8 +4,8 @@
 
 namespace task {
 	enum OperationType {
-		CREATE,
-		DELETE,
+		OP_CREATE,
+		OP_DELETE,
 		UPDATE_STATUS,
 		UDPATE_DESCRIPTION,
 		UPDATE_TIMEDUE
