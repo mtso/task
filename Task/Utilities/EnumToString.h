@@ -17,8 +17,8 @@ namespace task {
 	class EnumToString {
 	public:
 
-		static string stringForOperationType(const OperationType& type);
-		static string stringForStatus(const TaskEntryStatus& status);
+		static string forOperationType(const OperationType& type);
+		static string forStatus(const TaskEntryStatus& status);
 	};
 
 }

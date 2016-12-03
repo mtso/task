@@ -6,7 +6,7 @@
 
 namespace task {
 
-	string EnumToString::stringForOperationType(const OperationType& type)
+	string EnumToString::forOperationType(const OperationType& type)
 	{
 		switch (type)
 		{
@@ -30,7 +30,7 @@ namespace task {
 		}
 	}
 
-	string EnumToString::stringForStatus(const TaskEntryStatus& status)
+	string EnumToString::forStatus(const TaskEntryStatus& status)
 	{
 		switch (status)
 		{

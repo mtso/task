@@ -67,7 +67,7 @@ void EntryManager::printAllTo(ostream& output)
 
 void task::visitHistory(const Operation& operation)
 {
-	cout << EnumToString::stringForOperationType( operation.getType() ) << "\t" << operation.getPreviousState().getDescription() << endl;
+	cout << EnumToString::forOperationType( operation.getType() ) << "\t" << operation.getPreviousState().getDescription() << endl;
 }
 
 void EntryManager::printHistoryTo(ostream& output)
@@ -150,6 +150,9 @@ bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& ne
 		return false;
 	}
 
+	cout << EnumToString::forStatus(to_update->getStatus()) << " -> ";
+	to_update->setStatus(COMPLETE);
+	cout << EnumToString::forStatus(to_update->getStatus()) << endl;
 	return true;
 }
 
