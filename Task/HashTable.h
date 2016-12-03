@@ -35,7 +35,7 @@ namespace task {
 	class HashTable : public adt::DictionaryInterface<KeyType, ValueType> // : public std::iterator<input_iterator_tag, int>
 	{
 	private:
-		static const int DEFAULT_SIZE = 101; // Should be a prime number
+		static const uint DEFAULT_SIZE = 101; // Should be a prime number
 
 		HashList<KV>* table;
 

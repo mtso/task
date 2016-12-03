@@ -53,40 +53,63 @@ int main(int argc, char* argv[])
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 
-	task::HashTable<string, task::TaskEntry*> table;
-
-	c_tree<uint64_t, task::TaskEntry*> tree;
-	task::TaskEntry** found_entries = nullptr;
-	uint64_t* found_keys = nullptr;
-
-	task::TaskEntry* demo_entry = new task::TaskEntry("demo", "demo entry");
-	tree.insert(demo_entry->getTimeCreatedMs(), &demo_entry);
-
-	if (tree.find(demo_entry->getTimeCreatedMs(), &found_keys, &found_entries))
-	{
-		cout << (*found_entries)->getDescription() << endl;
+	ifstream config;
+	config.open("~\\.gitconfig");
+	string c_line;
+	while (getline(config, c_line)) {
+		cout << c_line << endl;
 	}
+	system("pause");
 
 
 
+	//task::HashTable<string, task::TaskEntry*> table; // = task::HashTable<string, task::TaskEntry*>();
+	//c_tree<uint64_t, task::TaskEntry*> tree;
+	//task::TaskEntry** found_entries = nullptr;
+	//uint64_t* found_keys = nullptr;
+	//task::TaskEntry* demo_entry = new task::TaskEntry("demo", "demo entry");
+	//tree.insert(demo_entry->getTimeCreatedMs(), &demo_entry);
+	//table.insert(demo_entry->getId(), demo_entry);
+	//if (tree.find(demo_entry->getTimeCreatedMs(), &found_keys, &found_entries))
+	//{
+	//	cout << (*found_entries)->getDescription() << endl;
+	//}
+	//cout << table.getValue(demo_entry->getId())->getDescription() << endl;
+
+	task::EntryManager manager;
+	
+
+	//uint m = 0;
+	//cout << m << endl;
 
 	// If DEBUG is defined, skip main routine to print debugging info.
 #ifndef DEBUG
 
+	// Load tasklogs
 	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
+	vector<string> tasklog_filenames;
 
 	for (unsigned int i = 0; i < filenames.size(); i++) {
 		if (filenames[i].find("tasklog-") != string::npos) {
-			cout << filenames[i] << endl;
+			//cout << filenames[i] << endl;
+			tasklog_filenames.push_back(filenames[i]);
 		}
 	}
+	manager.loadTasklogs(tasklog_filenames);
+	manager.printAllTo(cout);
+	manager.createEntry("what in the worlds");
+	cout << endl << endl << "===================" << endl << endl;
+	manager.printAllTo(cout);
 
+
+	// Event loop variables
 	string input;
 	taskapp::AppCommand command;
 	string arguments;
 	bool shouldContinue = true;
 	taskapp::CommandParser parser;
 
+	// Main event loop
 	while (shouldContinue) {
 		cout << "> ";
 		getline(cin, input);
