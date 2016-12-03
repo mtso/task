@@ -6,8 +6,9 @@
 // interactive shell on Windows platforms.
 //
 //
-// TODO: need to figure out TCHAR <=> string conversion
-// maybe: http://stackoverflow.com/questions/22910344/c-read-a-file-line-by-line-but-line-type-is-cstring-or-tchar
+// Notes:
+// http://www.geeksforgeeks.org/print-bst-keys-in-the-given-range/
+
 
 // Temporary test includes
 #include <fstream>
@@ -53,21 +54,20 @@ int main(int argc, char* argv[])
 	cout << "task v" << taskapp::VERSION << endl;
 
 	task::HashTable<string, task::TaskEntry*> table;
-	c_tree<uint64_t, task::TaskEntry> tree;
+
+	c_tree<uint64_t, task::TaskEntry*> tree;
+	task::TaskEntry** found_entries = nullptr;
+	uint64_t* found_keys = nullptr;
+
 	task::TaskEntry* demo_entry = new task::TaskEntry("demo", "demo entry");
+	tree.insert(demo_entry->getTimeCreatedMs(), &demo_entry);
 
-	table.insert(demo_entry->getId(), demo_entry);
-	tree.insert(demo_entry->getTimeCreatedMs(), demo_entry);
-	
-	cout << table.getValue(demo_entry->getId())->getDescription() << endl;
-
-	task::TaskEntry* return_entries = nullptr;
-	uint64_t* return_keys = nullptr;
-
-	if (tree.find(demo_entry->getTimeCreatedMs(), &return_keys, &return_entries))
+	if (tree.find(demo_entry->getTimeCreatedMs(), &found_keys, &found_entries))
 	{
-		cout << return_entries->getDescription() << endl;
+		cout << (*found_entries)->getDescription() << endl;
 	}
+
+
 
 
 	// If DEBUG is defined, skip main routine to print debugging info.

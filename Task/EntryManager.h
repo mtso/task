@@ -5,10 +5,12 @@
 #ifndef TASK_ENTRYMANAGER_H
 #define TASK_ENTRYMANAGER_H
 
+#include <vector>
 #include "HashTable.h"
 #include "c_tree.h"
 #include "TaskEntry.h"
 #include "OperationManager.h"
+#include "FileStore.h"
 
 namespace task {
 
@@ -20,9 +22,15 @@ namespace task {
 
 		c_tree<uint64_t, TaskEntry*> tree_time_created;
 
-		OperationManager operationManager;
+		//OperationManager operationManager;
+
+		adt::Stack<Operation> history;
 
 	public:
+		EntryManager();
+
+
+
 		void printAllTo(ostream& output);
 
 		void createEntry(const string& description, int & dueIn);
@@ -50,6 +58,8 @@ namespace task {
 
 		// used upon quitting the app
 		void unload();
+
+		void loadTasklogs(vector<string> filenames);
 	};
 }
 
