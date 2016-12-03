@@ -98,9 +98,11 @@ int main(int argc, char* argv[])
 	manager.loadTasklogs(tasklog_filenames);
 	manager.printAllTo(cout);
 	manager.createEntry("what in the worlds");
+	manager.createEntry("this should be second");
 	cout << endl << endl << "===================" << endl << endl;
 	manager.printAllTo(cout);
 
+	manager.printHistoryTo(cout);
 
 	// Event loop variables
 	string input;

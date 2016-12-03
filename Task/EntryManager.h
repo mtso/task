@@ -27,6 +27,8 @@ namespace task {
 
 		adt::Stack<Operation> history;
 
+		friend void visitHistory(const Operation& operation);
+
 	public:
 		EntryManager();
 

@@ -49,9 +49,14 @@ namespace task {
 		}
 	}
 
+	void visitHistory(const Operation& operation)
+	{
+		cout << operation.getType() << "\t" << operation.getPreviousState().getDescription() << endl;
+	}
+
 	void EntryManager::printHistoryTo(ostream& output)
 	{
-
+		history.traverse(visitHistory);
 	}
 
 	void EntryManager::createEntry(const string& description)
@@ -71,6 +76,7 @@ namespace task {
 		TaskEntry* new_entry = new TaskEntry("mtso", description, createTime, createTime, new_status);
 
 		//tree_time_created.insert(createTime, &value);
+		history.push(Operation(CREATE, *new_entry));
 		tree_time_created.insert(createTime, new_entry);
 		table.insert(new_entry->getId(), *new_entry);
 	}
