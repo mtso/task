@@ -59,10 +59,24 @@ void EntryManager::printAllTo(ostream& output)
 	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
 	{
 		output << "task " << value->getId() << endl;
-		output << "user " << value->getCreator() << endl;
-		output << "Due: " << value->getTimeDueStr() << endl << endl;
+		output << "User:\t" << value->getCreator() << endl;
+		output << "Status:\t" << EnumToString::forStatus(value->getStatus()) << endl;
+		output << "Due:\t" << value->getTimeDueStr() << endl << endl;
 		output << "\t" << value->getDescription() << endl << endl;
 	}
+}
+
+void task::printTable(TaskEntry& entry)
+{
+	cout << "task " << entry.getId() << endl;
+	cout << "User:\t" << entry.getCreator() << endl;
+	cout << "Status:\t" << EnumToString::forStatus(entry.getStatus()) << endl;
+	cout << "Due:\t" << entry.getTimeDueStr() << endl << endl;
+	cout << "\t" << entry.getDescription() << endl << endl;
+}
+void EntryManager::printTableTo(ostream& output)
+{
+	table.traverse(printTable);
 }
 
 void task::visitHistory(const Operation& operation)
@@ -151,7 +165,7 @@ bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& ne
 	}
 
 	cout << EnumToString::forStatus(to_update->getStatus()) << " -> ";
-	to_update->setStatus(COMPLETE);
+	to_update->setStatus(new_status);
 	cout << EnumToString::forStatus(to_update->getStatus()) << endl;
 	return true;
 }

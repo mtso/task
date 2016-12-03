@@ -32,6 +32,8 @@ namespace task {
 
 		friend void visitHistory(const Operation& operation);
 
+		friend void printTable(TaskEntry& entry);
+
 		class NotFoundException {
 		private:
 			string description;
@@ -40,6 +42,8 @@ namespace task {
 				: description(other_description) {}
 		};
 
+
+
 	public:
 		EntryManager();
 		EntryManager(const string& user);
@@ -47,6 +51,8 @@ namespace task {
 		void setCurrentUser(const string& user);
 
 		void printAllTo(ostream& output);
+
+		void printTableTo(ostream& output);
 		
 		void printHistoryTo(ostream& output);
 
