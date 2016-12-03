@@ -16,9 +16,9 @@ namespace task {
 
 	private:
 
-		HashTable<string, TaskEntry> table;
+		HashTable<string, TaskEntry*> table;
 
-		c_tree<uint64_t, TaskEntry> tree;
+		c_tree<uint64_t, TaskEntry*> tree_time_created;
 
 		OperationManager operationManager;
 

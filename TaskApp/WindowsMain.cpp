@@ -21,7 +21,7 @@
 #include "HashTable.h"
 #include "EntryManager.h"
 #include "WindowsDirectory.h"
-
+#include "c_tree.h"
 
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
@@ -52,6 +52,24 @@ int main(int argc, char* argv[])
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 
+	task::HashTable<string, task::TaskEntry*> table;
+	c_tree<uint64_t, task::TaskEntry> tree;
+	task::TaskEntry* demo_entry = new task::TaskEntry("demo", "demo entry");
+
+	table.insert(demo_entry->getId(), demo_entry);
+	tree.insert(demo_entry->getTimeCreatedMs(), demo_entry);
+	
+	cout << table.getValue(demo_entry->getId())->getDescription() << endl;
+
+	task::TaskEntry* return_entries = nullptr;
+	uint64_t* return_keys = nullptr;
+
+	if (tree.find(demo_entry->getTimeCreatedMs(), &return_keys, &return_entries))
+	{
+		cout << return_entries->getDescription() << endl;
+	}
+
+
 	// If DEBUG is defined, skip main routine to print debugging info.
 #ifndef DEBUG
 
@@ -62,7 +80,6 @@ int main(int argc, char* argv[])
 			cout << filenames[i] << endl;
 		}
 	}
-
 
 	string input;
 	taskapp::AppCommand command;
