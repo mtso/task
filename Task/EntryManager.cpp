@@ -67,7 +67,7 @@ void EntryManager::printAllTo(ostream& output)
 
 void task::visitHistory(const Operation& operation)
 {
-	cout << operation.getType() << "\t" << operation.getPreviousState().getDescription() << endl;
+	cout << EnumToString::stringForOperationType( operation.getType() ) << "\t" << operation.getPreviousState().getDescription() << endl;
 }
 
 void EntryManager::printHistoryTo(ostream& output)
@@ -118,12 +118,11 @@ TaskEntry EntryManager::getEntryById(const string& id)
 
 void EntryManager::deleteEntry(const string& id)
 {
-	TaskEntry* to_delete;
-	to_delete = & table.getValue(id);
+	TaskEntry to_delete = table.getValue(id);
 
-	history.push(Operation(OP_DELETE, *to_delete));
-	tree_time_created.remove(to_delete->getTimeCreatedMs());
-	table.remove(to_delete->getId());
+	history.push(Operation(OP_DELETE, to_delete));
+	tree_time_created.remove(to_delete.getTimeCreatedMs());
+	table.remove(to_delete.getId());
 
-	delete to_delete;
+	//delete to_delete;
 }

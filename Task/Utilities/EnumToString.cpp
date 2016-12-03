@@ -4,46 +4,47 @@
 
 #include "EnumToString.h"
 
-using namespace task;
+namespace task {
 
-string stringForOperationType(const OperationType& type)
-{
-	switch (type)
+	string EnumToString::stringForOperationType(const OperationType& type)
 	{
-	case OP_CREATE:
-		return STRING_CREATE;
+		switch (type)
+		{
+		case OP_CREATE:
+			return STRING_CREATE;
 
-	case OP_DELETE:
-		return STRING_DELETE;
+		case OP_DELETE:
+			return STRING_DELETE;
 
-	case UPDATE_STATUS:
-		return STRING_UPDATE_STATUS;
+		case UPDATE_STATUS:
+			return STRING_UPDATE_STATUS;
 
-	case UDPATE_DESCRIPTION:
-		return STRING_UDPATE_DESCRIPTION;
+		case UDPATE_DESCRIPTION:
+			return STRING_UDPATE_DESCRIPTION;
 
-	case UPDATE_TIMEDUE:
-		return STRING_UPDATE_TIMEDUE;
+		case UPDATE_TIMEDUE:
+			return STRING_UPDATE_TIMEDUE;
 
-	default:
-		throw "Invalid OperationType passed to stringForOperationType()";
+		default:
+			throw "Invalid OperationType passed to stringForOperationType()";
+		}
 	}
-}
 
-string stringForStatus(const TaskEntryStatus& status)
-{
-	switch (status)
+	string EnumToString::stringForStatus(const TaskEntryStatus& status)
 	{
-	case BACKLOG:
-		return STRING_BACKLOG;
+		switch (status)
+		{
+		case BACKLOG:
+			return STRING_BACKLOG;
 
-	case IN_PROGRESS:
-		return STRING_INPROGRESS;
+		case IN_PROGRESS:
+			return STRING_INPROGRESS;
 
-	case COMPLETE:
-		return STRING_COMPLETE;
+		case COMPLETE:
+			return STRING_COMPLETE;
 
-	default:
-		throw "Invalid TaskEntryStatus passed to stringForStatus()";
+		default:
+			throw "Invalid TaskEntryStatus passed to stringForStatus()";
+		}
 	}
 }

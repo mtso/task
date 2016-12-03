@@ -2,6 +2,9 @@
 // Task
 // CIS 22C F2016: Matthew Tso
 
+#ifndef TASK_ENUMTOSTRING_H
+#define TASK_ENUMTOSTRING_H
+
 #include <string>
 using namespace std;
 
@@ -11,6 +14,13 @@ using namespace std;
 
 namespace task {
 	
-	string stringForOperationType(const OperationType& type);
-	string stringForStatus(const TaskEntryStatus& status);
+	class EnumToString {
+	public:
+
+		static string stringForOperationType(const OperationType& type);
+		static string stringForStatus(const TaskEntryStatus& status);
+	};
+
 }
+
+#endif

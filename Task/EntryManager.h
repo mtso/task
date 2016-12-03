@@ -12,6 +12,7 @@
 #include "OperationManager.h"
 #include "FileStore.h"
 #include "Utilities\DateTime.h"
+#include "Utilities\EnumToString.h"
 
 #include "windows.h"
 
