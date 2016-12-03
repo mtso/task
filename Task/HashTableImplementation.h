@@ -160,7 +160,7 @@ namespace task
 
 		table = new HashList<KV>[table_size];
 
-		for (int i = 0; i < table_size; i++) {
+		for (uint i = 0; i < table_size; i++) {
 			table[i] = HashList<KV>();
 		}
 	}

@@ -53,14 +53,12 @@ int main(int argc, char* argv[])
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 
-	ifstream config;
-	config.open("~\\.gitconfig");
-	string c_line;
-	while (getline(config, c_line)) {
-		cout << c_line << endl;
-	}
-	system("pause");
-
+	//ifstream config;
+	//config.open("~\\.gitconfig");
+	//string c_line;
+	//while (getline(config, c_line)) {
+	//	cout << c_line << endl;
+	//}
 
 
 	//task::HashTable<string, task::TaskEntry*> table; // = task::HashTable<string, task::TaskEntry*>();
@@ -108,7 +106,8 @@ int main(int argc, char* argv[])
 
 	cout << endl << endl << endl;
 	vector<task::TaskEntry> found = manager.searchEntry("worlds");
-	for (int i = 0; i < found.size(); i++) {
+	cout << "found: " << found.size() << endl;
+	for (uint i = 0; i < found.size(); i++) {
 		cout << found[i].getDescription() << endl;
 	}
 

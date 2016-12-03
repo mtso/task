@@ -50,7 +50,7 @@ void EntryManager::printAllTo(ostream& output)
 	}
 }
 
-void visitHistory(const Operation& operation)
+void task::visitHistory(const Operation& operation)
 {
 	cout << operation.getType() << "\t" << operation.getPreviousState().getDescription() << endl;
 }
