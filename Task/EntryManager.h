@@ -29,6 +29,14 @@ namespace task {
 
 		friend void visitHistory(const Operation& operation);
 
+		class NotFoundException {
+		private:
+			string description;
+		public:
+			NotFoundException( const string& other_description = "EntryManager could not match the search arguments with an entry." )
+				: description(other_description) {}
+		};
+
 	public:
 		EntryManager();
 
@@ -39,7 +47,7 @@ namespace task {
 
 		void createEntry(const string& description);
 
-		//TaskEntry searchEntry(const string& description);
+		vector<TaskEntry> searchEntry(const string& search_term);
 
 		//void deleteEntry(const string& id);
 

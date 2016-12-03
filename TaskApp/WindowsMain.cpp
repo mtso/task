@@ -96,6 +96,8 @@ int main(int argc, char* argv[])
 		}
 	}
 	manager.loadTasklogs(tasklog_filenames);
+
+
 	manager.printAllTo(cout);
 	manager.createEntry("what in the worlds");
 	manager.createEntry("this should be second");
@@ -103,6 +105,13 @@ int main(int argc, char* argv[])
 	manager.printAllTo(cout);
 
 	manager.printHistoryTo(cout);
+
+	cout << endl << endl << endl;
+	vector<task::TaskEntry> found = manager.searchEntry("worlds");
+	for (int i = 0; i < found.size(); i++) {
+		cout << found[i].getDescription() << endl;
+	}
+
 
 	// Event loop variables
 	string input;

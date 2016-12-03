@@ -80,4 +80,18 @@ namespace task {
 		tree_time_created.insert(createTime, new_entry);
 		table.insert(new_entry->getId(), *new_entry);
 	}
+
+	vector<TaskEntry> EntryManager::searchEntry(const string& search_term)
+	{
+		vector<TaskEntry> found;
+		TaskEntry* value;
+		for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
+		{
+			if (value->getDescription().find(search_term) != string::npos)
+			{
+				found.push_back(*value);
+			}
+		}
+		return found;
+	}
 }

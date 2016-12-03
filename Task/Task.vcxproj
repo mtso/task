@@ -101,7 +101,9 @@
     <ClInclude Include="Utilities\DateTime.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Djb2.h" />
+    <ClInclude Include="Utilities\EnumToString.h" />
     <ClInclude Include="Utilities\Sha1.h" />
+    <ClInclude Include="Utilities\StringConstants.h" />
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +116,7 @@
     <ClCompile Include="Utilities\DateTime.cpp" />
     <ClCompile Include="Utilities\Diagnostic.cpp" />
     <ClCompile Include="Utilities\Djb2.cpp" />
+    <ClCompile Include="Utilities\EnumToString.cpp" />
     <ClCompile Include="Utilities\Sha1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
