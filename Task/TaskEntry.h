@@ -107,7 +107,7 @@ namespace task
 		TaskEntryStatus getStatus() const;
 
 		/**
-		 * TODO: IMPLEMENT THIS
+		 * Modifies the status
 		 */
 		void setStatus(const TaskEntryStatus& new_status);
 

@@ -46,7 +46,6 @@ namespace task {
 		unsigned int index_of_longest;
 		unsigned int collisions;
 
-
 		inline unsigned int hashOf(const KeyType& target_key, const unsigned int &for_size) const;
 
 		void expandTable();

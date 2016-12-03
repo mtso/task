@@ -51,6 +51,7 @@ namespace task
 		return hash;
 	}
 
+
 	// REF:
 	// http://stackoverflow.com/a/30052481/2684355
 	// https://en.wikipedia.org/wiki/Primality_test#Simple_methods
