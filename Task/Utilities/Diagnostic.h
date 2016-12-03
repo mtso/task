@@ -2,6 +2,9 @@
 // Task/Utilities
 // CIS 22C F2016: Matthew Tso
 
+#ifndef TASK_DIAGNOSTIC_H
+#define TASK_DIAGNOSTIC_H
+
 #include <chrono>
 #include <iostream>
 #include <sstream>
@@ -55,3 +58,5 @@ namespace task {
 		ostream& runAndPrintTo(const int& run_count, ostream& output_stream);
 	};
 }
+
+#endif

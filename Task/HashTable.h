@@ -95,6 +95,11 @@ namespace task {
 		ValueType getValue(const KeyType& target_key) const;
 
 		/**
+		 *
+		 */
+		ValueType& getRawValue(const KeyType& target_key);
+
+		/**
 		*
 		*/
 		bool contains(const KeyType& target_key) const;

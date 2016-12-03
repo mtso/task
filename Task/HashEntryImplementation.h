@@ -56,6 +56,12 @@ namespace task
 	}
 
 	T_KV
+	ValueType& HashEntry<KeyType, ValueType>::getRawValue()
+	{
+		return value;
+	}
+
+	T_KV
 	HashEntry<KeyType, ValueType>* HashEntry<KeyType, ValueType>::getNext() const
 	{
 		return next;

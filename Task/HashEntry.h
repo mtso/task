@@ -28,6 +28,7 @@ namespace task
 
 		KeyType getKey() const;
 		ValueType getValue() const;
+		ValueType& getRawValue();
 		HashEntry<KeyType, ValueType>* getNext() const;
 
 		void setValue(const ValueType& new_value);

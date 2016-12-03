@@ -42,6 +42,8 @@ namespace task
 
 		virtual ValueType getValue(const KeyType& target_key);
 
+		virtual ValueType& getRawValue(const KeyType& target_key);
+
 		virtual void addFirst(const KeyType& new_key, const ValueType& new_value);
 
 		virtual bool remove(const KeyType& delete_key);

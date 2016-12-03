@@ -77,6 +77,23 @@ namespace task
 	}
 
 	T_KV
+	ValueType& HashList<KV>::getRawValue(const KeyType& target_key)
+	{
+		HashEntry<KV>* search = head;
+
+		while (search != nullptr) {
+			if (search->getKey() == target_key) {
+
+				// TODO: swap node with first
+
+				return search->getRawValue();
+			}
+			search = search->getNext();
+		}
+		throw NotFoundException();
+	}
+
+	T_KV
 	void HashList<KV>::addFirst(const KeyType& new_key, const ValueType& new_value)
 	{
 		HashEntry<KV>* new_entry = new HashEntry<KV>(new_key, new_value, head);

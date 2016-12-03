@@ -113,16 +113,48 @@ vector<TaskEntry> EntryManager::searchEntryDescription(const string& search_term
 
 TaskEntry EntryManager::getEntryById(const string& id)
 {
-	return table.getValue(id);
+	try {
+		return table.getValue(id);
+	}
+	catch (HashList<string, TaskEntry>::NotFoundException error) {
+		throw error;
+	}
 }
 
-void EntryManager::deleteEntry(const string& id)
+bool EntryManager::deleteEntry(const string& id)
 {
-	TaskEntry to_delete = table.getValue(id);
+	TaskEntry to_delete;
+	try{
+		to_delete = table.getValue(id);
+	}
+	catch (HashList<string, TaskEntry>::NotFoundException error) {
+		return false;
+	}
 
 	history.push(Operation(OP_DELETE, to_delete));
 	tree_time_created.remove(to_delete.getTimeCreatedMs());
 	table.remove(to_delete.getId());
+	return true;
+}
 
-	//delete to_delete;
+bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& new_status)
+{
+	TaskEntry* to_update;
+
+	try {
+		to_update = & table.getRawValue(id);
+		
+		cout << "Trying to update: " << to_update->getId() << endl;
+	}
+	catch (HashList<string, TaskEntry>::NotFoundException error) {
+		return false;
+	}
+
+	return true;
+}
+
+void EntryManager::runDiagnosticTo(ostream& output, const int& run_count)
+{
+	Diagnostic test;
+	test.runAndPrintTo(run_count, output);
 }

@@ -256,6 +256,12 @@ namespace task
 	}
 
 	T_KV
+	ValueType& HashTable<KV>::getRawValue(const KeyType& target_key)
+	{
+		return table[hashOf(target_key, table_size)].getRawValue(target_key);
+	}
+
+	T_KV
 	bool HashTable<KV>::contains(const KeyType& target_key) const
 	{
 		int index = hashOf(target_key, table_size);

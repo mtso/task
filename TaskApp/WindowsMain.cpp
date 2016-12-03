@@ -104,14 +104,23 @@ int main(int argc, char* argv[])
 
 
 	cout << endl << endl;
-	task::TaskEntry found_entry = manager.getEntryById("b74c33f995843a5f53c256e196098fcce0338783");
+
+	string hardcoded_id;
+	task::TaskEntry found_entry;
+	try {
+		hardcoded_id = "b74c33f995843a5f53c256e196098fcce0338783";
+		found_entry = manager.getEntryById(hardcoded_id);
+	}
+	catch (...) {
+		cout << "Could not find entry for id: " << hardcoded_id << endl;
+	}
 	cout << found_entry.getDescription() << endl;
 	
-	manager.deleteEntry(found_entry.getId());
+	//manager.deleteEntry(found_entry.getId());
 
 	manager.printHistoryTo(cout);
 
-	manager.printAllTo(cout);
+	//manager.printAllTo(cout);
 
 	cout << endl << endl << endl;
 	vector<task::TaskEntry> found = manager.searchEntryDescription("second");
@@ -119,6 +128,10 @@ int main(int argc, char* argv[])
 	for (uint i = 0; i < found.size(); i++) {
 		cout << found[i].getDescription() << endl;
 	}
+
+	manager.runDiagnosticTo(cout);
+
+	manager.updateEntryStatus(hardcoded_id, COMPLETE);
 
 
 	// Event loop variables

@@ -13,6 +13,7 @@
 #include "FileStore.h"
 #include "Utilities\DateTime.h"
 #include "Utilities\EnumToString.h"
+#include "Utilities\Diagnostic.h"
 
 #include "windows.h"
 
@@ -55,24 +56,15 @@ namespace task {
 
 		TaskEntry getEntryById(const string& id);
 
-		void deleteEntry(const string& id);
+		bool deleteEntry(const string& id);
 
-		//void updateEntryStatus(const string& id, const TaskEntryStatus& new_status);
+		bool updateEntryStatus(const string& id, const TaskEntryStatus& new_status);
 
 		//void updateEntryDescription(const string& id, const string& new_description);
 
 		//void updateEntryDue(const string& id, const string& new_time);
 
-		//void runDiagnosticTo(ostream& output);
-
-		//void loadEntry(
-		//	const string& user,
-		//	const string& id,
-		//	const uint64_t& time_created,
-		//	const uint64_t& time_due,
-		//	const string& description,
-		//	const TaskEntryStatus& status
-		//	);
+		void runDiagnosticTo(ostream& output, const int& run_count = 1000);
 
 		//// used upon quitting the app
 		//void unload();
