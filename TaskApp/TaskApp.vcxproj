@@ -98,7 +98,6 @@
   <ItemGroup>
     <ClInclude Include="AppCommand.h" />
     <ClInclude Include="AppConfiguration.h" />
-    <ClInclude Include="AppIncludes.h" />
     <ClInclude Include="CommandParser.h" />
     <ClInclude Include="ConsoleColor.h" />
     <ClInclude Include="DemoDataGenerator.h" />

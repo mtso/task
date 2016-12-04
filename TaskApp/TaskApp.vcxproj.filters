@@ -41,9 +41,6 @@
     <ClInclude Include="WindowsDirectory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AppIncludes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ConsoleColor.h">
       <Filter>Header Files</Filter>
     </ClInclude>

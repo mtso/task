@@ -18,7 +18,6 @@
 #include "Utilities\DateTime.h"
 #include "HashTable.h"
 #include "EntryManager.h"
-#include "WindowsDirectory.h"
 #include "c_tree.h"
 #include "Utilities\StringToEnum.h"
 

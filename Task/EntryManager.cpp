@@ -268,3 +268,20 @@ void EntryManager::undoTopOperation(ostream& output)
 		break;
 	}
 }
+
+void EntryManager::unload()
+{
+	TaskEntry* value;
+	vector<TaskEntry> entries;
+	string filepath = "..\\.task\\tasklog-" + current_user;
+
+	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
+	{
+		if (value->getCreator() == current_user)
+		{
+			entries.push_back(*value);
+		}
+	}
+	FileStore fileio;
+	fileio.store(filepath, entries);
+}

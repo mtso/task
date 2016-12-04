@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
 
 		case taskapp::CMD_QUIT:
 			// Output files here
-
+			manager.unload();
 			shouldContinue = false;
 			break;
 

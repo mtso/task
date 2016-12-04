@@ -78,8 +78,8 @@ namespace task {
 
 		void runDiagnosticTo(ostream& output, const int& run_count = 1000);
 
-		//// used upon quitting the app
-		//void unload();
+		// used upon quitting the app
+		void unload();
 
 		void undoTopOperation(ostream& output);
 
