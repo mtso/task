@@ -120,6 +120,10 @@ int main(int argc, char* argv[])
 
 	manager.printHistoryTo(cout);
 
+	string full_id;
+	if (manager.getFullIdFor("b74c", full_id)) {
+		cout << full_id << endl;
+	}
 
 	cout << endl << endl << endl;
 	vector<task::TaskEntry> found = manager.searchEntryDescription("second");
@@ -132,7 +136,7 @@ int main(int argc, char* argv[])
 
 	manager.updateEntryStatus(hardcoded_id, COMPLETE);
 
-	manager.printAllTo(cout);
+	//manager.printAllTo(cout);
 	//manager.printTableTo(cout);
 
 	// Event loop variables

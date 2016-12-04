@@ -135,6 +135,29 @@ TaskEntry EntryManager::getEntryById(const string& id)
 	}
 }
 
+bool EntryManager::getFullIdFor(const string& id, string& found_id)
+{
+	adt::Stack<string> entries;
+	TaskEntry* value;
+	string full_id;
+	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
+	{
+		full_id = value->getId();
+
+		if (full_id.find(id) == 0) // Match in first position
+		{
+			entries.push(full_id);
+		}
+	}
+	
+	// Only return true if one was found
+	if (entries.getLength() == 1) {
+		found_id = entries.pop();
+		return true;
+	}
+	else { return false; }
+}
+
 bool EntryManager::deleteEntry(const string& id)
 {
 	TaskEntry to_delete;

@@ -62,6 +62,8 @@ namespace task {
 
 		TaskEntry getEntryById(const string& id);
 
+		bool getFullIdFor(const string& id, string& found_id);
+
 		bool deleteEntry(const string& id);
 
 		bool updateEntryStatus(const string& id, const TaskEntryStatus& new_status);
