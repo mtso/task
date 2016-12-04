@@ -334,9 +334,9 @@ void c_tree<_key_t, _val_t>::insert_node(node_t* new_node)
 // Find data with data.
 template <typename _key_t, typename _val_t>
 bool c_tree<_key_t, _val_t>::find(const _key_t& key, _key_t** found_key,
-	_val_t** found_value) const
+	_val_t** found_value,int* compareCount) const
 {
-	node_t* node = find_node(key);
+	node_t* node = find_node(key,compareCount);
 	bool found;
 
 	if (node != NULL) {
@@ -364,11 +364,12 @@ bool c_tree<_key_t, _val_t>::find(const _key_t& key, _key_t** found_key,
 // Find a node with data.
 template <typename _key_t, typename _val_t>
 typename c_tree<_key_t, _val_t>::node_t*
-c_tree<_key_t, _val_t>::find_node(const _key_t& key) const
+c_tree<_key_t, _val_t>::find_node(const _key_t& key, int* compareCount) const
 {
 	node_t* found_node = NULL;
 
 	for (node_t* node = m_root; (node != NULL) && (node->m_key != NULL);){
+		(*compareCount)++;
 		if (key < *(node->m_key)) {
 			// Search to the left
 			node = node->m_left;

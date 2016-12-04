@@ -5,13 +5,13 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,97 +19,97 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utilities\Sha1.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\Diagnostic.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HashTable.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\Djb2.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ADT\Node.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ADT\List.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Generics\Node.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Generics\List.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ADT\Stack.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ADT\Queue.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TaskEntry.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TaskEntryStatus.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HashEntry.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\TaskManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Configuration.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ADT\DictionaryInterface.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TaskLib.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\DateTime.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="c_tree_impl.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="c_tree.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HashList.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HashEntryImplementation.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EntryManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OperationType.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Operation.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileStore.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\EnumToString.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\StringConstants.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\StringToEnum.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\MinMax.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utilities\ConsoleColor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

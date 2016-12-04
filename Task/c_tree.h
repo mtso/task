@@ -74,7 +74,7 @@ public:
 	* @return true if the key was found, false if otherwise.
 	*/
 	bool find(const _key_t& key, _key_t** found_key = NULL,
-		_val_t** found_value = NULL) const;
+		_val_t** found_value = NULL,int* compareCount=NULL) const;
 	/**
 	* @brief Test if the tree is empty.
 	* @return true if the tree is empty, false if otherwise.
@@ -187,7 +187,7 @@ private:
 	* @param[in] key The key to be compared.
 	* @return The node with the key or NULL if not found.
 	*/
-	node_t* find_node(const _key_t& key) const;
+	node_t* find_node(const _key_t& key,int* compareCount) const;
 
 	/**
 	* @brief Find the maximum node in a node's left sub-tree.
