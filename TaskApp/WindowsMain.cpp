@@ -31,49 +31,22 @@
 
 using namespace std;
 
-void visit(const task::Operation& item) {
-	
-	switch (item.getType()) {
-	case task::UPDATE_STATUS:
-		cout << "update ";
-		break;
-	default:
-		cout << "someOp ";
-		break;
-	}
-	cout << item.getPreviousState().getId() << endl;
-}
-
-void visitTable(task::TaskEntry& entry) {
-
-	cout << entry.getDescription() << endl;
-}
+string getUsername();
+void loadDataInto(task::EntryManager& manager);
 
 int main(int argc, char* argv[])
 {
+	//====================================================================
+	// Startup procedure
+	//====================================================================
+
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 
-	// Initialize Task's manager object.
-	task::EntryManager manager;
-	manager.setCurrentUser("mtso");
+	// Initialize Task's manager object using current username.
+	task::EntryManager manager(getUsername());
 
-	// If DEBUG is defined, skip main routine to print debugging info.
-#ifndef DEBUG
-
-	// Get the filenames inside the .task directory
-	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
-	vector<string> tasklog_filenames;
-	for (unsigned int i = 0; i < filenames.size(); i++) 
-	{
-		// Iterate through all filenames looking for those that contain `tasklog-`
-		if (filenames[i].find("tasklog-") != string::npos) 
-		{
-			tasklog_filenames.push_back(filenames[i]);
-		}
-	}
-	// Load tasklogs
-	manager.loadTasklogs(tasklog_filenames);
+	loadDataInto(manager);
 
 	//====================================================================
 	// Main event loop
@@ -200,8 +173,36 @@ int main(int argc, char* argv[])
 		}
 	}
 
-#else
-
-#endif
 	return 0;
+}
+
+string getUsername()
+{
+	// Get the username from .gitconfig
+	string current_user;
+	if (taskapp::getCurrentUser(current_user)) {
+		cout << current_user << endl;
+	}
+	else {
+		cout << "What is your username?\n>" << endl;
+		getline(cin, current_user);
+	}
+	return current_user;
+}
+
+void loadDataInto(task::EntryManager& manager)
+{
+	// Get all the filenames inside the .task directory
+	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
+	vector<string> tasklog_filenames;
+	for (unsigned int i = 0; i < filenames.size(); i++)
+	{
+		// Iterate through all filenames looking for those that contain `tasklog-`
+		if (filenames[i].find("tasklog-") != string::npos)
+		{
+			tasklog_filenames.push_back(filenames[i]);
+		}
+	}
+	// Load tasklogs
+	manager.loadTasklogs(tasklog_filenames);
 }

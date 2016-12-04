@@ -6,14 +6,17 @@
 #define TASKAPP_WINDOWSDIRECTORY_H
 
 #include <Windows.h>
+#include <UserEnv.h>
 #include <tchar.h>
 #include <iostream>
+#include <fstream>
 #include <strsafe.h>
 #include <vector>
 #include <string>
 #include "ADT\Stack.h"
 using namespace std;
 #pragma comment(lib, "User32.lib")
+#pragma comment(lib, "UserEnv.lib")
 
 // TRY: 
 // REF: http://stackoverflow.com/questions/6006319/converting-tchar-to-string-in-c
@@ -28,6 +31,11 @@ namespace taskapp {
 	 * the filepaths of a given directory.
 	 */
 	vector<string> filenamesIn(const TCHAR* search_directory);
+
+	/**
+	 * Get the user's name from .gitconfig
+	 */
+	bool getCurrentUser(string& username);
 }
 
 #endif
