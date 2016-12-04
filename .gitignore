@@ -15,11 +15,13 @@ project.xcworkspace
 
 [Dd]ebug/
 [Rr]elease/
-ReleaseBin # Custom build configuration
 x64/
 build/
 [Bb]in/
 [Oo]bj/
+
+# Custom build configuration
+[Rr]eleaseBin/
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
