@@ -27,6 +27,13 @@ void EntryManager::setCurrentUser(const string& user)
 	current_user = user;
 }
 
+void EntryManager::insertEntry(const TaskEntry& new_entry)
+{
+	TaskEntry* entry = new task::TaskEntry(new_entry);
+	table.insert(entry->getId(), *entry);
+	tree_time_created.insert(entry->getTimeCreatedMs(), entry);
+}
+
 void EntryManager::loadTasklogs(vector<string> filenames)
 {
 	FileStore fileio;
@@ -45,10 +52,7 @@ void EntryManager::loadTasklogs(vector<string> filenames)
 		// Iterate through the entries loaded from fileio
 		for (uint count = 0; count < entries.size(); count++) 
 		{
-			entry = new task::TaskEntry(entries[count]);
-
-			table.insert(entry->getId(), *entry);
-			tree_time_created.insert(entry->getTimeCreatedMs(), entry);
+			insertEntry(entries[count]);
 		}
 	}
 }
@@ -255,6 +259,9 @@ void EntryManager::undoTopOperation(ostream& output)
 		break;
 
 	case OP_DELETE:
+		insertEntry(previous);
+		output << "undid " << EnumToString::forOperationType(top.getType()) << " "
+			<< previous.getId().substr(0, 8) << endl;
 		break;
 
 	default:

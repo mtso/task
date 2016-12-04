@@ -44,6 +44,8 @@ namespace task {
 				: description(other_description) {}
 		};
 
+		//
+		void insertEntry(const TaskEntry& entry);
 
 	public:
 		EntryManager();
