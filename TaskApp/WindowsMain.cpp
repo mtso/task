@@ -48,28 +48,29 @@ int main(int argc, char* argv[])
 	//====================================================================
 	
 	// Event loop variables
+	bool shouldContinue = true;
 	string input;
 	taskapp::AppCommand command;
 	string arguments;
-	bool shouldContinue = true;
 	taskapp::CommandParser parser;
 
+	// Temporary variables to use inside the switch
+	string full_id;
+	string raw_id;
+	string raw_status;                      // for status update
+	TaskEntryStatus new_status;             // for status update
+	int run_count;                          // for test
+	vector<task::TaskEntry> search_results; // for search
+	task::TaskEntry result;                 // for search
+
 	// Main event loop
-	while (shouldContinue) {
+	while (shouldContinue)
+	{
 		cout << "> ";
 		getline(cin, input);
 
 		command = parser.parseCommandFrom(input);
 		arguments = parser.parseArgumentsFrom(input);
-
-		// Container variables to use inside the switch
-		string full_id;
-		string raw_id;
-		string raw_status;
-		TaskEntryStatus new_status; // for status update
-		int run_count; // for test
-		vector<task::TaskEntry> search_results; // for search
-		task::TaskEntry result; // for search
 
 		switch (command) {
 		case taskapp::CMD_LIST:
@@ -179,7 +180,7 @@ string getUsername()
 		cout << current_user << endl;
 	}
 	else {
-		cout << "What is your username?\n>" << endl;
+		cout << "could not locate .gitconfig, what is your username?\n> ";
 		getline(cin, current_user);
 	}
 	return current_user;
