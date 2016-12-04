@@ -15,6 +15,7 @@ project.xcworkspace
 
 [Dd]ebug/
 [Rr]elease/
+ReleaseBin # Custom build configuration
 x64/
 build/
 [Bb]in/
