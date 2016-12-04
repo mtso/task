@@ -89,6 +89,8 @@ namespace task
 
 		void runDiagnosticTo(ostream& output, const int& run_count = 1000);
 
+		void printCurrentStateTo(ostream& output);
+
 		// used upon quitting the app
 		void unload();
 

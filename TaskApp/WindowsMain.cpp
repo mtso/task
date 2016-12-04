@@ -141,7 +141,14 @@ int main(int argc, char* argv[])
 			break;
 
 		case taskapp::CMD_TEST:
+			if (arguments == "current") {
+				manager.printCurrentStateTo(cout);
+				break;
+			}
+
 			if (arguments.length() > 0) {
+
+
 				try {
 					run_count = stoi(arguments);
 					manager.runDiagnosticTo(cout, run_count);

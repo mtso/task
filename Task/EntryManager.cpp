@@ -258,11 +258,6 @@ bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& ne
 	return true;
 }
 
-void EntryManager::runDiagnosticTo(ostream& output, const int& run_count)
-{
-	Diagnostic test;
-	test.runAndPrintTo(run_count, output);
-}
 
 void EntryManager::undoTopOperation(ostream& output)
 {
@@ -321,4 +316,19 @@ void EntryManager::unload()
 	}
 	FileStore fileio;
 	fileio.store(filepath, entries);
+}
+
+
+void EntryManager::runDiagnosticTo(ostream& output, const int& run_count)
+{
+	Diagnostic test;
+	test.runAndPrintTo(run_count, output);
+}
+
+void EntryManager::printCurrentStateTo(ostream& output)
+{
+	output << "Number of items:\t" << table.count() << endl;
+	output << "HashTable load factor:\t" << table.getLoadFactor() << endl;
+	output << "HashTable table size:\t" << table.getTableSize() << endl;
+	output << "HashTable longest list:\t" << table.countLongestList() << endl;
 }
