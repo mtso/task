@@ -9,24 +9,37 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Task", "Task\Task.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskApp", "TaskApp\TaskApp.vcxproj", "{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{79B95D36-9713-46B8-A728-E967F77703D9}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		task.cmd = task.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
+		ReleaseBin|Win32 = ReleaseBin|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{02E78509-DF6A-4D63-86A0-265100F5742E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{02E78509-DF6A-4D63-86A0-265100F5742E}.Debug|Win32.Build.0 = Debug|Win32
 		{02E78509-DF6A-4D63-86A0-265100F5742E}.Release|Win32.ActiveCfg = Release|Win32
 		{02E78509-DF6A-4D63-86A0-265100F5742E}.Release|Win32.Build.0 = Release|Win32
+		{02E78509-DF6A-4D63-86A0-265100F5742E}.ReleaseBin|Win32.ActiveCfg = ReleaseBin|Win32
+		{02E78509-DF6A-4D63-86A0-265100F5742E}.ReleaseBin|Win32.Build.0 = ReleaseBin|Win32
 		{092D0147-2D14-454A-9349-6EEE960C9ED3}.Debug|Win32.ActiveCfg = Debug|Win32
 		{092D0147-2D14-454A-9349-6EEE960C9ED3}.Debug|Win32.Build.0 = Debug|Win32
 		{092D0147-2D14-454A-9349-6EEE960C9ED3}.Release|Win32.ActiveCfg = Release|Win32
 		{092D0147-2D14-454A-9349-6EEE960C9ED3}.Release|Win32.Build.0 = Release|Win32
+		{092D0147-2D14-454A-9349-6EEE960C9ED3}.ReleaseBin|Win32.ActiveCfg = ReleaseBin|Win32
+		{092D0147-2D14-454A-9349-6EEE960C9ED3}.ReleaseBin|Win32.Build.0 = ReleaseBin|Win32
 		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.Debug|Win32.ActiveCfg = Debug|Win32
 		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.Debug|Win32.Build.0 = Debug|Win32
 		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.Release|Win32.ActiveCfg = Release|Win32
 		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.Release|Win32.Build.0 = Release|Win32
+		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.ReleaseBin|Win32.ActiveCfg = ReleaseBin|Win32
+		{79FADF0B-C9AA-43D0-B9BA-60DA8635F5E1}.ReleaseBin|Win32.Build.0 = ReleaseBin|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

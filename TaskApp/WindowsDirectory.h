@@ -1,4 +1,4 @@
-// Pager.h
+// WindowsDirectory.h
 // TaskApp
 // CIS 22C F2016: Matthew Tso
 
@@ -36,6 +36,8 @@ namespace taskapp {
 	 * Get the user's name from .gitconfig
 	 */
 	bool getCurrentUser(string& username);
+
+
 }
 
 #endif
