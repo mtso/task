@@ -41,7 +41,7 @@ void EntryManager::loadTasklogs(vector<string> filenames)
 
 		// Return if the filepath was invalid
 		if (!fileio.load(filepath, entries)) { continue; }
-			
+		
 		// Iterate through the entries loaded from fileio
 		for (uint count = 0; count < entries.size(); count++) 
 		{
@@ -139,7 +139,7 @@ bool EntryManager::deleteEntry(const string& id)
 {
 	TaskEntry to_delete;
 	try{
-		to_delete = table.getValue(id);
+		to_delete = table.getRawValue(id);
 	}
 	catch (HashList<string, TaskEntry>::NotFoundException error) {
 		return false;
@@ -154,19 +154,24 @@ bool EntryManager::deleteEntry(const string& id)
 bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& new_status)
 {
 	TaskEntry* to_update;
-
+	
+	// Find entry
 	try {
-		to_update = & table.getRawValue(id);
-		
-		cout << "Trying to update: " << to_update->getId() << endl;
+		to_update = & table.getRawValue(id);		
 	}
-	catch (HashList<string, TaskEntry>::NotFoundException error) {
-		return false;
-	}
+	catch (HashList<string, TaskEntry>::NotFoundException error) { return false; }
 
-	cout << EnumToString::forStatus(to_update->getStatus()) << " -> ";
+	// Update entry in tree
+	TaskEntry* found_value;
+	uint64_t * found_key;
+	if (tree_time_created.find(to_update->getTimeCreatedMs(), &found_key, &found_value)) {
+		found_value->setStatus(new_status);
+	}
+	else { return false; }
+
+	// Update entry in table
 	to_update->setStatus(new_status);
-	cout << EnumToString::forStatus(to_update->getStatus()) << endl;
+
 	return true;
 }
 

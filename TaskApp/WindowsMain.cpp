@@ -132,8 +132,8 @@ int main(int argc, char* argv[])
 
 	manager.updateEntryStatus(hardcoded_id, COMPLETE);
 
-	//manager.printAllTo(cout);
-	manager.printTableTo(cout);
+	manager.printAllTo(cout);
+	//manager.printTableTo(cout);
 
 	// Event loop variables
 	string input;
