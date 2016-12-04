@@ -79,14 +79,29 @@ void EntryManager::printTableTo(ostream& output)
 	table.traverse(printTable);
 }
 
-void task::visitHistory(const Operation& operation)
+void task::printHistory(const Operation& operation)
 {
-	cout << EnumToString::forOperationType( operation.getType() ) << "\t" << operation.getPreviousState().getDescription() << endl;
+	cout << EnumToString::forOperationType( operation.getType() ) << "\t" << operation.getPreviousState().getId().substr(0, 8) << " ";
+
+	switch (operation.getType()) {
+	case UPDATE_STATUS:
+		cout << EnumToString::forStatus(operation.getPreviousState().getStatus()) << " -> ";
+		break;
+
+	default:
+		break;
+	}
+	cout << endl;
 }
 
 void EntryManager::printHistoryTo(ostream& output)
 {
-	history.traverse(visitHistory);
+	if (history.isEmpty()) {
+		output << "no operations have been recorded this run." << endl;
+	}
+	else {
+		history.traverse(printHistory);
+	}
 }
 
 void EntryManager::createEntry(const string& description)
@@ -191,6 +206,10 @@ bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& ne
 		found_value->setStatus(new_status);
 	}
 	else { return false; }
+
+	// Add to history after finding the entry in the table
+	// and updating the clone in the tree.
+	history.push(Operation(UPDATE_STATUS, *to_update));
 
 	// Update entry in table
 	to_update->setStatus(new_status);

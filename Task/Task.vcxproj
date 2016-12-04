@@ -92,7 +92,6 @@
     <ClInclude Include="HashList.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="Operation.h" />
-    <ClInclude Include="OperationManager.h" />
     <ClInclude Include="OperationType.h" />
     <ClInclude Include="TaskEntry.h" />
     <ClInclude Include="TaskEntryStatus.h" />

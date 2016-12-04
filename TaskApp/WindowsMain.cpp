@@ -53,33 +53,10 @@ int main(int argc, char* argv[])
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 
-	//ifstream config;
-	//config.open("~\\.gitconfig");
-	//string c_line;
-	//while (getline(config, c_line)) {
-	//	cout << c_line << endl;
-	//}
-
-
-	//task::HashTable<string, task::TaskEntry*> table; // = task::HashTable<string, task::TaskEntry*>();
-	//c_tree<uint64_t, task::TaskEntry*> tree;
-	//task::TaskEntry** found_entries = nullptr;
-	//uint64_t* found_keys = nullptr;
-	//task::TaskEntry* demo_entry = new task::TaskEntry("demo", "demo entry");
-	//tree.insert(demo_entry->getTimeCreatedMs(), &demo_entry);
-	//table.insert(demo_entry->getId(), demo_entry);
-	//if (tree.find(demo_entry->getTimeCreatedMs(), &found_keys, &found_entries))
-	//{
-	//	cout << (*found_entries)->getDescription() << endl;
-	//}
-	//cout << table.getValue(demo_entry->getId())->getDescription() << endl;
-
+	// Initialize Task's manager object.
 	task::EntryManager manager;
 	manager.setCurrentUser("mtso");
-	
 
-	//uint m = 0;
-	//cout << m << endl;
 
 	// If DEBUG is defined, skip main routine to print debugging info.
 #ifndef DEBUG
@@ -87,58 +64,20 @@ int main(int argc, char* argv[])
 	// Load tasklogs
 	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
 	vector<string> tasklog_filenames;
-
-	for (unsigned int i = 0; i < filenames.size(); i++) {
-		if (filenames[i].find("tasklog-") != string::npos) {
-			//cout << filenames[i] << endl;
+	for (unsigned int i = 0; i < filenames.size(); i++) 
+	{
+		// Iterate through all filenames looking for those that contain `tasklog-`
+		if (filenames[i].find("tasklog-") != string::npos) 
+		{
 			tasklog_filenames.push_back(filenames[i]);
 		}
 	}
 	manager.loadTasklogs(tasklog_filenames);
 
-
-	//manager.printAllTo(cout);
-	manager.createEntry("what in the worlds");
-	manager.createEntry("this should be second");
-	cout << endl << endl << "===================" << endl << endl;
-
-
-	cout << endl << endl;
-
-	string hardcoded_id;
-	task::TaskEntry found_entry;
-	try {
-		hardcoded_id = "b74c33f995843a5f53c256e196098fcce0338783";
-		found_entry = manager.getEntryById(hardcoded_id);
-	}
-	catch (...) {
-		cout << "Could not find entry for id: " << hardcoded_id << endl;
-	}
-	cout << found_entry.getDescription() << endl;
+	//====================================================================
+	// Main event loop
+	//====================================================================
 	
-	//manager.deleteEntry(found_entry.getId());
-
-	manager.printHistoryTo(cout);
-
-	string full_id;
-	if (manager.getFullIdFor("b74c", full_id)) {
-		cout << full_id << endl;
-	}
-
-	cout << endl << endl << endl;
-	vector<task::TaskEntry> found = manager.searchEntryDescription("second");
-	cout << "found: " << found.size() << endl;
-	for (uint i = 0; i < found.size(); i++) {
-		cout << found[i].getDescription() << endl;
-	}
-
-	manager.runDiagnosticTo(cout);
-
-	manager.updateEntryStatus(hardcoded_id, COMPLETE);
-
-	//manager.printAllTo(cout);
-	//manager.printTableTo(cout);
-
 	// Event loop variables
 	string input;
 	taskapp::AppCommand command;
@@ -154,166 +93,81 @@ int main(int argc, char* argv[])
 		command = parser.parseCommandFrom(input);
 		arguments = parser.parseArgumentsFrom(input);
 
-		cout << "Command: ";
+		string full_id;
+		int run_count;
+
+		//cout << "Command: ";
 		switch (command) {
 		case taskapp::CMD_LIST:
-			cout << "list";
+			manager.printAllTo(cout);
 			break;
+
 		case taskapp::CMD_CREATE:
-			cout << "create";
+			manager.createEntry(arguments);
+			cout << "Created a new entry." << endl;
 			break;
+
 		case taskapp::CMD_UPDATE:
 			cout << "update";
+			// TODO: need to write update command
 			break;
+
 		case taskapp::CMD_DELETE:
-			cout << "delete";
+			if (manager.getFullIdFor(arguments, full_id)) {
+				
+				if (manager.deleteEntry(full_id)) {
+					cout << "Deleted " << full_id << endl;
+				}
+				else {
+					cout << "Error deleting: " << full_id << endl;
+				}
+			}
+			else {
+				cout << "Could not find (or found more than) one entry that matched: " << arguments << endl;
+			}
 			break;
+
 		case taskapp::CMD_HISTORY:
-			cout << "history";
+			manager.printHistoryTo(cout);
 			break;
+
 		case taskapp::CMD_UNDO:
 			cout << "undo";
+			// TODO: need to implement undo
 			break;
+
 		case taskapp::CMD_TEST:
-			cout << "test";
+			if (arguments.length() > 0) {
+				try {
+					run_count = stoi(arguments);
+					manager.runDiagnosticTo(cout, run_count);
+				}
+				catch (std::invalid_argument error) {
+					cout << "test takes a number as an argument" << endl;
+				}
+			}
+			else {
+				manager.runDiagnosticTo(cout);
+			}
 			break;
+
 		case taskapp::CMD_QUIT:
-			cout << "quit";
+			// Output files here
+
 			shouldContinue = false;
 			break;
+
 		case taskapp::CMD_HELP:
-			cout << "help";
+			cout << "help" << endl;
 			break;
+
 		default:
-			cout << "unrecognized command";
+			cout << "unrecognized command. see `help`." << endl;
 			break;
 		}
-		cout << ". Arguments: " << arguments << "." << endl;
 	}
 
 #else
-	adt::Stack<task::Operation> history;
-	
-	
-	task::TaskEntry entry_1 = task::TaskEntry("mryagni", "waddup waddup");
-	entry_1.setTimeDueMs(entry_1.getTimeCreatedMs() + task::weekToMs(1));
-
-	history.push(task::Operation(task::UPDATE_STATUS, entry_1));
-	entry_1.setStatus(IN_PROGRESS);
-
-	history.traverse(visit);
-
-
-
-	task::HashTable<string, task::TaskEntry> entries;
-	entries.insert(entry_1.getId(), entry_1);
-
-	entries.traverse(visitTable);
-
-
-
-
-
-	//// DEMO CODE
-	//// Diagnostic usage
-	//task::Diagnostic diagnostic;
-	//diagnostic.runAndPrintTo(10, std::cout);
-	//cout << endl;
-
-
-	//// DEMO CODE
-	// Task entry usage
-	task::TaskEntry new_entry = task::TaskEntry("mryagni", "Implement TaskEntry data model");
-	cout << red << new_entry.getDescription() << endl;
-	cout << blue << new_entry.getId() << endl;
-	cout << red << new_entry.getTimeCreatedMs() << endl;
-	cout << blue << new_entry.getTimeCreatedStr() << endl;
-	cout << red << new_entry.getCreator() << endl;
-
-	if (new_entry.getStatus() == BACKLOG) {
-		cout << "Status: Backlog" << endl;
-	}
-	cout << endl;
-
-
-	// TESTING CODE
-	// Output entry to a demo tasklog file
-	uint64_t due_1week = new_entry.getTimeCreatedMs() + 604800000;
-	new_entry.setTimeDueMs(due_1week);
-
-	string entry_status;
-	switch (new_entry.getStatus()) {
-	case IN_PROGRESS:
-		entry_status = taskconfig::STATUS_STR_INPROGRESS;
-		break;
-
-	case COMPLETE:
-		entry_status = taskconfig::STATUS_STR_COMPLETE;
-		break;
-
-	default:
-		entry_status = taskconfig::STATUS_STR_BACKLOG;
-		break;
-	}
-
-	// Create an entry for mryagni
-	ostringstream entry_buffer;
-	entry_buffer << new_entry.getId() << ","
-		<< new_entry.getTimeCreatedMs() << ","
-		<< new_entry.getTimeDueMs() << ","
-		<< "\"" << new_entry.getDescription() << "\"," 
-		<< entry_status << "\n";
-
-	ofstream mryagni_log;
-	string data_rootdir = "..\\.task\\tasklog-";
-
-	// Print the entry to mryagni's tasklog
-	mryagni_log.open(data_rootdir + new_entry.getCreator(), ios::app);
-	mryagni_log << yellow << entry_buffer.str();
-	mryagni_log.close();
-
-
-	//// DEMO CODE
-	//// WindowsDirectory filename search usage
-	//TCHAR* data_dir = TEXT("..\\.task");
-	////string data_dir = "..\\";
-
-	////cout << data_dir;
-
-	try {
-		vector<wstring> files;
-
-		if (taskapp::ListFiles(L"..\\.task", L"tasklog-*", files)) {
-			for (vector<wstring>::iterator it = files.begin();
-				it != files.end();
-				++it) {
-				wcout << it->c_str() << endl;
-			}
-		}
-	}
-	catch (const char* error) {
-		cout << error << endl;
-	}
-	catch (...) {
-		cout << "Could not catch error";
-	}
-	cout << endl;
-	//
-	// 
-	//// DEMO CODE
-	//// Pager.h usage
-	//// Outputs an array of string content at a managed pace.
-	//const int content_length = 10;
-	//const int lines_per_page = 7;
-	//cout << green;
-	//const string sample_content[content_length] = {
-	//	"line 1: ", "line 2: ", "line 3: ", "line 4: ", "line 5: ",
-	//	"line 6: ", "line 7: ", "line 8: ", "line 9: ", "line 10: "
-	//};
-	//app_util::page(sample_content, content_length, lines_per_page);
-
-	cout << white;
-	system("PAUSE");
 
 #endif
 	return 0;

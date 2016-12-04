@@ -90,9 +90,6 @@
     <ClInclude Include="OperationType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OperationManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Operation.h">
       <Filter>Header Files</Filter>
     </ClInclude>

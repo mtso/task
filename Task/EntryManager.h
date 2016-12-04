@@ -9,11 +9,13 @@
 #include "HashTable.h"
 #include "c_tree.h"
 #include "TaskEntry.h"
-#include "OperationManager.h"
+#include "Operation.h"
+#include "ADT\Stack.h"
 #include "FileStore.h"
 #include "Utilities\DateTime.h"
 #include "Utilities\EnumToString.h"
 #include "Utilities\Diagnostic.h"
+
 
 #include "windows.h"
 
@@ -30,7 +32,7 @@ namespace task {
 
 		adt::Stack<Operation> history;
 
-		friend void visitHistory(const Operation& operation);
+		friend void printHistory(const Operation& operation);
 
 		friend void printTable(TaskEntry& entry);
 
@@ -43,9 +45,9 @@ namespace task {
 		};
 
 
-
 	public:
 		EntryManager();
+
 		EntryManager(const string& user);
 
 		void setCurrentUser(const string& user);
