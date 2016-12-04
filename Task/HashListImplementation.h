@@ -13,6 +13,7 @@ namespace task
 	HashList<KV>::HashList()
 		: head(nullptr)
 		, list_length(0)
+		, access_count(0)
 	{
 	}
 
@@ -43,54 +44,53 @@ namespace task
 	}
 
 	T_KV
-	bool HashList<KV>::contains(const KeyType& target_key)
+	HashEntry<KV>* HashList<KV>::pointerTo(const KeyType& target_key)
 	{
 		HashEntry<KV>* search = head;
 
-		while (search != nullptr) {
-			if (search->getKey() == target_key) {
+		while (search != nullptr) 
+		{
+			access_count++;
+			if (search->getKey() == target_key) 
+			{
 
 				// TODO: swap node with first
 
-				return true;
+				return search;
 			}
 			search = search->getNext();
 		}
-		return false;
+		return nullptr;
+	}
+
+	T_KV
+	bool HashList<KV>::contains(const KeyType& target_key)
+	{
+		return (pointerTo(target_key) == nullptr) ? false : true;
 	}
 
 	T_KV
 	ValueType HashList<KV>::getValue(const KeyType& target_key)
 	{
-		HashEntry<KV>* search = head;
-
-		while (search != nullptr) {
-			if (search->getKey() == target_key) {
-
-				// TODO: swap node with first
-
-				return search->getValue();
-			}
-			search = search->getNext();
+		HashEntry<KV>* search = pointerTo(target_key);
+		if (search != nullptr) {
+			return search->getValue();
 		}
-		throw NotFoundException();
+		else {
+			throw NotFoundException();
+		}
 	}
 
 	T_KV
 	ValueType& HashList<KV>::getRawValue(const KeyType& target_key)
 	{
-		HashEntry<KV>* search = head;
-
-		while (search != nullptr) {
-			if (search->getKey() == target_key) {
-
-				// TODO: swap node with first
-
-				return search->getRawValue();
-			}
-			search = search->getNext();
+		HashEntry<KV>* search = pointerTo(target_key);
+		if (search != nullptr) {
+			return search->getRawValue();
 		}
-		throw NotFoundException();
+		else {
+			throw NotFoundException();
+		}
 	}
 
 	T_KV
@@ -104,9 +104,7 @@ namespace task
 	T_KV
 	bool HashList<KV>::removeFirst()
 	{
-		if (isEmpty()) {
-			return false;
-		}
+		if (isEmpty()) { return false; }
 
 		// Un-link first entry
 		HashEntry<KV>* to_remove = head;
@@ -174,6 +172,18 @@ namespace task
 	ValueType HashList<KV>::peekValue()
 	{
 		return head->getValue();
+	}
+
+	T_KV
+	int HashList<KV>::getAccessCountFor(const KeyType& target_key)
+	{
+		access_count = 0;
+		if (contains(target_key)) {
+			return access_count;
+		}
+		else {
+			throw NotFoundException();
+		}
 	}
 }
 

@@ -18,14 +18,10 @@ using namespace std;
 #include "HashList.h"
 #include "TaskEntry.h"
 
-//#define KV KeyType, ValueType
-
 typedef unsigned int uint;
 
-namespace task {
-
-	// TODO: Need to design HashTable and figure out collision resolution method
-
+namespace task 
+{
 	/**
 	 * HashTable
 	 *
@@ -52,6 +48,7 @@ namespace task {
 
 		bool isPrime(const unsigned int &number);
 		unsigned int nextPrime(unsigned int minimum);
+		void forceExpansion();
 
 	public:
 		/**
@@ -118,7 +115,7 @@ namespace task {
 
 		unsigned int getTableSize() const;
 
-		void forceExpansion();
+		int getAccessCountOf(const KeyType& target_key);
 	};
 }
 

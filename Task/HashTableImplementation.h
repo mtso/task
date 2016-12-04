@@ -306,6 +306,13 @@ namespace task
 	{
 		return table_size;
 	}
+
+	T_KV
+	int HashTable<KV>::getAccessCountOf(const KeyType& target_key)
+	{
+		int index = hashOf(target_key, table_size);
+		return table[index].getAccessCountFor(target_key);
+	}
 }
 
 #endif

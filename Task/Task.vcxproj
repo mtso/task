@@ -101,6 +101,7 @@
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Djb2.h" />
     <ClInclude Include="Utilities\EnumToString.h" />
+    <ClInclude Include="Utilities\MinMax.h" />
     <ClInclude Include="Utilities\Sha1.h" />
     <ClInclude Include="Utilities\StringConstants.h" />
     <ClInclude Include="Utilities\StringToEnum.h" />

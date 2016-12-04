@@ -21,6 +21,10 @@ namespace task
 
 		unsigned int list_length;
 
+		unsigned int access_count;
+
+		HashEntry<KV>* pointerTo(const KeyType& target_key);
+
 	public:
 		class NotFoundException
 		{
@@ -56,6 +60,8 @@ namespace task
 
 		KeyType peekKey();
 		ValueType peekValue();
+
+		int getAccessCountFor(const KeyType& target_key);
 	};
 
 }

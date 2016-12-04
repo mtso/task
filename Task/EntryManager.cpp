@@ -72,11 +72,6 @@ void EntryManager::printAllTo(ostream& output)
 	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
 	{
 		printEntryTo(output, value);
-		//output << "task " << value->getId() << endl;
-		//output << "User:\t" << value->getCreator() << endl;
-		//output << "Status:\t" << EnumToString::forStatus(value->getStatus()) << endl;
-		//output << "Due:\t" << value->getTimeDueStr() << endl << endl;
-		//output << "\t" << value->getDescription() << endl << endl;
 	}
 }
 
@@ -321,8 +316,11 @@ void EntryManager::unload()
 
 void EntryManager::runDiagnosticTo(ostream& output, const int& run_count)
 {
-	Diagnostic test;
+	Diagnostic test; // (&tree_time_created, &table);
+	test.setTable(&table);
+	test.setTree(&tree_time_created);
 	test.runAndPrintTo(run_count, output);
+	cout << "Average table accesses:\t" << test.getAverageTableAccesses() << endl;
 }
 
 void EntryManager::printCurrentStateTo(ostream& output)
