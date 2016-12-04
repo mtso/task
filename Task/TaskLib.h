@@ -10,6 +10,16 @@
 #include "Configuration.h"
 #include "Utilities\Sha1.h"
 #include "Utilities\Diagnostic.h"
+
 #include "TaskEntry.h"
+#include "Operation.h"
+#include "ADT\Stack.h"
+#include "TaskEntry.h"
+#include "Utilities\DateTime.h"
+#include "HashTable.h"
+#include "EntryManager.h"
+#include "WindowsDirectory.h"
+#include "c_tree.h"
+#include "Utilities\StringToEnum.h"
 
 #endif

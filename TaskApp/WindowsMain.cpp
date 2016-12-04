@@ -13,21 +13,15 @@
 // Temporary test includes
 #include <fstream>
 
-// Includes all usable Task headers.
+// Includes usable Task headers.
 #include "TaskLib.h"
-#include "Operation.h"
-#include "ADT\Stack.h"
-#include "TaskEntry.h"
-#include "Utilities\DateTime.h"
-#include "HashTable.h"
-#include "EntryManager.h"
-#include "WindowsDirectory.h"
-#include "c_tree.h"
-#include "Utilities\StringToEnum.h"
 
 // Includes all TaskApp utility headers
-#include "AppIncludes.h"
+#include "AppConfiguration.h"
 #include "CommandParser.h"
+#include "WindowsDirectory.h"
+#include "Pager.h"
+#include "ConsoleColor.h"
 
 using namespace std;
 
@@ -46,6 +40,7 @@ int main(int argc, char* argv[])
 	// Initialize Task's manager object using current username.
 	task::EntryManager manager(getUsername());
 
+	// Load data from tasklogs using Windows API functions
 	loadDataInto(manager);
 
 	//====================================================================

@@ -1,11 +1,11 @@
-// TaskConfiguration.h
+// AppConfiguration.h
 // TaskApp
 // CIS 22C F2016: Matthew Tso
 //
 // Defines constants used in the console app
 
-#ifndef TASKAPP_APPCONSTANTS_H
-#define TASKAPP_APPCONSTANTS_H
+#ifndef TASKAPP_APPCONFIGURATION_H
+#define TASKAPP_APPCONFIGURATION_H
 
 // Standard shell is roughly 80 col wide (79 char)
 //
