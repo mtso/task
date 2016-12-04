@@ -36,6 +36,11 @@ int main(int argc, char* argv[])
 
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
+	
+	if (argc > 1 && (string)argv[1] == "--interactive") {
+		cout << argv[1] << endl;
+		return 0;
+	}
 
 	// Initialize Task's manager object using current username.
 	task::EntryManager manager(getUsername());

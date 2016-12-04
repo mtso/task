@@ -2,4 +2,5 @@
 :: TaskApp
 :: CIS 22C F2016: Matthew Tso
 
-bin\TaskApp.exe
+:: Simply forward all arguments to TaskApp with `%*`
+bin\TaskApp.exe %*
