@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 	// If DEBUG is defined, skip main routine to print debugging info.
 #ifndef DEBUG
 
-	// Load tasklogs
+	// Get the filenames inside the .task directory
 	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
 	vector<string> tasklog_filenames;
 	for (unsigned int i = 0; i < filenames.size(); i++) 
@@ -72,6 +72,7 @@ int main(int argc, char* argv[])
 			tasklog_filenames.push_back(filenames[i]);
 		}
 	}
+	// Load tasklogs
 	manager.loadTasklogs(tasklog_filenames);
 
 	//====================================================================
@@ -93,13 +94,14 @@ int main(int argc, char* argv[])
 		command = parser.parseCommandFrom(input);
 		arguments = parser.parseArgumentsFrom(input);
 
+		// Container variables to use inside the switch
 		string full_id;
 		string raw_id;
 		string raw_status;
-		TaskEntryStatus new_status;
-		int run_count;
-		vector<task::TaskEntry> search_results;
-		task::TaskEntry result;
+		TaskEntryStatus new_status; // for status update
+		int run_count; // for test
+		vector<task::TaskEntry> search_results; // for search
+		task::TaskEntry result; // for search
 
 		switch (command) {
 		case taskapp::CMD_LIST:
@@ -136,8 +138,8 @@ int main(int argc, char* argv[])
 			break;
 
 		case taskapp::CMD_DELETE:
-			if (manager.getFullIdFor(arguments, full_id)) {
-				
+			if (manager.getFullIdFor(arguments, full_id)) 
+			{	
 				if (manager.deleteEntry(full_id)) {
 					cout << "Deleted " << full_id << endl;
 				}

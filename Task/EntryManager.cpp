@@ -242,6 +242,21 @@ void EntryManager::undoTopOperation(ostream& output)
 			<< previous.getId().substr(0, 8) << endl;
 		break;
 
+	case OP_CREATE:
+		if (deleteEntry(previous.getId())) 
+		{
+			history.pop(); // Pop the extra update operation
+			output << "undid " << EnumToString::forOperationType(top.getType()) << " "
+				<< previous.getId().substr(0, 8) << endl;
+		}
+		else {
+			output << "something bad happened (attempted to undo a new entry but could not find it)." << endl;
+		}
+		break;
+
+	case OP_DELETE:
+		break;
+
 	default:
 		break;
 	}
