@@ -15,10 +15,11 @@ namespace taskapp {
 	class CommandParser
 	{
 	private:
+
+	public:
 		int firstOccurenceOf(const char& character, const string& in_string);
 		int lastOccurenceOf(const char& character, const string& in_string);
 
-	public:
 		AppCommand parseCommandFrom(const string& raw_input);
 		string parseArgumentsFrom(const string& raw_input);
 	};

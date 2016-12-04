@@ -23,6 +23,7 @@
 #include "EntryManager.h"
 #include "WindowsDirectory.h"
 #include "c_tree.h"
+#include "Utilities\StringToEnum.h"
 
 // Includes all TaskApp utility headers
 #include "AppIncludes.h"
@@ -56,7 +57,6 @@ int main(int argc, char* argv[])
 	// Initialize Task's manager object.
 	task::EntryManager manager;
 	manager.setCurrentUser("mtso");
-
 
 	// If DEBUG is defined, skip main routine to print debugging info.
 #ifndef DEBUG
@@ -94,9 +94,13 @@ int main(int argc, char* argv[])
 		arguments = parser.parseArgumentsFrom(input);
 
 		string full_id;
+		string raw_id;
+		string raw_status;
+		TaskEntryStatus new_status;
 		int run_count;
+		vector<task::TaskEntry> search_results;
+		task::TaskEntry result;
 
-		//cout << "Command: ";
 		switch (command) {
 		case taskapp::CMD_LIST:
 			manager.printAllTo(cout);
@@ -108,8 +112,27 @@ int main(int argc, char* argv[])
 			break;
 
 		case taskapp::CMD_UPDATE:
-			cout << "update";
-			// TODO: need to write update command
+			raw_id = arguments.substr(0, parser.firstOccurenceOf(' ', arguments));
+			raw_status = parser.parseArgumentsFrom(arguments);
+
+			// Get status type
+			try {
+				new_status = task::StringToEnum::forStatus(raw_status);
+			}
+			catch (...) {
+				cout << "could not parse status from: `" << raw_status << "`" << endl;
+				break;
+			}
+
+			// If the full id is found, 
+			// update the entry to the new status
+			if (manager.getFullIdFor(raw_id, full_id)) {
+				manager.updateEntryStatus(full_id, new_status);
+				cout << "updated " << full_id.substr(0, 8) << " ->" << task::EnumToString::forStatus(new_status) << endl;
+			}
+			else {
+				cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
+			}
 			break;
 
 		case taskapp::CMD_DELETE:
@@ -132,8 +155,7 @@ int main(int argc, char* argv[])
 			break;
 
 		case taskapp::CMD_UNDO:
-			cout << "undo";
-			// TODO: need to implement undo
+			manager.undoTopOperation(cout);
 			break;
 
 		case taskapp::CMD_TEST:
@@ -159,6 +181,15 @@ int main(int argc, char* argv[])
 
 		case taskapp::CMD_HELP:
 			cout << "help" << endl;
+			break;
+
+		case taskapp::CMD_SEARCH:
+			search_results = manager.searchEntryDescription(arguments);
+			for (uint i = 0; i < search_results.size(); i++) 
+			{
+				result = search_results[i];
+				cout << result.getId().substr(0, 8) << " " << result.getDescription() << endl;
+			}
 			break;
 
 		default:

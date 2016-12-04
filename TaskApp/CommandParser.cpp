@@ -57,6 +57,9 @@ namespace taskapp {
 		else if (command == "help") {
 			return CMD_HELP;
 		}
+		else if (command == "search") {
+			return CMD_SEARCH;
+		}
 		else {
 			return CMD_UNRECOGNIZED;
 		}

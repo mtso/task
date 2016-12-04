@@ -18,6 +18,7 @@ namespace taskapp {
 		CMD_TEST,
 		CMD_QUIT,
 		CMD_HELP,
+		CMD_SEARCH,
 		CMD_UNRECOGNIZED
 	};
 }

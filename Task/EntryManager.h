@@ -79,6 +79,8 @@ namespace task {
 		//// used upon quitting the app
 		//void unload();
 
+		void undoTopOperation(ostream& output);
+
 		void loadTasklogs(vector<string> filenames);
 	};
 }

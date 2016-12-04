@@ -103,6 +103,7 @@
     <ClInclude Include="Utilities\EnumToString.h" />
     <ClInclude Include="Utilities\Sha1.h" />
     <ClInclude Include="Utilities\StringConstants.h" />
+    <ClInclude Include="Utilities\StringToEnum.h" />
     <ClInclude Include="Utilities\TaskManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +118,7 @@
     <ClCompile Include="Utilities\Djb2.cpp" />
     <ClCompile Include="Utilities\EnumToString.cpp" />
     <ClCompile Include="Utilities\Sha1.cpp" />
+    <ClCompile Include="Utilities\StringToEnum.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

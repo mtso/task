@@ -222,3 +222,27 @@ void EntryManager::runDiagnosticTo(ostream& output, const int& run_count)
 	Diagnostic test;
 	test.runAndPrintTo(run_count, output);
 }
+
+void EntryManager::undoTopOperation(ostream& output)
+{
+	if (history.isEmpty()) {
+		output << "no operations to undo." << endl;
+		return;
+	}
+
+	Operation top = history.pop();
+	TaskEntry previous = top.getPreviousState();
+
+	switch (top.getType())
+	{
+	case UPDATE_STATUS:
+		updateEntryStatus(previous.getId(), previous.getStatus()); // Update to previous status
+		history.pop(); // Pop the extra update operation
+		output << "undid " << EnumToString::forOperationType( top.getType() ) << " " 
+			<< previous.getId().substr(0, 8) << endl;
+		break;
+
+	default:
+		break;
+	}
+}
