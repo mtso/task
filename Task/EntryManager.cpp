@@ -57,16 +57,53 @@ void EntryManager::loadTasklogs(vector<string> filenames)
 	}
 }
 
+void EntryManager::printEntryTo(ostream& output, const TaskEntry* entry)
+{
+	output << "task " << entry->getId() << endl;
+	output << "User:\t" << entry->getCreator() << endl;
+	output << "Status:\t" << EnumToString::forStatus(entry->getStatus()) << endl;
+	output << "Due:\t" << entry->getTimeDueStr() << endl << endl;
+	output << "\t" << entry->getDescription() << endl << endl;
+}
+
 void EntryManager::printAllTo(ostream& output)
 {
 	TaskEntry* value;
 	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
 	{
-		output << "task " << value->getId() << endl;
-		output << "User:\t" << value->getCreator() << endl;
-		output << "Status:\t" << EnumToString::forStatus(value->getStatus()) << endl;
-		output << "Due:\t" << value->getTimeDueStr() << endl << endl;
-		output << "\t" << value->getDescription() << endl << endl;
+		printEntryTo(output, value);
+		//output << "task " << value->getId() << endl;
+		//output << "User:\t" << value->getCreator() << endl;
+		//output << "Status:\t" << EnumToString::forStatus(value->getStatus()) << endl;
+		//output << "Due:\t" << value->getTimeDueStr() << endl << endl;
+		//output << "\t" << value->getDescription() << endl << endl;
+	}
+}
+
+
+void EntryManager::printUserTasksTo(ostream& output)
+{
+	TaskEntry* value;
+	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
+	{
+		if (value->getCreator() == current_user && 
+			value->getStatus() == BACKLOG || 
+			value->getStatus() == IN_PROGRESS )
+		{
+			printEntryTo(output, value);
+		}
+	}
+}
+
+void EntryManager::printUserTasksAllTo(ostream& output)
+{
+	TaskEntry* value;
+	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
+	{
+		if (value->getCreator() == current_user)
+		{
+			printEntryTo(output, value);
+		}
 	}
 }
 

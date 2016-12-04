@@ -19,10 +19,10 @@
 
 #include "windows.h"
 
-namespace task {
-
-	class EntryManager {
-
+namespace task 
+{
+	class EntryManager 
+	{
 	private:
 		string current_user;
 
@@ -47,6 +47,8 @@ namespace task {
 		//
 		void insertEntry(const TaskEntry& entry);
 
+		void printEntryTo(ostream& output, const TaskEntry* entry);
+
 	public:
 		EntryManager();
 
@@ -54,10 +56,19 @@ namespace task {
 
 		void setCurrentUser(const string& user);
 
+		// Task output listing functions
+
 		void printAllTo(ostream& output);
+
+		void printUserTasksTo(ostream& output);
+
+		void printUserTasksAllTo(ostream& output);
 
 		void printTableTo(ostream& output);
 		
+		/**
+		 * Prints a list of the operation history to cout.
+		 */
 		void printHistoryTo(ostream& output);
 
 		void createEntry(const string& description);

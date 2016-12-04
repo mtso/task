@@ -74,7 +74,18 @@ int main(int argc, char* argv[])
 
 		switch (command) {
 		case taskapp::CMD_LIST:
-			manager.printAllTo(cout);
+
+			if (arguments == "") {
+				manager.printUserTasksTo(cout);
+			}
+			else {
+				if (arguments == "all") {
+					manager.printUserTasksAllTo(cout);
+				}
+				else if (arguments == "team") {
+					manager.printAllTo(cout);
+				}
+			}
 			break;
 
 		case taskapp::CMD_CREATE:
@@ -176,10 +187,10 @@ string getUsername()
 {
 	// Get the username from .gitconfig
 	string current_user;
-	if (taskapp::getCurrentUser(current_user)) {
-		cout << current_user << endl;
-	}
-	else {
+	if (!taskapp::getCurrentUser(current_user)) 
+	{
+		// Let the user manually enter their name
+		// if .gitconfig could not be found
 		cout << "could not locate .gitconfig, what is your username?\n> ";
 		getline(cin, current_user);
 	}
