@@ -16,8 +16,11 @@
 #include "Utilities\EnumToString.h"
 #include "Utilities\Diagnostic.h"
 
+#include "Utilities\ConsoleColor.h"
 
+#ifdef _WIN32
 #include "windows.h"
+#endif
 
 namespace task 
 {

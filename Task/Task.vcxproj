@@ -97,6 +97,7 @@
     <ClInclude Include="TaskEntryStatus.h" />
     <ClInclude Include="TaskLib.h" />
     <ClInclude Include="EntryManager.h" />
+    <ClInclude Include="Utilities\ConsoleColor.h" />
     <ClInclude Include="Utilities\DateTime.h" />
     <ClInclude Include="Utilities\Diagnostic.h" />
     <ClInclude Include="Utilities\Djb2.h" />

@@ -59,7 +59,13 @@ void EntryManager::loadTasklogs(vector<string> filenames)
 
 void EntryManager::printEntryTo(ostream& output, const TaskEntry* entry)
 {
+#ifdef _WIN32
+	output << yellow;
+#endif
 	output << "task " << entry->getId() << endl;
+#ifdef _WIN32
+	output << white;
+#endif
 	output << "User:\t" << entry->getCreator() << endl;
 	output << "Status:\t" << EnumToString::forStatus(entry->getStatus()) << endl;
 	output << "Due:\t" << entry->getTimeDueStr() << endl << endl;

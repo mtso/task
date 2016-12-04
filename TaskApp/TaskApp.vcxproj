@@ -99,7 +99,6 @@
     <ClInclude Include="AppCommand.h" />
     <ClInclude Include="AppConfiguration.h" />
     <ClInclude Include="CommandParser.h" />
-    <ClInclude Include="ConsoleColor.h" />
     <ClInclude Include="DemoDataGenerator.h" />
     <ClInclude Include="Pager.h" />
     <ClInclude Include="WindowsDirectory.h" />

@@ -21,7 +21,7 @@
 #include "CommandParser.h"
 #include "WindowsDirectory.h"
 #include "Pager.h"
-#include "ConsoleColor.h"
+#include "Utilities\ConsoleColor.h"
 
 using namespace std;
 

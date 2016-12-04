@@ -1,3 +1,9 @@
+// ConsoleColor.h
+// Task
+// CIS 22C F2016: Adrian Marroquin
+
+#ifdef _WIN32
+
 #pragma once
 #include <iostream>
 #include <windows.h>
@@ -23,6 +29,13 @@ inline ostream& green(ostream &s)
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE); 
     SetConsoleTextAttribute(hStdout, FOREGROUND_GREEN|FOREGROUND_INTENSITY);
     return s;
+}
+
+inline ostream& dark_yellow(ostream &s)
+{
+	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hStdout, FOREGROUND_GREEN | FOREGROUND_RED);
+	return s;
 }
 
 inline ostream& yellow(ostream &s)
@@ -53,3 +66,4 @@ basic_ostream<_Elem,_Traits>& operator<<(basic_ostream<_Elem,_Traits>& s, color&
     return s;
 }
 
+#endif
