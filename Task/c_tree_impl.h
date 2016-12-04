@@ -367,9 +367,15 @@ typename c_tree<_key_t, _val_t>::node_t*
 c_tree<_key_t, _val_t>::find_node(const _key_t& key, int* compareCount) const
 {
 	node_t* found_node = NULL;
-
+	if (compareCount != NULL)
+	{
+		*compareCount = 0;
+	}
 	for (node_t* node = m_root; (node != NULL) && (node->m_key != NULL);){
-		(*compareCount)++;
+		if (compareCount != NULL)
+		{
+			(*compareCount)++;
+		}
 		if (key < *(node->m_key)) {
 			// Search to the left
 			node = node->m_left;
