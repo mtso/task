@@ -68,7 +68,7 @@ void EntryManager::printEntryTo(ostream& output, const TaskEntry* entry)
 #endif
 	output << "User:\t" << entry->getCreator() << endl;
 	output << "Status:\t" << EnumToString::forStatus(entry->getStatus()) << endl;
-	output << "Due:\t" << entry->getTimeDueStr().substr(0, 10) << endl << endl;
+	output << "Due:\t" << entry->getTimeDueStrShort() << endl << endl;
 	output << "\t" << entry->getDescription() << endl << endl;
 }
 

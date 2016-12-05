@@ -86,6 +86,8 @@ namespace task
 		 */
 		string getTimeCreatedStr() const;
 
+		string getTimeCreatedStrShort() const;
+
 		/**
 		 * Returns the due time in milliseconds
 		 */
@@ -95,6 +97,8 @@ namespace task
 		 * Returns the due time as a natural language string
 		 */
 		string getTimeDueStr() const;
+
+		string getTimeDueStrShort() const;
 
 		/**
 		 * Sets the due time.

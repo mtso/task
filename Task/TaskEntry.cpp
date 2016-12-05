@@ -128,6 +128,22 @@ namespace task
 		return msToString(time_created);
 	}
 
+	string TaskEntry::getTimeCreatedStrShort() const
+	{
+		if (time_created == 0) {
+			return "time created not set";
+		}
+		return getTimeCreatedStr().substr(0, 10);
+	}
+
+	string TaskEntry::getTimeDueStrShort() const
+	{
+		if (time_due == 0) {
+			return "time created not set";
+		}
+		return getTimeDueStr().substr(0, 10);
+	}
+
 	uint64_t TaskEntry::getTimeDueMs() const
 	{
 		//if (time_due == 0) {

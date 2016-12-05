@@ -88,7 +88,9 @@ namespace task
 
 		//void updateEntryDescription(const string& id, const string& new_description);
 
-		//void updateEntryDue(const string& id, const string& new_time);
+		//bool updateEntryDueDate(const string& id, const string& new_date);
+
+		//bool updateEntryDueAdd(const string& id, const string& add_time);
 
 		void runDiagnosticTo(ostream& output, const int& run_count = 1000);
 
