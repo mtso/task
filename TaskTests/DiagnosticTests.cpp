@@ -18,6 +18,14 @@ namespace TaskTests // Testing Project namespace
 		TEST_METHOD(RunDiagnostic)
 		{
 			task::Diagnostic diagnostic;
+			task::TaskEntry* demo_entry = new task::TaskEntry("mryagni", "demo entry for diagnostic");
+			task::HashTable<string, task::TaskEntry> table;
+			c_tree<uint64_t, task::TaskEntry> tree;
+			table.insert(demo_entry->getId(), *demo_entry);
+			tree.insert(demo_entry->getTimeCreatedMs(), demo_entry);
+
+			diagnostic.setTable(&table);
+			diagnostic.setTree(&tree);
 
 			try {
 				diagnostic.run(test_run_count);
@@ -30,12 +38,22 @@ namespace TaskTests // Testing Project namespace
 			catch (...) {
 				Assert::Fail(L"Could not catch the thrown error");
 			}
+
+			delete demo_entry;
 		}
 
 		TEST_METHOD(RunDiagnosticWithOutput)
 		{
 			ostringstream output;
 			task::Diagnostic diagnostic;
+			task::TaskEntry* demo_entry = new task::TaskEntry("mryagni", "demo entry for diagnostic");
+			task::HashTable<string, task::TaskEntry> table;
+			c_tree<uint64_t, task::TaskEntry> tree;
+			table.insert(demo_entry->getId(), *demo_entry);
+			tree.insert(demo_entry->getTimeCreatedMs(), demo_entry);
+
+			diagnostic.setTable(&table);
+			diagnostic.setTree(&tree);
 
 			try {
                 // If this succeeds, test just falls-through try-catch block.

@@ -413,7 +413,7 @@ c_tree<_key_t, _val_t>::find_left_max_node(node_t* node)
 template <typename _key_t, typename _val_t>
 void c_tree<_key_t, _val_t>::remove(const _key_t& key)
 {
-	node_t* node = find_node(key);
+	node_t* node = find_node(key, NULL);
 
 	if (node == NULL) {
 		// Nothing to do when the node can't be found.
