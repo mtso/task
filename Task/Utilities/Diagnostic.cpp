@@ -115,11 +115,11 @@ namespace task {
 			max_accesses = max((unsigned int)current_count, max_accesses);
 		}
 
-		average_accesses = (double)total_accesses / (double)entry_count;
+		average_accesses_table = (double)total_accesses / (double)entry_count;
 	}
 
 	double Diagnostic::getAverageTableAccesses() const
 	{
-		return average_accesses;
+		return average_accesses_table;
 	}
 }

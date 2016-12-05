@@ -68,7 +68,6 @@ namespace task
 	{
 	}
 
-
 	TaskEntry::TaskEntry(const string& input_creator, const string& input_description)
 	{
 		using namespace chrono;
@@ -120,19 +119,27 @@ namespace task
 
 	string TaskEntry::getTimeCreatedStr() const
 	{
+		if (time_created == 0) {
+			return "time created not set";
+		}
+
 		return msToString(time_created);
 	}
 
 	uint64_t TaskEntry::getTimeDueMs() const
 	{
-		if (time_due == 0) {
-			throw "Time due has not been set.";
-		}
+		//if (time_due == 0) {
+		//	throw "Time due has not been set.";
+		//}
 		return time_due;
 	}
 
 	string TaskEntry::getTimeDueStr() const
 	{
+		if (time_due == 0) {
+			return "due date not set";
+		}
+
 		// Call getTimeDueMs for the 0 check
 		return msToString(getTimeDueMs());
 	}

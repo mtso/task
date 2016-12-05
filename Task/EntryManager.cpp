@@ -149,22 +149,22 @@ void EntryManager::printHistoryTo(ostream& output)
 void EntryManager::createEntry(const string& description)
 {
 	//assign system time to create time
-	ULARGE_INTEGER int_time;
-	SYSTEMTIME sys_time;
-	GetSystemTime(&sys_time);
-	FILETIME file_time;
-	SystemTimeToFileTime(&sys_time, &file_time);
-	int_time.LowPart = file_time.dwLowDateTime;
-	int_time.HighPart = file_time.dwHighDateTime;
-	uint64_t createTime = (uint64_t)int_time.QuadPart;
+	//ULARGE_INTEGER int_time;
+	//SYSTEMTIME sys_time;
+	//GetSystemTime(&sys_time);
+	//FILETIME file_time;
+	//SystemTimeToFileTime(&sys_time, &file_time);
+	//int_time.LowPart = file_time.dwLowDateTime;
+	//int_time.HighPart = file_time.dwHighDateTime;
+	//uint64_t createTime = (uint64_t)int_time.QuadPart;
 
 	//TaskEntry value("", description, createTime);
 	TaskEntryStatus new_status = BACKLOG;
-	TaskEntry* new_entry = new TaskEntry(current_user, description, createTime, createTime + 64000, new_status);
+	TaskEntry* new_entry = new TaskEntry(current_user, description); // , createTime, createTime + 64000, new_status);
 
 	//tree_time_created.insert(createTime, &value);
 	history.push(Operation(OP_CREATE, *new_entry));
-	tree_time_created.insert(createTime, new_entry);
+	tree_time_created.insert(new_entry->getTimeCreatedMs(), new_entry);
 	table.insert(new_entry->getId(), *new_entry);
 }
 

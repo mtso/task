@@ -35,7 +35,8 @@ namespace task {
 		double load_factor;
 		int access_count;
 
-		double average_accesses;
+		double average_accesses_table;
+		double average_accesses_tree;
 
 		c_tree<uint64_t, TaskEntry>* tree;
 		HashTable<string, TaskEntry>* table;
