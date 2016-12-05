@@ -1,6 +1,6 @@
 // TaskEntry.h
 // Task
-// CIS 22C F2016:
+// CIS 22C F2016: Matthew Tso, Jinzhu Shen
 
 #ifndef TASK_TASKENTRY_H
 #define TASK_TASKENTRY_H
@@ -54,6 +54,11 @@ namespace task
 		 */
 		TaskEntry(const string& input_creator, const string& input_description, const uint64_t& input_time_created);
 
+		/**
+		 * Construct full task entry using all fields.
+		 * Used in FileStore to create TaskEntry objects
+		 * with data from file.
+		 */
         TaskEntry(const string& input_creator, const string& input_description, const uint64_t& input_time_created, const uint64_t& input_time_due, TaskEntryStatus& input_status);
 
 		/**
