@@ -47,17 +47,25 @@ namespace task
 	HashEntry<KV>* HashList<KV>::pointerTo(const KeyType& target_key)
 	{
 		HashEntry<KV>* search = head;
+		HashEntry<KV>* previous = nullptr;
 
 		while (search != nullptr) 
 		{
 			access_count++;
 			if (search->getKey() == target_key) 
 			{
-
-				// TODO: swap node with first
+				// If not the first node,
+				// set as first node.
+				if (previous != nullptr) 
+				{
+					previous->setNext(search->getNext());
+					search->setNext(head);
+					head = search;
+				}
 
 				return search;
 			}
+			previous = search;
 			search = search->getNext();
 		}
 		return nullptr;
