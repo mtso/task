@@ -108,3 +108,21 @@ Collision at index 72... Resolved to linked list.
 Collision at index 21... Resolved to linked list.
 Collision at index 29... Resolved to linked list.
 ```
+
+#### 11. Update status
+```
+> update 252bc status in-progress
+updated 252bc067 ->in-progress
+```
+
+#### 12. Update due date
+```
+> update 252bc due 12-14-2016
+updated 252bc067 ->Wed Dec 14
+```
+
+#### 13. Update description
+```
+> update 252bc description Another description demo.
+updated 252bc067 ->"Another description demo."
+```
