@@ -5,13 +5,6 @@
 // WindowsMain is the entry point into Tasks's 
 // interactive shell on Windows platforms.
 //
-//
-// Notes:
-// http://www.geeksforgeeks.org/print-bst-keys-in-the-given-range/
-
-
-// Temporary test includes
-#include <fstream>
 
 // Includes usable Task headers.
 #include "TaskLib.h"
@@ -21,178 +14,50 @@
 #include "CommandParser.h"
 #include "WindowsDirectory.h"
 #include "Pager.h"
-#include "Utilities\ConsoleColor.h"
 
-using namespace std;
+// Flag for continuing input loop
+#define CONTINUE_APP 1
 
 string getUsername();
-void loadDataInto(task::EntryManager& manager);
+void loadDataInto(task::EntryManager& manager, const TCHAR* from_directory);
+int commandInput(task::EntryManager& manager);
+
+//===============================
+// EntryManager helper functions
+//===============================
+void parseAndExecuteList  (task::EntryManager& manager, const string& arguments);
+void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments);
+void parseAndExecuteTest  (task::EntryManager& manager, const string& arguments);
+void parseAndExecuteDelete(task::EntryManager& manager, const string& arguments);
+void parseAndExecuteSearch(task::EntryManager& manager, const string& arguments);
 
 int main(int argc, char* argv[])
 {
-	//====================================================================
-	// Startup procedure
-	//====================================================================
-
 	// Output version number specified in AppConstants.h
 	cout << "task v" << taskapp::VERSION << endl;
 	
+	// Parse startup arguments
 	if (argc > 1 && (string)argv[1] == "--interactive") {
 		cout << argv[1] << endl;
-		return 0;
+		return EXIT_SUCCESS;
 	}
 
+	// Startup procedure
 	// Initialize Task's manager object using current username.
 	task::EntryManager manager(getUsername());
 
 	// Load data from tasklogs using Windows API functions
-	loadDataInto(manager);
+	loadDataInto(manager, _TEXT("..\\.task"));
 
-	//====================================================================
-	// Main event loop
-	//====================================================================
-	
-	// Event loop variables
-	bool shouldContinue = true;
-	string input;
-	taskapp::AppCommand command;
-	string arguments;
-	taskapp::CommandParser parser;
-
-	// Temporary variables to use inside the switch
-	string full_id;
-	string raw_id;
-	string raw_status;                      // for status update
-	TaskEntryStatus new_status;             // for status update
-	int run_count;                          // for test
-	vector<task::TaskEntry> search_results; // for search
-	task::TaskEntry result;                 // for search
-
-	// Main event loop
-	while (shouldContinue)
+	// Enter main command loop
+	int status = CONTINUE_APP;
+	while (status == CONTINUE_APP)
 	{
-		cout << "> ";
-		getline(cin, input);
-
-		command = parser.parseCommandFrom(input);
-		arguments = parser.parseArgumentsFrom(input);
-
-		switch (command) {
-		case taskapp::CMD_LIST:
-
-			if (arguments == "") {
-				manager.printUserTasksTo(cout);
-			}
-			else {
-				if (arguments == "all") {
-					manager.printUserTasksAllTo(cout);
-				}
-				else if (arguments == "team") {
-					manager.printAllTo(cout);
-				}
-			}
-			break;
-
-		case taskapp::CMD_CREATE:
-			manager.createEntry(arguments);
-			cout << "Created a new entry." << endl;
-			break;
-
-		case taskapp::CMD_UPDATE:
-			raw_id = arguments.substr(0, parser.firstOccurenceOf(' ', arguments));
-			raw_status = parser.parseArgumentsFrom(arguments);
-
-			// Get status type
-			try {
-				new_status = task::StringToEnum::forStatus(raw_status);
-			}
-			catch (...) {
-				cout << "could not parse status from: `" << raw_status << "`" << endl;
-				break;
-			}
-
-			// If the full id is found, 
-			// update the entry to the new status
-			if (manager.getFullIdFor(raw_id, full_id)) {
-				manager.updateEntryStatus(full_id, new_status);
-				cout << "updated " << full_id.substr(0, 8) << " ->" << task::EnumToString::forStatus(new_status) << endl;
-			}
-			else {
-				cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
-			}
-			break;
-
-		case taskapp::CMD_DELETE:
-			if (manager.getFullIdFor(arguments, full_id)) 
-			{	
-				if (manager.deleteEntry(full_id)) {
-					cout << "Deleted " << full_id << endl;
-				}
-				else {
-					cout << "Error deleting: " << full_id << endl;
-				}
-			}
-			else {
-				cout << "Could not find (or found more than) one entry that matched: " << arguments << endl;
-			}
-			break;
-
-		case taskapp::CMD_HISTORY:
-			manager.printHistoryTo(cout);
-			break;
-
-		case taskapp::CMD_UNDO:
-			manager.undoTopOperation(cout);
-			break;
-
-		case taskapp::CMD_TEST:
-			if (arguments == "current") {
-				manager.printCurrentStateTo(cout);
-				break;
-			}
-
-			if (arguments.length() > 0) {
-
-
-				try {
-					run_count = stoi(arguments);
-					manager.runDiagnosticTo(cout, run_count);
-				}
-				catch (std::invalid_argument error) {
-					cout << "test takes a number as an argument" << endl;
-				}
-			}
-			else {
-				manager.runDiagnosticTo(cout);
-			}
-			break;
-
-		case taskapp::CMD_QUIT:
-			// Output files here
-			manager.unload();
-			shouldContinue = false;
-			break;
-
-		case taskapp::CMD_HELP:
-			cout << "help" << endl;
-			break;
-
-		case taskapp::CMD_SEARCH:
-			search_results = manager.searchEntryDescription(arguments);
-			for (uint i = 0; i < search_results.size(); i++) 
-			{
-				result = search_results[i];
-				cout << result.getId().substr(0, 8) << " " << result.getDescription() << endl;
-			}
-			break;
-
-		default:
-			cout << "unrecognized command. see `help`." << endl;
-			break;
-		}
+		status = commandInput(manager);
 	}
 
-	return 0;
+	// Should only be EXIT_SUCCESS at this point
+	return status;
 }
 
 string getUsername()
@@ -209,19 +74,200 @@ string getUsername()
 	return current_user;
 }
 
-void loadDataInto(task::EntryManager& manager)
+void loadDataInto(task::EntryManager& manager, const TCHAR* from_directory)
 {
 	// Get all the filenames inside the .task directory
-	vector<string> filenames = taskapp::filenamesIn(_TEXT("..\\.task"));
+	vector<string> filenames = taskapp::filenamesIn(from_directory);
 	vector<string> tasklog_filenames;
 	for (unsigned int i = 0; i < filenames.size(); i++)
 	{
 		// Iterate through all filenames looking for those that contain `tasklog-`
-		if (filenames[i].find("tasklog-") != string::npos)
+		if (filenames
+			[i].find("tasklog-") != string::npos)
 		{
 			tasklog_filenames.push_back(filenames[i]);
 		}
 	}
 	// Load tasklogs
 	manager.loadTasklogs(tasklog_filenames);
+}
+
+//====================================================================
+// Command input process
+//====================================================================
+int commandInput(task::EntryManager& manager)
+{
+	// Prompt command and get input
+	string input;
+	cout << "> ";
+	getline(cin, input);
+
+	// Parse command
+	taskapp::CommandParser parser;
+	taskapp::AppCommand command = parser.parseCommandFrom(input);
+	string arguments = parser.parseArgumentsFrom(input);
+
+	switch (command) {
+	case taskapp::CMD_LIST:
+		parseAndExecuteList(manager, arguments);
+		break;
+
+	case taskapp::CMD_CREATE:
+		manager.createEntry(arguments);
+		cout << "Created a new entry." << endl;
+		break;
+
+	case taskapp::CMD_UPDATE:
+		parseAndExecuteUpdate(manager, arguments);
+		break;
+
+	case taskapp::CMD_DELETE:
+		parseAndExecuteDelete(manager, arguments);
+		break;
+
+	case taskapp::CMD_HISTORY:
+		manager.printHistoryTo(cout);
+		break;
+
+	case taskapp::CMD_UNDO:
+		manager.undoTopOperation(cout);
+		break;
+
+	case taskapp::CMD_TEST:
+		parseAndExecuteTest(manager, arguments);
+		break;
+
+	case taskapp::CMD_HELP:
+		cout << "help" << endl;
+		break;
+
+	case taskapp::CMD_SEARCH:
+		parseAndExecuteDelete(manager, arguments);
+		break;
+
+	case taskapp::CMD_QUIT:
+		manager.unload(); // Output files here
+		return EXIT_SUCCESS;
+
+	default:
+		cout << "unrecognized command. see `help`." << endl;
+		break;
+	}
+	
+	return CONTINUE_APP;
+}
+
+void parseAndExecuteList(task::EntryManager& manager, const string& arguments)
+{
+	if (arguments == "") {
+		manager.printUserTasksTo(cout);
+	}
+	else {
+		if (arguments == "all") {
+			manager.printUserTasksAllTo(cout);
+		}
+		else if (arguments == "team") {
+			manager.printAllTo(cout);
+		}
+	}
+}
+
+void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
+{
+	taskapp::CommandParser parser;
+	string full_id;
+	string raw_id = arguments.substr(0, parser.firstOccurenceOf(' ', arguments));
+	string leftovers = parser.parseArgumentsFrom(arguments);
+
+	string raw_update_type = leftovers.substr(0, parser.firstOccurenceOf(' ', leftovers));
+	string raw_update_argument = parser.parseArgumentsFrom(leftovers);
+
+	//===============
+	// Update Status
+	//===============
+	if (raw_update_type == "status") {
+
+		TaskEntryStatus new_status;
+
+		// Get status type
+		try {
+			new_status = task::StringToEnum::forStatus(raw_update_argument);
+		}
+		catch (...) {
+			cout << "could not parse status from: `" << raw_update_argument << "`" << endl;
+			return;
+		}
+
+		// If the full id is found, 
+		// update the entry to the new status
+		if (manager.getFullIdFor(raw_id, full_id)) {
+			manager.updateEntryStatus(full_id, new_status);
+			cout << "updated " << full_id.substr(0, 8) << " ->" << task::EnumToString::forStatus(new_status) << endl;
+		}
+		else {
+			cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
+		}
+	}
+
+	//=================
+	// Update Due Date
+	//=================
+	else if (raw_update_type == "due") {
+		cout << "Due date update has not been implemented yet." << endl;
+	}
+
+	//====================
+	// Update Description
+	//====================
+	else if (raw_update_type == "description") {
+		cout << "Description update has not been implemented yet." << endl;
+	}
+
+}
+
+void parseAndExecuteTest(task::EntryManager& manager, const string& arguments)
+{
+	if (arguments == "current") {
+		manager.printCurrentStateTo(cout);
+	} 
+	else if (arguments.length() > 0) {
+		try {
+			int run_count = stoi(arguments);
+			manager.runDiagnosticTo(cout, run_count);
+		}
+		catch (std::invalid_argument error) {
+			cout << "test takes a number as an argument" << endl;
+		}
+	}
+	else {
+		manager.runDiagnosticTo(cout); // default 1000 times
+	}
+}
+
+void parseAndExecuteDelete(task::EntryManager& manager, const string& arguments)
+{
+	string full_id;
+	if (manager.getFullIdFor(arguments, full_id))
+	{
+		if (manager.deleteEntry(full_id)) {
+			cout << "Deleted " << full_id << endl;
+		}
+		else {
+			cout << "Error deleting: " << full_id << endl;
+		}
+	}
+	else {
+		cout << "Could not find (or found more than) one entry that matched: " << arguments << endl;
+	}
+}
+
+void parseAndExecuteSearch(task::EntryManager& manager, const string& arguments)
+{
+	task::TaskEntry result;
+	vector<task::TaskEntry> search_results = manager.searchEntryDescription(arguments);
+	for (uint i = 0; i < search_results.size(); i++)
+	{
+		result = search_results[i];
+		cout << yellow << result.getId().substr(0, 8) << white << " " << result.getDescription() << endl;
+	}
 }
