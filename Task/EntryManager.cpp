@@ -259,6 +259,33 @@ bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& ne
 	return true;
 }
 
+bool EntryManager::updateEntryDescription(const string& id, const string& new_description)
+{
+    TaskEntry* to_update;
+
+    // Find entry
+    try {
+        to_update = & table.getRawValue(id);
+    }
+    catch (HashList<string, TaskEntry>::NotFoundException error) { return false; }
+
+    // Update entry in tree
+    TaskEntry* found_value;
+    uint64_t * found_key;
+    if (tree_time_created.find(to_update->getTimeCreatedMs(), &found_key, &found_value)) {
+        found_value->setDescription(new_description);
+    }
+    else { return false; }
+
+    // Add to history after finding the entry in the table
+    // and updating the clone in the tree.
+    history.push(Operation(UDPATE_DESCRIPTION, *to_update));
+
+    // Update entry in table
+    to_update->setDescription(new_description);
+
+    return true;
+}
 
 void EntryManager::undoTopOperation(ostream& output)
 {
