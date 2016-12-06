@@ -287,6 +287,34 @@ bool EntryManager::updateEntryDescription(const string& id, const string& new_de
     return true;
 }
 
+bool EntryManager::updateEntryDueDate(const string& id, uint64_t new_time_due)
+{
+    TaskEntry* to_update;
+
+    // Find entry
+    try {
+        to_update = &table.getRawValue(id);
+    }
+    catch (HashList<string, TaskEntry>::NotFoundException error) { return false; }
+
+    // Update entry in tree
+    TaskEntry* found_value;
+    uint64_t * found_key;
+    if (tree_time_created.find(to_update->getTimeCreatedMs(), &found_key, &found_value)) {
+        found_value->setTimeDueMs(new_time_due);
+    }
+    else { return false; }
+
+    // Add to history after finding the entry in the table
+    // and updating the clone in the tree.
+    history.push(Operation(UPDATE_TIMEDUE, *to_update));
+
+    // Update entry in table
+    to_update->setTimeDueMs(new_time_due);
+
+    return true;
+}
+
 void EntryManager::undoTopOperation(ostream& output)
 {
 	if (history.isEmpty()) {

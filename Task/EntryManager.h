@@ -87,8 +87,8 @@ namespace task
 		bool updateEntryStatus(const string& id, const TaskEntryStatus& new_status);
 
 		bool updateEntryDescription(const string& id, const string& new_description);
-
-		//bool updateEntryDueDate(const string& id, const string& new_date);
+        
+		bool updateEntryDueDate(const string& id, uint64_t new_time_due);
 
 		//bool updateEntryDueAdd(const string& id, const string& add_time);
 
