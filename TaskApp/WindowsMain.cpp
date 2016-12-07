@@ -143,7 +143,7 @@ int commandInput(task::EntryManager& manager)
 		break;
 
 	case taskapp::CMD_HELP:
-		cout << "help" << endl;
+		cout << taskapp::HELP_TEXT << endl;
 		break;
 
 	case taskapp::CMD_SEARCH:
