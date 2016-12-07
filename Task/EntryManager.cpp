@@ -91,11 +91,11 @@ void EntryManager::printAllTo(ostream& output)
 void EntryManager::printUserTasksTo(ostream& output)
 {
 	TaskEntry* value;
+	bool is_complete;
 	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
 	{
-		if (value->getCreator() == current_user && 
-			value->getStatus() == BACKLOG || 
-			value->getStatus() == IN_PROGRESS )
+		is_complete = value->getStatus() == COMPLETE;
+		if (value->getCreator() == current_user && !is_complete)
 		{
 			printEntryTo(output, value);
 		}
