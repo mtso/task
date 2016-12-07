@@ -116,7 +116,7 @@ void EntryManager::printUserTasksAllTo(ostream& output)
 
 void task::printTable(TaskEntry& entry)
 {
-	cout << "task " << entry.getId() << endl;
+	cout << yellow << "task " << entry.getId() << white << endl;
 	cout << "User:\t" << entry.getCreator() << endl;
 	cout << "Status:\t" << EnumToString::forStatus(entry.getStatus()) << endl;
 	cout << "Due:\t" << entry.getTimeDueStr() << endl << endl;

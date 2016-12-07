@@ -176,6 +176,9 @@ void parseAndExecuteList(task::EntryManager& manager, const string& arguments)
 	else if (arguments == "tree") {
 		manager.printTreeTo(cout);
 	}
+	else if (arguments == "table") {
+		manager.printTableTo(cout);
+	}
 }
 
 void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
