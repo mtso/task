@@ -15,7 +15,6 @@
 
 // Includes usable Task headers.
 #include "TaskLib.h"
-#include "OperationType.h"
 
 // Includes all TaskApp utility headers
 #include "AppConfiguration.h"
@@ -115,33 +114,33 @@ int main(int argc, char* argv[])
 			// If the full id is found, 
 			// update the entry to the new status
 			if (manager.getFullIdFor(raw_id, full_id)) {
-                // TODO: get op
-                task::OperationType op = task::UPDATE_STATUS;
-                if (op == task::UPDATE_STATUS)
-                {
-                    manager.updateEntryStatus(full_id, new_status);
+//                 // TODO: get op
+//                 task::OperationType op = task::UPDATE_STATUS;
+//                 if (op == task::UPDATE_STATUS)
+//                 {
+//                     manager.updateEntryStatus(full_id, new_status);
 
-                    task::TaskEntry entry = manager.getEntryById(full_id);
-                    cout << "updated " << full_id.substr(0, 8) << " ->" << task::EnumToString::forStatus(entry.getStatus()) << endl;
-                }
-                else if (op == task::UPDATE_TIMEDUE)
-                {
-                    // TODO: get new_time_due
-                    uint64_t new_time_due = 0;
-                    manager.updateEntryDueDate(full_id, new_time_due);
+//                     task::TaskEntry entry = manager.getEntryById(full_id);
+//                     cout << "updated " << full_id.substr(0, 8) << " ->" << task::EnumToString::forStatus(entry.getStatus()) << endl;
+//                 }
+//                 else if (op == task::UPDATE_TIMEDUE)
+//                 {
+//                     // TODO: get new_time_due
+//                     uint64_t new_time_due = 0;
+//                     manager.updateEntryDueDate(full_id, new_time_due);
 
-                    task::TaskEntry entry = manager.getEntryById(full_id);
-                    cout << "updated " << full_id.substr(0, 8) << " ->" << entry.getTimeDueStr() << endl;
-                }
-                else if (op == task::UDPATE_DESCRIPTION)
-                {
-                    // TODO: get new_description
-                    std::string new_description;
-                    manager.updateEntryDescription(full_id, new_description);
+//                     task::TaskEntry entry = manager.getEntryById(full_id);
+//                     cout << "updated " << full_id.substr(0, 8) << " ->" << entry.getTimeDueStr() << endl;
+//                 }
+//                 else if (op == task::UDPATE_DESCRIPTION)
+//                 {
+//                     // TODO: get new_description
+//                     std::string new_description;
+//                     manager.updateEntryDescription(full_id, new_description);
 
-                    task::TaskEntry entry = manager.getEntryById(full_id);
-                    cout << "updated " << full_id.substr(0, 8) << " ->\"" << entry.getDescription() << "\"" << endl;
-                }
+//                     task::TaskEntry entry = manager.getEntryById(full_id);
+//                     cout << "updated " << full_id.substr(0, 8) << " ->\"" << entry.getDescription() << "\"" << endl;
+//                 }
 			}
 			else {
 				cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
