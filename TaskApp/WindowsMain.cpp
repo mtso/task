@@ -167,13 +167,14 @@ void parseAndExecuteList(task::EntryManager& manager, const string& arguments)
 	if (arguments == "") {
 		manager.printUserTasksTo(cout);
 	}
-	else {
-		if (arguments == "all") {
-			manager.printUserTasksAllTo(cout);
-		}
-		else if (arguments == "team") {
-			manager.printAllTo(cout);
-		}
+	else if (arguments == "all") {
+		manager.printUserTasksAllTo(cout);
+	} 
+	else if (arguments == "team") {
+		manager.printAllTo(cout);
+	}
+	else if (arguments == "tree") {
+		manager.printTreeTo(cout);
 	}
 }
 
