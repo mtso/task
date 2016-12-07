@@ -118,6 +118,8 @@ namespace task
 		unsigned int getTableSize() const;
 
 		int getAccessCountOf(const KeyType& target_key);
+
+		uint getCollisionCount() const;
 	};
 }
 

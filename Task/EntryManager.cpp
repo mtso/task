@@ -401,6 +401,7 @@ void EntryManager::printCurrentStateTo(ostream& output)
 	output << "HashTable load factor:\t" << table.getLoadFactor() << endl;
 	output << "HashTable table size:\t" << table.getTableSize() << endl;
 	output << "HashTable longest list:\t" << table.countLongestList() << endl;
+	output << "HashTable collisions:\t" << table.getCollisionCount() << endl;
 }
 
 void EntryManager::clear()

@@ -97,7 +97,6 @@ namespace task
 		for (unsigned int i = 0; i < new_table_size; i++) {
 			new_table[i] = HashList<KV>();
 		}
-		//unsigned int new_entry_count = entry_count; 
 
 		unsigned int new_used_tables = 0;
 		unsigned int new_index_of_longest = 0;
@@ -312,6 +311,12 @@ namespace task
 	{
 		int index = hashOf(target_key, table_size);
 		return table[index].getAccessCountFor(target_key);
+	}
+
+	T_KV
+	uint HashTable<KV>::getCollisionCount() const
+	{
+		return collisions;
 	}
 }
 
