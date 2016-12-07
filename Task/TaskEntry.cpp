@@ -36,25 +36,6 @@ namespace task
 		unique_id = sha_1(buffer.str());
 	}
 
-	string TaskEntry::msToString(const uint64_t& raw_ms)
-	{
-		using namespace std::chrono;
-		milliseconds ms = (milliseconds)raw_ms;
-		time_t time_created_s = duration_cast<seconds>(ms).count();
-
-		// Time string must have at least 26 char of space.
-		const size_t TIME_BUFLEN = 26;
-		char time_char[TIME_BUFLEN];
-		ctime_s(time_char, TIME_BUFLEN, &time_created_s);
-
-		// Convert to a string type in order to return 
-		// its substr without the trailing newline character
-		string raw_time_str = (string)time_char;
-		return raw_time_str.substr(0, raw_time_str.length() - 1);
-	}
-
-
-
 	// Public member functions
 
 	/**
@@ -139,7 +120,7 @@ namespace task
 	string TaskEntry::getTimeDueStrShort() const
 	{
 		if (time_due == 0) {
-			return "time created not set";
+			return "time due not set";
 		}
 		return getTimeDueStr().substr(0, 10);
 	}

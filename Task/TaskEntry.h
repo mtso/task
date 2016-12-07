@@ -7,12 +7,12 @@
 
 #include <stdint.h>
 #include <sstream>
-//#include <string>
 #include <chrono>
 using namespace std;
 
 #include "TaskEntryStatus.h"
 #include "Utilities\Sha1.h"
+#include "Utilities\DateTime.h"
 
 namespace task
 {
@@ -37,8 +37,6 @@ namespace task
 			const uint64_t& input_time_created,
 			const TaskEntryStatus& input_status = BACKLOG,
 			const uint64_t& input_time_due = 0);
-
-		static string msToString(const uint64_t& milliseconds);
 
 	public:
 		TaskEntry();
@@ -82,7 +80,7 @@ namespace task
 		uint64_t getTimeCreatedMs() const;
 		
 		/**
-		 * Returns the creation time as a natural language string
+		 * Returns the creation time as a date string
 		 */
 		string getTimeCreatedStr() const;
 
@@ -94,7 +92,7 @@ namespace task
 		uint64_t getTimeDueMs() const;
 
 		/**
-		 * Returns the due time as a natural language string
+		 * Returns the due time as a date string
 		 */
 		string getTimeDueStr() const;
 
