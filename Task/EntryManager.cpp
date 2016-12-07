@@ -39,7 +39,6 @@ void EntryManager::loadTasklogs(vector<string> filenames)
 	FileStore fileio;
 	string filepath;
 	vector<TaskEntry> entries;
-	TaskEntry* entry;
 
 	// Iterate through filenames
 	for (uint i = 0; i < filenames.size(); i++) 

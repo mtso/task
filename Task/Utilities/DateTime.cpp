@@ -38,7 +38,7 @@ namespace task {
 		string year_str = raw_input.substr(6, 4);  //       2015
 
 		// Convert strings into integers
-		uint64_t month, day, year;
+		int month, day, year;
 		try {
 			month = stoi(month_str);
 			day = stoi(day_str);
