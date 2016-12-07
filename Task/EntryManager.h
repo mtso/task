@@ -42,20 +42,22 @@ namespace task
 
 		friend void printTable(TaskEntry& entry);
 
-		class NotFoundException {
-		private:
-			string description;
-		public:
-			NotFoundException( const string& other_description = "EntryManager could not match the search arguments with an entry." )
-				: description(other_description) {}
-		};
+		friend void saveHashTable(TaskEntry& entry);
 
-		//
 		void insertEntry(const TaskEntry& entry);
 
 		void printEntryTo(ostream& output, const TaskEntry* entry);
 
+		class NotFoundException {
+		private:
+			string description;
+		public:
+			NotFoundException(const string& other_description = "EntryManager could not match the search arguments with an entry.")
+				: description(other_description) {}
+		};
+
 	public:
+
 		EntryManager();
 
 		EntryManager(const string& user, const string& directory);

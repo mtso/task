@@ -26,7 +26,6 @@ namespace task {
 		TaskEntry getPreviousState() const;
 
 		bool operator==(const Operation& right) const;
-		//bool operator>(const Operation& right) const;
 	};
 }
 #endif

@@ -354,8 +354,16 @@ void EntryManager::undoTopOperation(ostream& output)
 	}
 }
 
+vector <TaskEntry> __entry_export;
+void task::saveHashTable(TaskEntry& entry)
+{
+	__entry_export.push_back(entry);
+}
+
 void EntryManager::unload()
 {
+	FileStore fileio;
+
 	TaskEntry* value;
 	vector<TaskEntry> entries;
 	string filepath = root_directory + DEFAULT_TASKLOG_PREFIX + current_user;
@@ -367,8 +375,10 @@ void EntryManager::unload()
 			entries.push_back(*value);
 		}
 	}
-	FileStore fileio;
 	fileio.store(filepath, entries);
+
+	table.traverse(saveHashTable);
+	fileio.store(root_directory + "hashtable_export.txt", __entry_export);
 }
 
 
