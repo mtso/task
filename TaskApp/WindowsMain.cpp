@@ -305,10 +305,10 @@ void parseAndExecuteDelete(task::EntryManager& manager, const string& arguments)
 	if (manager.getFullIdFor(arguments, full_id))
 	{
 		if (manager.deleteEntry(full_id)) {
-			cout << "Deleted " << full_id << endl;
+			cout << "Deleted " << yellow << full_id << white << endl;
 		}
 		else {
-			cout << "Error deleting: " << full_id << endl;
+			cout << "Error deleting: " << yellow << full_id << white << endl;
 		}
 	}
 	else {

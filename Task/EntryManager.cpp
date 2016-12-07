@@ -129,7 +129,8 @@ void EntryManager::printTableTo(ostream& output)
 
 void task::printHistory(const Operation& operation)
 {
-	cout << EnumToString::forOperationType( operation.getType() ) << "\t" << operation.getPreviousState().getId().substr(0, 8) << " ";
+	cout << EnumToString::forOperationType( operation.getType() ) << "\t" 
+		<< yellow << operation.getPreviousState().getId().substr(0, 8) << white << " ";
 
 	switch (operation.getType()) {
 	case UPDATE_STATUS:
@@ -327,7 +328,7 @@ void EntryManager::undoTopOperation(ostream& output)
 		updateEntryStatus(previous.getId(), previous.getStatus()); // Update to previous status
 		history.pop(); // Pop the extra update operation
 		output << "undid " << EnumToString::forOperationType( top.getType() ) << " " 
-			<< previous.getId().substr(0, 8) << endl;
+			<< yellow << previous.getId().substr(0, 8) << white << endl;
 		break;
 
 	case OP_CREATE:
@@ -335,7 +336,7 @@ void EntryManager::undoTopOperation(ostream& output)
 		{
 			history.pop(); // Pop the extra update operation
 			output << "undid " << EnumToString::forOperationType(top.getType()) << " "
-				<< previous.getId().substr(0, 8) << endl;
+				<< yellow << previous.getId().substr(0, 8) << white << endl;
 		}
 		else {
 			output << "something bad happened (attempted to undo a new entry but could not find it)." << endl;
@@ -345,7 +346,7 @@ void EntryManager::undoTopOperation(ostream& output)
 	case OP_DELETE:
 		insertEntry(previous);
 		output << "undid " << EnumToString::forOperationType(top.getType()) << " "
-			<< previous.getId().substr(0, 8) << endl;
+			<< yellow << previous.getId().substr(0, 8) << white << endl;
 		break;
 
 	default:
