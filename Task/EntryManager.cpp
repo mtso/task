@@ -147,16 +147,6 @@ void EntryManager::printHistoryTo(ostream& output)
 
 void EntryManager::createEntry(const string& description)
 {
-	//assign system time to create time
-	//ULARGE_INTEGER int_time;
-	//SYSTEMTIME sys_time;
-	//GetSystemTime(&sys_time);
-	//FILETIME file_time;
-	//SystemTimeToFileTime(&sys_time, &file_time);
-	//int_time.LowPart = file_time.dwLowDateTime;
-	//int_time.HighPart = file_time.dwHighDateTime;
-	//uint64_t createTime = (uint64_t)int_time.QuadPart;
-
 	//TaskEntry value("", description, createTime);
 	TaskEntryStatus new_status = BACKLOG;
 	TaskEntry* new_entry = new TaskEntry(current_user, description); // , createTime, createTime + 64000, new_status);
@@ -258,6 +248,61 @@ bool EntryManager::updateEntryStatus(const string& id, const TaskEntryStatus& ne
 	return true;
 }
 
+bool EntryManager::updateEntryDescription(const string& id, const string& new_description)
+{
+    TaskEntry* to_update;
+
+    // Find entry
+    try {
+        to_update = & table.getRawValue(id);
+    }
+    catch (HashList<string, TaskEntry>::NotFoundException error) { return false; }
+
+    // Update entry in tree
+    TaskEntry* found_value;
+    uint64_t * found_key;
+    if (tree_time_created.find(to_update->getTimeCreatedMs(), &found_key, &found_value)) {
+        found_value->setDescription(new_description);
+    }
+    else { return false; }
+
+    // Add to history after finding the entry in the table
+    // and updating the clone in the tree.
+    history.push(Operation(UDPATE_DESCRIPTION, *to_update));
+
+    // Update entry in table
+    to_update->setDescription(new_description);
+
+    return true;
+}
+
+bool EntryManager::updateEntryDueDate(const string& id, uint64_t new_time_due)
+{
+    TaskEntry* to_update;
+
+    // Find entry
+    try {
+        to_update = &table.getRawValue(id);
+    }
+    catch (HashList<string, TaskEntry>::NotFoundException error) { return false; }
+
+    // Update entry in tree
+    TaskEntry* found_value;
+    uint64_t * found_key;
+    if (tree_time_created.find(to_update->getTimeCreatedMs(), &found_key, &found_value)) {
+        found_value->setTimeDueMs(new_time_due);
+    }
+    else { return false; }
+
+    // Add to history after finding the entry in the table
+    // and updating the clone in the tree.
+    history.push(Operation(UPDATE_TIMEDUE, *to_update));
+
+    // Update entry in table
+    to_update->setTimeDueMs(new_time_due);
+
+    return true;
+}
 
 void EntryManager::undoTopOperation(ostream& output)
 {

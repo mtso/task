@@ -228,17 +228,15 @@ void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
 			return;
 		}
 
-		cout << "Parsed date: " << task::msToString( task::rawDateToMs(raw_update_argument) ) << endl;
+		uint64_t date = task::rawDateToMs(raw_update_argument);
 		
-		//if (manager.getFullIdFor(raw_id, full_id)) {
-		//	manager.updateEntryDueDate(full_id, input_date);
-		//	cout << "updated " << full_id.substr(0, 8) << " ->" << task::EnumToString::forStatus(new_status) << endl;
-		//}
-		//else {
-		//	cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
-		//}
-
-		cout << "Due date update has not been implemented yet." << endl;
+		if (manager.getFullIdFor(raw_id, full_id)) {
+			manager.updateEntryDueDate(full_id, input_date);
+			cout << "updated " << full_id.substr(0, 8) << " ->" << task::msToString(date).substr(0, 10) << endl;
+		}
+		else {
+			cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
+		}
 	}
 
 	//====================
@@ -246,13 +244,13 @@ void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
 	//====================
 	else if (raw_update_type == "description") {
 		cout << "Description update has not been implemented yet." << endl;
-		//if (manager.getFullIdFor(raw_id, full_id)) {
-		//	manager.updateEntryDescription(full_id, raw_update_argument);
-		//	cout << "updated " << full_id.substr(0, 8) << " ->" << raw_update_argument << endl;
-		//}
-		//else {
-		//	cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
-		//}
+		if (manager.getFullIdFor(raw_id, full_id)) {
+			manager.updateEntryDescription(full_id, raw_update_argument);
+			cout << "updated " << full_id.substr(0, 8) << " ->\"" << raw_update_argument << "\"" << endl;
+		}
+		else {
+			cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
+		}
 	}
 
 }
