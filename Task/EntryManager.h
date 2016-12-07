@@ -107,6 +107,11 @@ namespace task
 		void undoTopOperation(ostream& output);
 
 		void loadTasklogs(vector<string> filenames);
+
+		// !DANGER!
+		void clear();
+
+		void fill(const int& count);
 	};
 }
 

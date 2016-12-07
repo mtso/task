@@ -8,6 +8,7 @@
 #include <chrono>
 #include <iostream>
 #include <sstream>
+#include <vector>
 using namespace std;
 
 #include "MinMax.h"
@@ -38,6 +39,12 @@ namespace task {
 		double average_accesses_table;
 		double average_accesses_tree;
 
+		uint max_accesses_table;
+		uint min_accesses_table;
+
+		uint max_accesses_tree;
+		uint min_accesses_tree;
+
 		c_tree<uint64_t, TaskEntry>* tree;
 		HashTable<string, TaskEntry>* table;
 
@@ -47,7 +54,12 @@ namespace task {
 		void logEndTime();
 		void calculateDelta();
 
-		void countTableAccess();
+		void countTableAccess(const int& run_count);
+
+		void countTreeAccess(const int& run_count);
+
+		vector<string> getAllIds();
+		vector<uint64_t> getAllTimes();
 
 	public:
 		Diagnostic();
@@ -72,6 +84,8 @@ namespace task {
 		void setTable(HashTable<string, TaskEntry>* input_table);
 
 		double getAverageTableAccesses() const;
+
+		double getAverageTreeAccesses() const;
 	};
 }
 

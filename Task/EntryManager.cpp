@@ -377,7 +377,6 @@ void EntryManager::runDiagnosticTo(ostream& output, const int& run_count)
 	test.setTable(&table);
 	test.setTree(&tree_time_created);
 	test.runAndPrintTo(run_count, output);
-	cout << "Average table accesses:\t" << test.getAverageTableAccesses() << endl;
 }
 
 void EntryManager::printCurrentStateTo(ostream& output)
@@ -386,4 +385,34 @@ void EntryManager::printCurrentStateTo(ostream& output)
 	output << "HashTable load factor:\t" << table.getLoadFactor() << endl;
 	output << "HashTable table size:\t" << table.getTableSize() << endl;
 	output << "HashTable longest list:\t" << table.countLongestList() << endl;
+}
+
+void EntryManager::clear()
+{
+	adt::Stack<string> ids;
+	TaskEntry* value;
+	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
+	{
+		ids.push(value->getId());
+	}
+
+	// Delete everything
+	while (tree_time_created.is_not_empty()) {
+		deleteEntry(ids.pop());
+	}
+}
+
+void EntryManager::fill(const int& count)
+{
+	char dummy_description[10];
+	for (int i = 0; i < count; i++) 
+	{
+		_itoa_s(i, dummy_description, 10, 10);
+		createEntry(dummy_description);
+
+		// Force a pause
+		for (int i = 0; i < 100; i++) {
+			sha_1("pause");
+		}
+	}
 }

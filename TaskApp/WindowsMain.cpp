@@ -262,9 +262,15 @@ void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
 
 void parseAndExecuteTest(task::EntryManager& manager, const string& arguments)
 {
-	if (arguments == "current") {
+	if (arguments == "state") {
 		manager.printCurrentStateTo(cout);
-	} 
+	}
+	else if (arguments == "wipeout") {
+		manager.clear();
+	}
+	else if (arguments == "fill") {
+		manager.fill(10);
+	}
 	else if (arguments.length() > 0) {
 		try {
 			int run_count = stoi(arguments);
