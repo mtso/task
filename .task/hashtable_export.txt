@@ -1,1 +1,12 @@
 Unique ID,Time Created,Time Due,Description,Status
+e0ddb44c32e7dd94807c5313697ed8ae51e3d8b8,1481136126355,1481140800000,"Write documentation.",in_progress
+defcdc6fe5bbd159f4ec93674257928821e95731,1481135527810,0,"Add extra UI enhancements.",backlog
+a75f6be4c7438fd727640a50c5ddd307e388153b,1481136180930,0,"Finish HashTable code.",complete
+81d2281854d535e4336aa1445477911a7549df90,1481136158433,0,"Add some demo entries",complete
+7341bec340cb343a8d6eb8e2c98ffcba1043eed8,1481135424850,1481140800000,"Complete BinarySearchTree code.",complete
+f70aa68e81235f1bbbf3a83ed909d17b6b8e230d,1481135608754,0,"Complete FileStore for input/output.",complete
+3d449161b37868ebd592c8d0731a3e5580faf2c0,1481136043522,0,"Add permissions management to push/pull.",backlog
+9d89e0d3fd5960b997f81748c69dd70f9f8e10b6,1481136057922,0,"Add git hook scripts to update tasklogs automagically.",backlog
+3bccd1ba34f03be52ee77a09ae0af191231d16c1,1481135499698,0,"Write peer evaluations.",in_progress
+c340692d63437cf76d182089f50c7902e1183a9c,1481135575697,1481140800000,"Add images to presentation",in_progress
+3860b168aac46fbaa3f7684cc6b084f26c032761,1481135961490,1487880000000,"Reach 80%+ code coverage.",in_progress

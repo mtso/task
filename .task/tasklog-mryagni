@@ -1,1 +1,4 @@
 Unique ID,Time Created,Time Due,Description,Status
+3860b168aac46fbaa3f7684cc6b084f26c032761,1481135961490,1487880000000,"Reach 80%+ code coverage.",in_progress
+3d449161b37868ebd592c8d0731a3e5580faf2c0,1481136043522,0,"Add permissions management to push/pull.",backlog
+9d89e0d3fd5960b997f81748c69dd70f9f8e10b6,1481136057922,0,"Add git hook scripts to update tasklogs automagically.",backlog
