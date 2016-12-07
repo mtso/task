@@ -126,8 +126,7 @@ public:
 private:
 	/**
 	* @brief Create a leaf node.
-	* @return The created leaf node, which has no data, no parent, no
-	* child and is black.
+	* @return The created leaf node, which has no data, no parent, no child.
 	*/
 	node_t* create_leaf_node(void);
 
@@ -164,7 +163,6 @@ private:
 	* @brief Create a node with data.
 	* @param[in] key The key for the node, will be copied.
 	* @param[in] value The value for the node, will be copied.
-	* @param[in] color The color for the node.
 	* @return The created node.
 	*/
 	node_t* create_node(const _key_t& key, const _val_t* const val);
