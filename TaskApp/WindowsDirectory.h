@@ -2,6 +2,12 @@
 // TaskApp
 // CIS 22C F2016: Matthew Tso, Adrian Marroquin
 
+// Win32 Directory handling
+// TRY: 
+// REF: http://stackoverflow.com/questions/6006319/converting-tchar-to-string-in-c
+// REF: http://stackoverflow.com/questions/6291458/how-to-convert-a-tchar-array-to-stdstring
+// REF: http://stackoverflow.com/questions/4804298/how-to-convert-wstring-into-string
+
 #ifndef TASKAPP_WINDOWSDIRECTORY_H
 #define TASKAPP_WINDOWSDIRECTORY_H
 
@@ -18,12 +24,6 @@ using namespace std;
 #pragma comment(lib, "User32.lib")
 #pragma comment(lib, "UserEnv.lib")
 
-// TRY: 
-// REF: http://stackoverflow.com/questions/6006319/converting-tchar-to-string-in-c
-// REF: http://stackoverflow.com/questions/6291458/how-to-convert-a-tchar-array-to-stdstring
-// REF: http://stackoverflow.com/questions/4804298/how-to-convert-wstring-into-string
-// typedef std::basic_string<TCHAR> tstring;
-
 namespace taskapp {
 
 	/**
@@ -36,8 +36,6 @@ namespace taskapp {
 	 * Get the user's name from .gitconfig
 	 */
 	bool getCurrentUser(string& username);
-
-
 }
 
 #endif

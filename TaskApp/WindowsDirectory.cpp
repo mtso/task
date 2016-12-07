@@ -6,10 +6,8 @@
 // Searches a given directory path and logs the filepaths of its contents.
 
 #include "WindowsDirectory.h"
-#include "ADT\Stack.h"
 
 namespace taskapp {
-
 
 	vector<string> filenamesIn(const TCHAR* search_directory)
 	{

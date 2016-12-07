@@ -1,6 +1,6 @@
 // Pager.cpp
 // TaskApp
-// CIS 22C F2016: Matthew Tso
+// CIS 22C F2016: Mr. Yagni
 
 #include "Pager.h"
 

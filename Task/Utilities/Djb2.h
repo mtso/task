@@ -1,6 +1,6 @@
 // Djb2.h
 // Task/Utilities
-// CIS 22C F2016: Matthew Tso
+// CIS 22C F2016: Mr. Yagni
 
 /*
  djb2
