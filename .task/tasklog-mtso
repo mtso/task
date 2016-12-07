@@ -1,6 +1,1 @@
 Unique ID,Time Created,Time Due,Description,Status
-d1e324244947e18c9a06e7577ab6b36196e3830f,131253019260730000,131253019260794000,"Trying out the new task app",backlog
-bea46294291c4bafe062b63943c6ff37d28c8845,131253037047780000,131253037047844000,"Try different outputting methods",in_progress
-9fa10d9b69e851f5c8c12cee0c837f66be40a833,131253037956580000,131253037956644000,"Implement WindowsMain CommandParser",complete
-7cf539ab4173d51d90ef411147923de1e7ae664e,131253039585530000,131253039585594000,"Add permission denial to modification of entries that do not belong to the user.",backlog
-b3710b82d1d9ae8eb4db33f6e95ee5b5a953dca6,131253042992250000,131253042992314000,"Add an `after` state to the Operation object to allow before/after print functionality for updates",backlog
