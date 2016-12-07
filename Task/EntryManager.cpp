@@ -114,6 +114,18 @@ void EntryManager::printUserTasksAllTo(ostream& output)
 	}
 }
 
+void EntryManager::printEntry(ostream& output, const string& id)
+{
+	TaskEntry to_print;
+	try {
+		to_print = table.getValue(id);
+	}
+	catch (...) {
+		return;
+	}
+	printEntryTo(output, &to_print);
+}
+
 void task::printTable(TaskEntry& entry)
 {
 	cout << yellow << "task " << entry.getId() << white << endl;

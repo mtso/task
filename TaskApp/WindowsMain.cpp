@@ -147,7 +147,7 @@ int commandInput(task::EntryManager& manager)
 		break;
 
 	case taskapp::CMD_SEARCH:
-		parseAndExecuteDelete(manager, arguments);
+		parseAndExecuteSearch(manager, arguments);
 		break;
 
 	case taskapp::CMD_QUIT:
@@ -178,6 +178,15 @@ void parseAndExecuteList(task::EntryManager& manager, const string& arguments)
 	}
 	else if (arguments == "table") {
 		manager.printTableTo(cout);
+	}
+	else {
+		string full_id;
+		if (manager.getFullIdFor(arguments, full_id)) {
+			manager.printEntry(cout, full_id);
+		}
+		else {
+			cout << "Could not find the entry for id:" << arguments << endl;
+		}
 	}
 }
 

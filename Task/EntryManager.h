@@ -102,6 +102,9 @@ namespace task
 		// Prints a list of the operation history to cout.
 		void printHistoryTo(ostream& output);
 
+		// Prints an entry by id
+		void printEntry(ostream& output, const string& id);
+
 		// Creates a new entry from the description
 		// with a default of backlog status and no due date time
 		// and then calls insertEntry to add to table and tree
