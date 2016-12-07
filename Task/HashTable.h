@@ -32,7 +32,7 @@ namespace task
 	{
 	private:
 		static const uint DEFAULT_SIZE = 101; // Should be a prime number
-		static const uint HASH_START = 593; // 701;
+		static const uint HASH_START = 15607; // 701;
 		static const uint HASH_MULTIPLIER = 17;
 
 		HashList<KV>* table;
