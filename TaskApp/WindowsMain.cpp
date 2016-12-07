@@ -174,6 +174,12 @@ void parseAndExecuteList(task::EntryManager& manager, const string& arguments)
 
 void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
 {
+	// given a full command of `update bae4 due 12-24-2016`
+	// command: update
+	// raw_id: bae4
+	// raw_update_type: due
+	// raw_update_argument: 12-24-2016
+
 	taskapp::CommandParser parser;
 	string full_id;
 	string raw_id = arguments.substr(0, parser.firstOccurenceOf(' ', arguments));
@@ -213,6 +219,25 @@ void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
 	// Update Due Date
 	//=================
 	else if (raw_update_type == "due") {
+		uint64_t input_date;
+		try {
+			input_date = task::rawDateToMs(raw_update_argument);
+		}
+		catch (...) {
+			cout << "Due date should be formatted like: mm-dd-yyyy." << endl;
+			return;
+		}
+
+		cout << "Parsed date: " << task::msToString( task::rawDateToMs(raw_update_argument) ) << endl;
+		
+		//if (manager.getFullIdFor(raw_id, full_id)) {
+		//	manager.updateEntryDueDate(full_id, input_date);
+		//	cout << "updated " << full_id.substr(0, 8) << " ->" << task::EnumToString::forStatus(new_status) << endl;
+		//}
+		//else {
+		//	cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
+		//}
+
 		cout << "Due date update has not been implemented yet." << endl;
 	}
 
@@ -221,6 +246,13 @@ void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
 	//====================
 	else if (raw_update_type == "description") {
 		cout << "Description update has not been implemented yet." << endl;
+		//if (manager.getFullIdFor(raw_id, full_id)) {
+		//	manager.updateEntryDescription(full_id, raw_update_argument);
+		//	cout << "updated " << full_id.substr(0, 8) << " ->" << raw_update_argument << endl;
+		//}
+		//else {
+		//	cout << "could not find (or found more than) one entry that matched: " << raw_id << endl;
+		//}
 	}
 
 }
