@@ -3,4 +3,4 @@
 :: CIS 22C F2016: Matthew Tso
 
 :: Simply forward all arguments to TaskApp with `%*`
-bin\TaskApp.exe %*
+bin\TaskApp.exe --top-root %*

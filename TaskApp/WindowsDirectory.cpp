@@ -1,6 +1,6 @@
 // WindowsDirectory.h
 // TaskApp
-// CIS 22C F2016: Matthew Tso
+// CIS 22C F2016: Matthew Tso, Adrian Marroquin
 //
 // From msdn docs: https://msdn.microsoft.com/en-us/library/windows/desktop/aa365200(v=vs.85).aspx
 // Searches a given directory path and logs the filepaths of its contents.

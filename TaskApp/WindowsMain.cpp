@@ -1,6 +1,6 @@
 // WindowsMain.cpp
 // TaskApp
-// CIS 22C F2016: Adrian Marroquin, Matthew Tso
+// CIS 22C F2016: Adrian Marroquin, Matthew Tso, Jinzhu Shen
 //
 // WindowsMain is the entry point into Tasks's 
 // interactive shell on Windows platforms.
@@ -13,7 +13,6 @@
 #include "AppConfiguration.h"
 #include "CommandParser.h"
 #include "WindowsDirectory.h"
-#include "Pager.h"
 
 // Flag for continuing input loop
 #define CONTINUE_APP 1
@@ -34,20 +33,26 @@ void parseAndExecuteSearch(task::EntryManager& manager, const string& arguments)
 int main(int argc, char* argv[])
 {
 	// Output version number specified in AppConstants.h
-	cout << "task v" << taskapp::VERSION << endl;
+	cout << "task v" << task::VERSION << endl;
 	
 	// Parse startup arguments
-	if (argc > 1 && (string)argv[1] == "--interactive") {
-		cout << argv[1] << endl;
-		return EXIT_SUCCESS;
+	string root_directory;
+	TCHAR* root_directory_t;
+	if (argc > 1 && (string)argv[1] == "--top-root") {
+		root_directory = task::DEFAULT_TOP_DATA_DIR;
+		root_directory_t = _TEXT(".task\\");
+	}
+	else {
+		root_directory = task::DEFAULT_DATA_DIR;
+		root_directory_t = _TEXT("..\\.task\\");
 	}
 
 	// Startup procedure
 	// Initialize Task's manager object using current username.
-	task::EntryManager manager(getUsername());
+	task::EntryManager manager(getUsername(), root_directory);
 
 	// Load data from tasklogs using Windows API functions
-	loadDataInto(manager, _TEXT("..\\.task"));
+	loadDataInto(manager, root_directory_t);
 
 	// Enter main command loop
 	int status = CONTINUE_APP;

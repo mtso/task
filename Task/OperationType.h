@@ -1,4 +1,6 @@
-
+// OperationType.h
+// Task
+// CIS 22C F2016: Matthew Tso, Jinzhu Shen
 #ifndef TASK_OPERATIONTYPE_H
 #define TASK_OPERATIONTYPE_H
 

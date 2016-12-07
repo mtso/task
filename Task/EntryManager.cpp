@@ -1,6 +1,6 @@
 // EntryManager.cpp
 // Task
-// CIS 22C F2016: Matthew Tso, Xin He
+// CIS 22C F2016: Matthew Tso, Xin He, Jinzhu Shen
 
 #include "EntryManager.h"
 
@@ -11,20 +11,27 @@ EntryManager::EntryManager()
 	, tree_time_created(c_tree<uint64_t, TaskEntry>())
 	, history (adt::Stack<Operation>())
 	, current_user("")
+	, root_directory("")
 {
 }
 
-EntryManager::EntryManager(const string& user)
+EntryManager::EntryManager(const string& user, const string& directory)
 	: table(HashTable<string, TaskEntry>())
 	, tree_time_created(c_tree<uint64_t, TaskEntry>())
 	, history(adt::Stack<Operation>())
 	, current_user(user)
+	, root_directory(directory)
 {
 }
 
 void EntryManager::setCurrentUser(const string& user)
 {
 	current_user = user;
+}
+
+void EntryManager::setRootDirectory(const string& directory)
+{
+	root_directory = directory;
 }
 
 void EntryManager::insertEntry(const TaskEntry& new_entry)
@@ -43,7 +50,7 @@ void EntryManager::loadTasklogs(vector<string> filenames)
 	// Iterate through filenames
 	for (uint i = 0; i < filenames.size(); i++) 
 	{
-		filepath = "..\\.task\\" + filenames[i];
+		filepath = root_directory + filenames[i];
 
 		// Return if the filepath was invalid
 		if (!fileio.load(filepath, entries)) { continue; }
@@ -350,7 +357,7 @@ void EntryManager::unload()
 {
 	TaskEntry* value;
 	vector<TaskEntry> entries;
-	string filepath = "..\\.task\\tasklog-" + current_user;
+	string filepath = root_directory + DEFAULT_TASKLOG_PREFIX + current_user;
 
 	for (uint64_t* key = tree_time_created.first_data(&value); key != NULL; key = tree_time_created.next_data(&value))
 	{
@@ -366,7 +373,7 @@ void EntryManager::unload()
 
 void EntryManager::runDiagnosticTo(ostream& output, const int& run_count)
 {
-	Diagnostic test; // (&tree_time_created, &table);
+	Diagnostic test;
 	test.setTable(&table);
 	test.setTree(&tree_time_created);
 	test.runAndPrintTo(run_count, output);

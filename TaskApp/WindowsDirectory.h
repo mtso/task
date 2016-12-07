@@ -1,6 +1,6 @@
 // WindowsDirectory.h
 // TaskApp
-// CIS 22C F2016: Matthew Tso
+// CIS 22C F2016: Matthew Tso, Adrian Marroquin
 
 #ifndef TASKAPP_WINDOWSDIRECTORY_H
 #define TASKAPP_WINDOWSDIRECTORY_H

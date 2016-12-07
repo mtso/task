@@ -1,6 +1,6 @@
 // TaskEntry.h
 // Task
-// CIS 22C F2016:
+// CIS 22C F2016: Matthew Tso, Jinzhu Shen
 
 #include "TaskEntry.h"
 

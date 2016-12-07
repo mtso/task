@@ -1,6 +1,6 @@
 // EntryManager.h
 // Task
-// CIS 22C F2016: Matthew Tso
+// CIS 22C F2016: Matthew Tso, Xin He, Jinzhu Shen
 
 #ifndef TASK_ENTRYMANAGER_H
 #define TASK_ENTRYMANAGER_H
@@ -15,6 +15,7 @@
 #include "Utilities\DateTime.h"
 #include "Utilities\EnumToString.h"
 #include "Utilities\Diagnostic.h"
+#include "Configuration.h"
 
 #include "Utilities\ConsoleColor.h"
 
@@ -28,6 +29,8 @@ namespace task
 	{
 	private:
 		string current_user;
+
+		string root_directory;
 
 		HashTable<string, TaskEntry> table;
 
@@ -55,9 +58,11 @@ namespace task
 	public:
 		EntryManager();
 
-		EntryManager(const string& user);
+		EntryManager(const string& user, const string& directory);
 
 		void setCurrentUser(const string& user);
+
+		void setRootDirectory(const string& directory);
 
 		// Task output listing functions
 
