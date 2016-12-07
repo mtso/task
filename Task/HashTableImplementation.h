@@ -24,12 +24,12 @@ namespace task
 	template <>
 	unsigned int HashTable<string, TaskEntry>::hashOf(const string& target_key, const unsigned int &for_size) const
 	{
-		unsigned int hash = 5381;
+		unsigned int hash = HASH_START; 
 		char current;
 
 		for (unsigned int i = 0; i < target_key.length(); i++) {
 			current = target_key[i];
-			hash = hash * 33 + current;
+			hash = hash * HASH_MULTIPLIER + current;
 		}
 
 		hash %= for_size;
@@ -39,12 +39,12 @@ namespace task
 	template <>
 	unsigned int HashTable<string, TaskEntry*>::hashOf(const string& target_key, const unsigned int &for_size) const
 	{
-		unsigned int hash = 5381;
+		unsigned int hash = HASH_START;
 		char current;
 
 		for (unsigned int i = 0; i < target_key.length(); i++) {
 			current = target_key[i];
-			hash = hash * 33 + current;
+			hash = hash * HASH_MULTIPLIER + current;
 		}
 
 		hash %= for_size;
