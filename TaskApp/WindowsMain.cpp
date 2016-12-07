@@ -262,14 +262,28 @@ void parseAndExecuteUpdate(task::EntryManager& manager, const string& arguments)
 
 void parseAndExecuteTest(task::EntryManager& manager, const string& arguments)
 {
+	taskapp::CommandParser parser;
 	if (arguments == "state") {
 		manager.printCurrentStateTo(cout);
 	}
 	else if (arguments == "wipeout") {
 		manager.clear();
 	}
-	else if (arguments == "fill") {
-		manager.fill(10);
+	else if (arguments.substr(0, parser.firstOccurenceOf(' ', arguments)) == "fill") {
+
+		string count_argument = parser.parseArgumentsFrom(arguments);
+
+		if (count_argument.length() > 0) {
+			try {
+				manager.fill(stoi(count_argument));
+			}
+			catch (std::invalid_argument error) {
+				cout << "test fill takes a number as an argument" << endl;
+			}
+		}
+		else {
+			manager.fill(10);
+		}
 	}
 	else if (arguments.length() > 0) {
 		try {
