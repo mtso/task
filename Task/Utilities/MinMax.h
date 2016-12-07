@@ -11,13 +11,13 @@
 namespace task {
 
 	template <typename T>
-	T min(const T& x, const T& y)
+	T min_of(const T& x, const T& y)
 	{
 		return (x < y) ? x : y;
 	}
 
 	template <typename T>
-	T max(const T& x, const T& y)
+	T max_of(const T& x, const T& y)
 	{
 		return (x > y) ? x : y;
 	}

@@ -153,6 +153,11 @@ void EntryManager::printHistoryTo(ostream& output)
 	}
 }
 
+void EntryManager::printTreeTo(ostream& output)
+{
+	output << tree_time_created.to_string() << endl;
+}
+
 void EntryManager::createEntry(const string& description)
 {
 	//TaskEntry value("", description, createTime);

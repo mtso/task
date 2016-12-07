@@ -143,7 +143,6 @@ namespace task {
 	void Diagnostic::countTableAccess(const int& run_count)
 	{
 		vector<string> ids = getAllIds();
-		TaskEntry* value;
 		unsigned int total_accesses = 0;
 		unsigned int min_accesses = UINT32_MAX;
 		unsigned int max_accesses = 0;
@@ -151,15 +150,15 @@ namespace task {
 		int compare_count;
 		int random_index;
 
-		srand(time(NULL));
+		srand((unsigned int)time(NULL));
 		for (int i = 0; i < run_count; i++) {
 			random_index = rand() % ids.size();
 			
 			compare_count = table->getAccessCountOf(ids[random_index]);
 			total_accesses += compare_count;
 
-			min_accesses = min((unsigned int)compare_count, min_accesses);
-			max_accesses = max((unsigned int)compare_count, max_accesses);
+			min_accesses = min_of((unsigned int)compare_count, min_accesses);
+			max_accesses = max_of((unsigned int)compare_count, max_accesses);
 		}
 
 		average_accesses_table = (double)total_accesses / (double)run_count;
@@ -170,7 +169,6 @@ namespace task {
 	void Diagnostic::countTreeAccess(const int& run_count)
 	{
 		vector<uint64_t> keys = getAllTimes();
-		TaskEntry* value;
 		unsigned int total_accesses = 0;
 		unsigned int min_accesses = UINT32_MAX;
 		unsigned int max_accesses = 0;
@@ -178,7 +176,7 @@ namespace task {
 		bool found;
 		int random_index;
 
-		srand(time(NULL));
+		srand((unsigned int)time(NULL));
 
 		for (int i = 0; i < run_count; i++) {
 			random_index = rand() % keys.size();
@@ -186,8 +184,8 @@ namespace task {
 			if (!found) { continue; }
 
 			total_accesses += compare_count;
-			min_accesses = min((unsigned int)compare_count, min_accesses);
-			max_accesses = max((unsigned int)compare_count, max_accesses);
+			min_accesses = min_of((unsigned int)compare_count, min_accesses);
+			max_accesses = max_of((unsigned int)compare_count, max_accesses);
 		}
 
 		average_accesses_tree = (double)total_accesses / (double)run_count;

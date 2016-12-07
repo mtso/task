@@ -13,6 +13,7 @@ using namespace std;
 #include "TaskEntryStatus.h"
 #include "Utilities\Sha1.h"
 #include "Utilities\DateTime.h"
+#include "Utilities\ConsoleColor.h"
 
 namespace task
 {
@@ -127,6 +128,8 @@ namespace task
 		 * Used in collections to identify entries
 		 */
 		bool operator==(const TaskEntry& right) const;
+
+		friend ostream& operator << (ostream& output, const TaskEntry& entry);
 	};
 }
 

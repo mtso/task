@@ -17,7 +17,7 @@
 #include "Utilities\Diagnostic.h"
 #include "Configuration.h"
 
-#include "Utilities\ConsoleColor.h"
+//#include "Utilities\ConsoleColor.h"
 
 #ifdef _WIN32
 #include "windows.h"
@@ -75,6 +75,8 @@ namespace task
 		void printUserTasksAllTo(ostream& output);
 
 		void printTableTo(ostream& output);
+
+		void printTreeTo(ostream& output);
 		
 		/**
 		 * Prints a list of the operation history to cout.

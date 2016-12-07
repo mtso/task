@@ -171,4 +171,19 @@ namespace task
 		return unique_id == right.unique_id;
 	}
 
+	ostream& operator << (ostream& output, const TaskEntry& entry)
+	{
+		unsigned int description_length = 14;		
+		if (entry.description.length() > description_length - 3) {
+			output << yellow << entry.unique_id.substr(0, 8) << white << " \"" 
+				<< entry.description.substr(0, description_length - 3)
+				<< "...\"";
+		}
+		else {
+			output << yellow << entry.unique_id.substr(0, 8) << white << " \""
+				<< entry.description.substr(0, description_length)
+				<< "\"";
+		}
+		return output;
+	}
 }
